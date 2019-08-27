@@ -1,0 +1,51 @@
+<div class="row h-100">
+  <div class="offset-sm-0 offset-md-3 col-md-6 d-flex flex-column align-items-center justify-content-center">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card class="m-2">
+        <mat-card-header class="m-0">
+          <mat-card-title class="m-0">
+            Employment Application
+          </mat-card-title>
+          <mat-card-subtitle class="m-0">
+            Pacesetter Personnel's web application may only be completed
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div class="p-3">
+          <mat-card-content>
+            <mat-form-field class="w-100 mb-2">
+              <input
+                type="text"
+                matInput
+                placeholder="Access Code"
+                formControlName="accessCode"
+                required>
+              <mat-error *ngIf="loginForm.controls.accessCode.hasError('required')">
+                Access code is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-2">
+              <input
+                matInput
+                type="text"
+                [mask]="'000-00-0000'"
+                [showMaskTyped]="true"
+                [clearIfNotMatch]="true"
+                placeholder="Social Number"
+                formControlName="socialNumber"
+                required>
+              <mat-error *ngIf="loginForm.controls.socialNumber.hasError('required')">
+                Social Number is required.
+              </mat-error>
+              <mat-error *ngIf="!loginForm.controls.socialNumber.valid && !loginForm.controls.socialNumber.hasError('required')">
+                Invalid value.
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" class="float-right">Submit</button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>
