@@ -10,7 +10,6 @@ export class AppService {
   loginUser({socialNumber, accessCode}): Promise<boolean> {
     return new Promise((resolve) => {
       // TODO: NEED TO INTEGRATE CALL HERE. JUST FOR TESTING
-      console.log('----------<<<<<< ', socialNumber);
       this.cookieService.setCookie('currentSSN', socialNumber, 1);
       setTimeout(() => {
         resolve(true);

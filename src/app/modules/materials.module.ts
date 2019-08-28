@@ -20,6 +20,7 @@ import {
   MatSlideToggleModule,
   MatTabsModule,
   MatCardModule,
+  MatStepperModule,
 } from '@angular/material';
 
 export const MaterialModules = [
@@ -41,6 +42,7 @@ export const MaterialModules = [
   MatAutocompleteModule,
   MatSlideToggleModule,
   MatTabsModule,
+  MatStepperModule,
   MatCardModule,
   NgxMaskModule,
 ];
