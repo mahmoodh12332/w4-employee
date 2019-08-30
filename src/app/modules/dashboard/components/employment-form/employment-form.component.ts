@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {States} from '../../../shared/data/states';
 
 
+const textTypeDefaultMinLength = 0;
+const textTypeDefaultMaxLength = 255;
 const Steps: Array<any> = [
   {
     name: 'basicInformation',
@@ -17,8 +20,8 @@ const Steps: Array<any> = [
         disabled: true,
         required: false,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'bi-firstName',
@@ -30,8 +33,8 @@ const Steps: Array<any> = [
         disabled: false,
         mask: null,
         required: true,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'bi-middleInitial',
@@ -39,12 +42,13 @@ const Steps: Array<any> = [
         label: 'Middle Initial',
         type: 'text',
         defaultValue: '',
-        isMasked: false,
+        isMasked: true,
         disabled: false,
-        mask: null,
+        mask: 'A{2}',
         required: false,
         minLength: 0,
-        maxLength: 1,
+        maxLength: 3,
+        pattern: new RegExp('^[A-Z]{2}', 'g')
       },
       {
         id: 'bi-lastName',
@@ -55,8 +59,8 @@ const Steps: Array<any> = [
         isMasked: false,
         mask: null,
         required: true,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'bi-otherName',
@@ -67,17 +71,18 @@ const Steps: Array<any> = [
         isMasked: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'bi-dateOfBirth',
         name: 'dateOfBirth',
         label: 'DOB',
         type: 'date',
+        disabled: false,
         defaultValue: new Date(),
-        isMasked: false,
-        mask: null,
+        isMasked: true,
+        mask: 'd0/M0/0000',
         required: true,
         minValue: null,
         maxValue: null,
@@ -117,11 +122,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
-        disabled: true,
+        disabled: false,
         required: true,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'add-streetName',
@@ -130,11 +135,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
-        disabled: true,
+        disabled: false,
         required: true,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'add-apartmentNumber',
@@ -143,11 +148,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'add-city',
@@ -156,20 +161,21 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
-        disabled: true,
+        disabled: false,
         required: true,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'add-state',
         name: 'state',
         label: 'State',
         type: 'dropdown',
+        options: States,
         defaultValue: '',
         isMasked: false,
-        disabled: true,
+        disabled: false,
         required: true,
         mask: null,
         minLength: null,
@@ -179,14 +185,15 @@ const Steps: Array<any> = [
         id: 'add-zipCode',
         name: 'zipCode',
         label: 'Zip Code',
-        type: 'dropdown',
+        type: 'text',
         defaultValue: '',
         isMasked: true,
-        disabled: true,
+        disabled: false,
         required: true,
         mask: '00000',
-        minLength: 5,
-        maxLength: 5,
+        minLength: 0,
+        pattern: new RegExp('^[0-9]{5}', 'g'),
+        maxLength: 6,
       },
     ]
   },
@@ -201,11 +208,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: true,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: '(000) - 000 - 0000',
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'pe-mobilePhone',
@@ -214,11 +221,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: true,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: '(000) - 000 - 0000',
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'pe-email',
@@ -228,11 +235,11 @@ const Steps: Array<any> = [
         defaultValue: '',
         isMasked: false,
         isEmail: true,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: null,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
     ]
   },
@@ -279,6 +286,8 @@ const Steps: Array<any> = [
         mask: null,
         minLength: null,
         maxLength: null,
+        minValue: 1,
+        maxValue: 10,
       },
       {
         id: 'w4i-taxExempt',
@@ -286,6 +295,16 @@ const Steps: Array<any> = [
         label: 'Are you tax exempt',
         type: 'radioButton',
         defaultValue: '',
+        options: [
+          {
+            value: 'yes',
+            label: 'Yes'
+          },
+          {
+            value: 'no',
+            label: 'No'
+          }
+        ],
         isMasked: false,
         disabled: false,
         required: true,
@@ -309,8 +328,8 @@ const Steps: Array<any> = [
         disabled: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'ec-lastName',
@@ -321,8 +340,8 @@ const Steps: Array<any> = [
         isMasked: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'ec-homePhone',
@@ -331,11 +350,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: true,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: '(000) - 000 - 0000',
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'ec-mobilePhone',
@@ -344,11 +363,11 @@ const Steps: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: true,
-        disabled: true,
+        disabled: false,
         required: false,
         mask: '(000) - 000 - 0000',
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'ec-relationship',
@@ -360,8 +379,8 @@ const Steps: Array<any> = [
         disabled: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
     ]
   },
@@ -406,14 +425,15 @@ const Steps: Array<any> = [
         disabled: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'identDoc-issueState',
         name: 'issueState',
         label: 'Issue State',
         type: 'dropdown',
+        options: States,
         defaultValue: '',
         isMasked: false,
         disabled: false,
@@ -448,7 +468,7 @@ const Steps: Array<any> = [
         type: 'radioButton',
         options: [
           {
-            label: 'A Citizen of the United States',
+            label: 'A citizen of the United States',
             value: 'usCitizen'
           },
           {
@@ -509,8 +529,8 @@ const Steps: Array<any> = [
         isMasked: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       }
     ]
   }
@@ -540,7 +560,7 @@ export class EmploymentFormComponent implements OnInit {
           validators.push(Validators.min(field.minValue));
         }
         if (field.maxValue) {
-          validators.push(Validators.min(field.maxValue));
+          validators.push(Validators.max(field.maxValue));
         }
         if (field.minLength) {
           validators.push(Validators.minLength(field.minLength));
@@ -551,7 +571,13 @@ export class EmploymentFormComponent implements OnInit {
         if (field.isEmail) {
           validators.push(Validators.email);
         }
-        const formControl = new FormControl(field.defaultValue || '', validators);
+        if (field.pattern) {
+          validators.push(Validators.pattern(field.pattern));
+        }
+        const formControl = new FormControl({
+          value: '',
+          disabled: field.disabled,
+        }, validators);
         fields.push({
           ...field,
           formControl
@@ -565,5 +591,15 @@ export class EmploymentFormComponent implements OnInit {
         fields,
       };
     });
+  }
+
+  get formValue() {
+    const data = {};
+    this.stepFormGroups.forEach((step) => data[step.name] = step.formGroup.value);
+    return data;
+  }
+
+  submitForm(): void {
+    console.log(this.formValue);
   }
 }

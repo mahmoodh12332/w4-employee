@@ -3,4 +3,7 @@
   width: 100%;
   overflow-y: auto;
   background-color: $primary;
+  .mat-radio-label {
+    white-space: normal !important;
+  }
 }
