@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="step.formGroup">
+    <div class="row">
+      <ng-container *ngFor="let field of step.fields">
+        <app-employment-form-field
+          [ngClass]="{
+            'col-md-6 col-sm-12': field.type !== 'radioButton' && field.type !== 'group',
+            'w-100': field.type === 'date',
+            'col-12': field.type === 'radioButton' || field.type === 'group'
+          }"
+          [field]="field"
+        ></app-employment-form-field>
+      </ng-container>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="text-right">
+  <div class="w-100 text-right">
+    <button mat-raised-button (click)="closeModal()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="done()">Done</button>
+  </div>
+</div>
