@@ -1,47 +1,47 @@
 export const Levels = [
   {
     label: 'Bartender',
-    value: 'number:11'
+    value: 'Bartender',
   },
   {
     label: 'Dishwasher',
-    value: 'number:13'
+    value: 'Dishwasher',
   },
   {
     label: 'Hostess',
-    value: 'number:12'
+    value: 'Hostess',
   },
   {
     label: 'Kitchen Cashier',
-    value: 'number:110'
+    value: 'Kitchen Cashier',
   },
   {
     label: 'Kitchen Chef',
-    value: 'number:108'
+    value: 'Kitchen Chef',
   },
   {
     label: 'Kitchen Cook',
-    value: 'number:112'
+    value: 'Kitchen Cook',
   },
   {
     label: 'Kitchen Grill Cook',
-    value: 'number:113'
+    value: 'Kitchen Grill Cook',
   },
   {
     label: 'Kitchen Supervisor',
-    value: 'number:8'
+    value: 'Kitchen Supervisor',
   },
   {
     label: 'Kitchen Utility Person',
-    value: 'number:111'
+    value: 'Kitchen Utility Person',
   },
   {
     label: 'Preparation',
-    value: 'number:9'
+    value: 'Preparation',
   },
   {
     label: 'Wait Staff',
-    value: 'number:10'
+    value: 'Wait Staff',
   },
 
 ];

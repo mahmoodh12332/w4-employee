@@ -516,7 +516,6 @@ export const EmploymentForm: Array<any> = [
           },
         },
         isUnique: true,
-        fieldToShowOnSmallScreen: 'skillName',
         fields: [
           {
             id: 'skill-skillName',
@@ -554,19 +553,19 @@ export const EmploymentForm: Array<any> = [
             options: [
               {
                 label: 'Less than a Year',
-                value: 'string:Less than a Year',
+                value: 'Less than a Year',
               },
               {
                 label: '1 to 3 Years',
-                value: 'string:1 to 3 Years',
+                value: '1 to 3 Years',
               },
               {
                 label: '3 to 5 Years',
-                value: 'string:3 to 5 Years',
+                value: '3 to 5 Years',
               },
               {
                 label: '5 Years or more',
-                value: 'string:5 Years or more',
+                value: '5 Years or more',
               },
 
             ],
@@ -628,7 +627,6 @@ export const EmploymentForm: Array<any> = [
             remove: 'Remove',
           },
         },
-        fieldToShowOnSmallScreen: 'companyName',
         fields: [
           {
             id: 'wh-history-companyName',

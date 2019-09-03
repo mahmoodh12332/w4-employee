@@ -13,6 +13,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
 import { MaterialModules } from './modules/materials.module';
 import { Services } from './modules/shared/services';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { Services } from './modules/shared/services';
   ],
   providers: [
     Services,
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,

@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {find} from 'lodash';
+import {find, startCase} from 'lodash';
+import { DatePipe } from '@angular/common';
 
 import {EmploymentModalComponent} from '../employment-modal/employment-modal.component';
 
@@ -11,7 +12,22 @@ import {EmploymentModalComponent} from '../employment-modal/employment-modal.com
 })
 export class EmploymentFormFieldComponent {
   @Input() public field: any;
-  constructor(public dialog: MatDialog) {}
+  public objectKeys = Object.keys;
+  public startCase = startCase;
+  constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
+
+  private openModal(index = null, action) {
+    const dialogRef = this.dialog.open(EmploymentModalComponent, {
+      data: {
+        field: this.field,
+        currentActiveIndex: index,
+        title: this.field.controlLabels.modal[action]
+      },
+      hasBackdrop: true,
+      disableClose: true
+    });
+    return dialogRef;
+  }
 
   isAddedGroupExits(group) {
     return find(this.field.groupValues, group);
@@ -39,16 +55,15 @@ export class EmploymentFormFieldComponent {
       }
     });
   }
-  private openModal(index = null, action) {
-    const dialogRef = this.dialog.open(EmploymentModalComponent, {
-      data: {
-        field: this.field,
-        currentActiveIndex: index,
-        title: this.field.controlLabels.modal[action]
-      },
-      hasBackdrop: true,
-      disableClose: true
-    });
-    return dialogRef;
+
+  onGroupItemRemoved(index) {
+    this.field.groupValues.splice(index, 1);
+  }
+
+  public formatValue(value) {
+    if (value instanceof Date) {
+      return this.datePipe.transform(value, 'dd/MM/yyyy');
+    }
+    return value;
   }
 }

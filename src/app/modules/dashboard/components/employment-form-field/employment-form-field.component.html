@@ -76,16 +76,46 @@
 
   <!--Group Field-->
   <ng-container *ngSwitchCase="field.type === 'group'">
-    <div class="mt-3 mb-3 w-100">
-      <div class="w-100">
-        <mat-label>{{field.label}}</mat-label>
-        <mat-chip-list>
-          <mat-chip color="primary" *ngFor="let value of field.groupValues; let i = index;" (click)="this.onGroupItemClicked(i)">
-            {{value[field.fieldToShowOnSmallScreen]}}
-          </mat-chip>
-        </mat-chip-list>
+    <div class="mt-3 mb-3 w-100 group-container">
+      <mat-label>{{field.label}}</mat-label>
+      <div class="row">
+        <ng-container *ngFor="let value of field.groupValues; let i = index;">
+          <div class="col-md-6 col-sm-12 col-lg-6 mt-3 mb-3">
+            <mat-card>
+              <mat-card-content>
+                <div class="row">
+                  <ng-container *ngFor="let key of objectKeys(value); let j = index;">
+                    <div class="col-12">
+                      <small class="text-muted">
+                        {{startCase(key)}}
+                      </small>
+                    </div>
+                    <div class="col-12">
+                      <h6>{{formatValue(value[key]) || '-'}}</h6>
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <button mat-raised-button color="danger" (click)="onGroupItemRemoved(i)">Remove</button>
+                <button mat-raised-button color="primary" (click)="onGroupItemClicked(i)">Edit</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!field.groupValues.length">
+          <div class="d-flex justify-content-center align-items-center w-100 h-100 p-5">
+            <p class="h6 text-muted">
+              Click
+              <button mat-raised-button color="primary" (click)="onGroupNewGroupAdd()">
+                {{field.controlLabels.buttons.add}}
+              </button>
+            </p>
+          </div>
+        </ng-container>
       </div>
-      <div class="w-100 mt-5 mb-3 text-right">
+      <div class="w-100 mt-5 mb-3 text-right" *ngIf="field.groupValues.length">
         <button mat-raised-button color="primary" (click)="onGroupNewGroupAdd()">
           {{field.controlLabels.buttons.add}}
         </button>
