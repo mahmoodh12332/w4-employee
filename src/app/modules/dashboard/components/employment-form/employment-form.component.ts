@@ -22,7 +22,14 @@ export class EmploymentFormComponent implements OnInit {
 
   get formValue() {
     const data = {};
-    this.stepFormGroups.forEach((step) => data[step.name] = step.formGroup.value);
+    this.stepFormGroups.forEach((step) => {
+      data[step.name] = step.formGroup.value;
+      step.fields.forEach((field) => {
+        if (field.type === 'group') {
+          data[step.name][field.name] = field.groupValues;
+        }
+      });
+    });
     return data;
   }
 

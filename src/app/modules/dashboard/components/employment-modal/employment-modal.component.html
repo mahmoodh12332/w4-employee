@@ -9,6 +9,7 @@
             'w-100': field.type === 'date',
             'col-12': field.type === 'radioButton' || field.type === 'group'
           }"
+          [step]="step"
           [field]="field"
         ></app-employment-form-field>
       </ng-container>

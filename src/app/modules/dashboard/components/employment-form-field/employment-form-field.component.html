@@ -40,7 +40,7 @@
              [matDatepicker]="picker"
              [required]="field.required"
              [placeholder]="field.label">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="field.disabled"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker [disabled]="false"></mat-datepicker>
       <mat-hint>DD/MM/YYYY</mat-hint>
     </mat-form-field>
@@ -53,6 +53,7 @@
     </label>
     <mat-radio-group class="d-flex flex-column"
                      [formControl]="field.formControl"
+                     (change)="citizenshipCase()"
                      [required]="field.required">
       <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-1" [value]="option.value">
         {{option.label}}

@@ -12,6 +12,7 @@ import {EmploymentModalComponent} from '../employment-modal/employment-modal.com
 })
 export class EmploymentFormFieldComponent {
   @Input() public field: any;
+  @Input() public step: any;
   public objectKeys = Object.keys;
   public startCase = startCase;
   constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
@@ -65,5 +66,28 @@ export class EmploymentFormFieldComponent {
       return this.datePipe.transform(value, 'dd/MM/yyyy');
     }
     return value;
+  }
+
+  citizenshipCase() {
+    // TODO: NEED TO COME UP WITH BETTER APPROACH FOR NOW TO AVOID COMPLICATOIN I HAVE DONE IT.
+    if (this.field.name !== 'citizenship') {
+      return;
+    }
+    const uscisNumber = 'uscisNumber';
+    const alienNumber = 'alienNumber';
+    const i94Number = 'i94Number';
+    const expireDate = 'expireDate';
+    this.step.formGroup.controls[uscisNumber].disable();
+    this.step.formGroup.controls[alienNumber].disable();
+    this.step.formGroup.controls[i94Number].disable();
+    this.step.formGroup.controls[expireDate].disable();
+    if (this.field.formControl.value === 'lawfulPermanentResident') {
+      this.step.formGroup.controls[uscisNumber].enable();
+      return;
+    } else if (this.field.formControl.value === 'alien') {
+      this.step.formGroup.controls[alienNumber].enable();
+      this.step.formGroup.controls[i94Number].enable();
+      this.step.formGroup.controls[expireDate].enable();
+    }
   }
 }
