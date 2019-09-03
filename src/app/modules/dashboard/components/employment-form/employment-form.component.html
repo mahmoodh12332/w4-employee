@@ -3,89 +3,21 @@
     <div class="row">
       <div class="col-md-8 offset-md-2 offset-lg-2 offset-sm-0 mt-5 mb-5">
         <mat-card>
-          <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-vertical-stepper [linear]="false" #stepper>
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
               <mat-step [stepControl]="step.formGroup">
                 <form [formGroup]="step.formGroup">
                   <ng-template matStepLabel>{{step.label}}</ng-template>
                   <div class="row">
                     <ng-container *ngFor="let field of step.fields">
-                      <ng-container [ngSwitch]="true">
-
-                        <!--Text Field-->
-                        <div class="col-md-6 col-sm-12" *ngSwitchCase="field.type === 'text'">
-                          <mat-form-field class="w-100">
-                            <input matInput
-                                   [type]="field.type"
-                                   [mask]="field.isMasked ? field.mask : ''"
-                                   [showMaskTyped]="field.isMasked"
-                                   [clearIfNotMatch]="field.isMasked"
-                                   [placeholder]="field.label"
-                                   [minLength]="field.minLength"
-                                   [maxLength]="field.maxLength"
-                                   [formControl]="field.formControl"
-                                   [required]="field.required"
-                                   [email]="!!field.isEmail"
-                            >
-                          </mat-form-field>
-                        </div>
-
-                        <!--Number Field-->
-                        <div class="col-md-6 col-sm-12" *ngSwitchCase="field.type === 'number'">
-                          <mat-form-field class="w-100">
-                            <input matInput
-                                   [type]="field.type"
-                                   [placeholder]="field.label"
-                                   [min]="field.minValue"
-                                   [max]="field.maxValue"
-                                   [formControl]="field.formControl"
-                                   [required]="field.required"
-                            >
-                          </mat-form-field>
-                        </div>
-
-                        <!-- Date Picker Field -->
-                        <div class="col-md-6 col-sm-12 w-100" *ngSwitchCase="field.type === 'date'">
-                          <mat-form-field>
-                            <input matInput
-                                   [formControl]="field.formControl"
-                                   [matDatepicker]="picker"
-                                   [required]="field.required"
-                                   [placeholder]="field.label">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker [disabled]="false"></mat-datepicker>
-                            <mat-hint>DD/MM/YYYY</mat-hint>
-                          </mat-form-field>
-                        </div>
-
-                        <!--Radio Button Field-->
-                        <div class="col-12 mt-4 mb-3" *ngSwitchCase="field.type === 'radioButton'">
-                          <label [ngClass]="{'mat-error': field.formControl.hasError('required')}">
-                            {{field.label}} {{field.required ? '*' : ''}}
-                          </label>
-                          <mat-radio-group class="d-flex flex-column"
-                                           [formControl]="field.formControl"
-                                           [required]="field.required">
-                            <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-1" [value]="option.value">
-                              {{option.label}}
-                            </mat-radio-button>
-                          </mat-radio-group>
-                        </div>
-
-                        <!--Drop Down field-->
-                        <div class="col-md-6 col-sm-12" *ngSwitchCase="field.type === 'dropdown'">
-                          <mat-form-field>
-                            <mat-label>{{field.label}}</mat-label>
-                            <mat-select
-                              [required]="field.required"
-                              [formControl]="field.formControl">
-                              <mat-option
-                                *ngFor="let option of field.options;"
-                                [value]="option.value">{{option.label}}</mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                        </div>
-                      </ng-container>
+                      <app-employment-form-field
+                        [ngClass]="{
+                        'col-md-6 col-sm-12': field.type !== 'radioButton' && field.type !== 'group',
+                        'w-100': field.type === 'date',
+                        'col-12': field.type === 'radioButton' || field.type === 'group'
+                        }"
+                        [field]="field"
+                      ></app-employment-form-field>
                     </ng-container>
                   </div>
                   <div class="row">

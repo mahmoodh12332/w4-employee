@@ -22,6 +22,7 @@ import {
   MatTabsModule,
   MatCardModule,
   MatStepperModule,
+  MatDividerModule
 } from '@angular/material';
 
 export const MaterialModules = [
@@ -43,6 +44,7 @@ export const MaterialModules = [
   MatExpansionModule,
   MatAutocompleteModule,
   MatSlideToggleModule,
+  MatDividerModule,
   MatTabsModule,
   MatStepperModule,
   MatCardModule,

@@ -1,0 +1,125 @@
+<ng-container [ngSwitch]="true">
+
+  <!--Text Field-->
+  <ng-container *ngSwitchCase="field.type === 'text'">
+    <mat-form-field class="w-100 mb-3">
+      <input matInput
+             [type]="field.type"
+             [mask]="field.isMasked ? field.mask : ''"
+             [showMaskTyped]="field.isMasked"
+             [clearIfNotMatch]="field.isMasked"
+             [placeholder]="field.label"
+             [minLength]="field.minLength"
+             [maxLength]="field.maxLength"
+             [formControl]="field.formControl"
+             [required]="field.required"
+             [email]="!!field.isEmail"
+      >
+    </mat-form-field>
+  </ng-container>
+
+  <!--Number Field-->
+  <ng-container *ngSwitchCase="field.type === 'number'">
+    <mat-form-field class="w-100 mb-3">
+      <input matInput
+             [type]="field.type"
+             [placeholder]="field.label"
+             [min]="field.minValue"
+             [max]="field.maxValue"
+             [formControl]="field.formControl"
+             [required]="field.required"
+      >
+    </mat-form-field>
+  </ng-container>
+
+  <!-- Date Picker Field -->
+  <ng-container *ngSwitchCase="field.type === 'date'">
+    <mat-form-field class="w-100 mb-3">
+      <input matInput
+             [formControl]="field.formControl"
+             [matDatepicker]="picker"
+             [required]="field.required"
+             [placeholder]="field.label">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker [disabled]="false"></mat-datepicker>
+      <mat-hint>DD/MM/YYYY</mat-hint>
+    </mat-form-field>
+  </ng-container>
+
+  <!--Radio Button Field-->
+  <ng-container *ngSwitchCase="field.type === 'radioButton'">
+    <label [ngClass]="{'mat-error': field.formControl.hasError('required')}">
+      {{field.label}} {{field.required ? '*' : ''}}
+    </label>
+    <mat-radio-group class="d-flex flex-column"
+                     [formControl]="field.formControl"
+                     [required]="field.required">
+      <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-1" [value]="option.value">
+        {{option.label}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+
+  <!--Drop Down field-->
+  <ng-container *ngSwitchCase="field.type === 'dropdown'">
+    <mat-form-field class="w-100 mb-3">
+      <mat-label>{{field.label}}</mat-label>
+      <mat-select
+        [required]="field.required"
+        [formControl]="field.formControl">
+        <mat-option
+          *ngFor="let option of field.options;"
+          [value]="option.value">{{option.label}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <!--Group Field-->
+  <ng-container *ngSwitchCase="field.type === 'group'">
+    <div class="mt-3 mb-3 w-100 group-container">
+      <mat-label>{{field.label}}</mat-label>
+      <div class="row">
+        <ng-container *ngFor="let value of field.groupValues; let i = index;">
+          <div class="col-md-6 col-sm-12 col-lg-6 mt-3 mb-3">
+            <mat-card>
+              <mat-card-content>
+                <div class="row">
+                  <ng-container *ngFor="let key of objectKeys(value); let j = index;">
+                    <div class="col-12">
+                      <small class="text-muted">
+                        {{startCase(key)}}
+                      </small>
+                    </div>
+                    <div class="col-12">
+                      <h6>{{formatValue(value[key]) || '-'}}</h6>
+                    </div>
+                  </ng-container>
+                </div>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <button mat-raised-button color="danger" (click)="onGroupItemRemoved(i)">Remove</button>
+                <button mat-raised-button color="primary" (click)="onGroupItemClicked(i)">Edit</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!field.groupValues.length">
+          <div class="d-flex justify-content-center align-items-center w-100 h-100 p-5">
+            <p class="h6 text-muted">
+              Click
+              <button mat-raised-button color="primary" (click)="onGroupNewGroupAdd()">
+                {{field.controlLabels.buttons.add}}
+              </button>
+            </p>
+          </div>
+        </ng-container>
+      </div>
+      <div class="w-100 mt-5 mb-3 text-right" *ngIf="field.groupValues.length">
+        <button mat-raised-button color="primary" (click)="onGroupNewGroupAdd()">
+          {{field.controlLabels.buttons.add}}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
