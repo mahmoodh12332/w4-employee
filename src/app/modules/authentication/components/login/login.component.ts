@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.appService.loginUser(this.loginForm.value).then(() => {
-      console.log('========>>>>.');
       this.router.navigate(['dashboard']);
     });
   }

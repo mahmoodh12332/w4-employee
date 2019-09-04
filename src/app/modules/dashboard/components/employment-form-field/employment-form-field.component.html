@@ -6,15 +6,18 @@
       <input matInput
              [type]="field.type"
              [mask]="field.isMasked ? field.mask : ''"
+             [validation]="field.isMasked"
              [showMaskTyped]="field.isMasked"
              [clearIfNotMatch]="field.isMasked"
+             [formControl]="field.formControl"
              [placeholder]="field.label"
+             (blur)="onTextBlur()"
              [minLength]="field.minLength"
              [maxLength]="field.maxLength"
-             [formControl]="field.formControl"
              [required]="field.required"
              [email]="!!field.isEmail"
       >
+      <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </ng-container>
 
@@ -29,6 +32,7 @@
              [formControl]="field.formControl"
              [required]="field.required"
       >
+      <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </ng-container>
 
@@ -38,26 +42,33 @@
       <input matInput
              [formControl]="field.formControl"
              [matDatepicker]="picker"
+             [max]="field.maxValue"
+             [min]="field.minValue"
+             (dateChange)="onDateChange()"
              [required]="field.required"
              [placeholder]="field.label">
-      <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="field.disabled"></mat-datepicker-toggle>
+      <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker [disabled]="false"></mat-datepicker>
-      <mat-hint>DD/MM/YYYY</mat-hint>
     </mat-form-field>
   </ng-container>
 
   <!--Radio Button Field-->
   <ng-container *ngSwitchCase="field.type === 'radioButton'">
-    <label [ngClass]="{'mat-error': field.formControl.hasError('required')}">
+    <label [ngClass]="{'mat-error': step.formGroup.touched && field.formControl.hasError('required')}">
       {{field.label}} {{field.required ? '*' : ''}}
     </label>
     <mat-radio-group class="d-flex flex-column"
                      [formControl]="field.formControl"
                      (change)="citizenshipCase()"
                      [required]="field.required">
-      <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-1" [value]="option.value">
+      <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-2" [value]="option.value">
         {{option.label}}
       </mat-radio-button>
+      <mat-error
+        class="mat-form-field-subscript-wrapper"
+        *ngIf="step.formGroup.touched && field.formControl.hasError('required')"
+      >{{getErrorMessage()}}</mat-error>
     </mat-radio-group>
   </ng-container>
 
@@ -72,6 +83,7 @@
           *ngFor="let option of field.options;"
           [value]="option.value">{{option.label}}</mat-option>
       </mat-select>
+      <mat-error *ngIf="field.formControl.invalid" >{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </ng-container>
 

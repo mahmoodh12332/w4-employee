@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {EmploymentForm} from '../../../shared/data/employment-form';
 import {EmploymentFormService} from '../../services';
+import {CookieService} from '../../../shared/services';
 
 
 
@@ -10,14 +11,16 @@ import {EmploymentFormService} from '../../services';
 })
 export class EmploymentFormComponent implements OnInit {
   stepFormGroups: Array<any> = [];
-  constructor(private employmentFormService: EmploymentFormService) {}
+  constructor(private employmentFormService: EmploymentFormService, private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.initStepFormGroups();
   }
 
   initStepFormGroups(): void {
-    this.stepFormGroups = EmploymentForm.map( (step): any => this.employmentFormService.buildFormGroup(step, {}));
+    this.stepFormGroups = EmploymentForm.map( (step): any => this.employmentFormService.buildFormGroup(step, {
+      ssn: this.cookieService.getCookie('currentSSN')
+    }));
   }
 
   get formValue() {
@@ -35,5 +38,9 @@ export class EmploymentFormComponent implements OnInit {
 
   submitForm(): void {
     console.log(this.formValue);
+  }
+
+  onNextStep(formGroup) {
+    formGroup.markAsTouched();
   }
 }

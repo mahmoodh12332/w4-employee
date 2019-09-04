@@ -1,6 +1,7 @@
 import {States} from './states';
 import {Skills} from './skills';
 import {Levels} from './level';
+import * as moment from 'moment';
 
 const textTypeDefaultMinLength = 0;
 const textTypeDefaultMaxLength = 255;
@@ -42,13 +43,16 @@ export const EmploymentForm: Array<any> = [
         label: 'Middle Initial',
         type: 'text',
         defaultValue: '',
-        isMasked: true,
+        isMasked: false,
         disabled: false,
-        mask: 'A{2}',
+        mask: null,
+        pattern: new RegExp('[A-Z]{2}', 'g'),
+        errorMessage: {
+          pattern: 'Should be 2 capital alphabets'
+        },
         required: false,
         minLength: 0,
-        maxLength: 3,
-        pattern: new RegExp('^[A-Z]{2}', 'g')
+        maxLength: 3
       },
       {
         id: 'bi-lastName',
@@ -84,8 +88,8 @@ export const EmploymentForm: Array<any> = [
         isMasked: true,
         mask: 'd0/M0/0000',
         required: true,
-        minValue: null,
-        maxValue: null,
+        minValue: moment().subtract(100, 'years').toDate(),
+        maxValue: moment().subtract(10, 'years').toDate(),
       },
       {
         id: 'bi-gender',
@@ -193,6 +197,9 @@ export const EmploymentForm: Array<any> = [
         mask: '00000',
         minLength: 0,
         pattern: new RegExp('^[0-9]{5}', 'g'),
+        errorMessage: {
+          pattern: 'Should be 5 digit number'
+        },
         maxLength: 6,
       },
     ]
@@ -327,7 +334,6 @@ export const EmploymentForm: Array<any> = [
         isMasked: false,
         disabled: false,
         mask: null,
-        required: false,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
       },
@@ -452,8 +458,8 @@ export const EmploymentForm: Array<any> = [
         disabled: false,
         mask: null,
         required: false,
-        minLength: null,
-        maxLength: null,
+        minValue: new Date(),
+        maxValue: null,
       },
     ]
   },
@@ -701,10 +707,11 @@ export const EmploymentForm: Array<any> = [
             disabled: false,
             defaultValue: new Date(),
             isMasked: true,
+            isStartDate: true,
             mask: 'd0/M0/0000',
             required: false,
             minValue: null,
-            maxValue: null,
+            maxValue: new Date(),
           },
           {
             id: 'wh-history-endDate',
@@ -712,6 +719,7 @@ export const EmploymentForm: Array<any> = [
             label: 'End Date',
             type: 'date',
             disabled: false,
+            isEndDate: true,
             defaultValue: new Date(),
             isMasked: true,
             mask: 'd0/M0/0000',

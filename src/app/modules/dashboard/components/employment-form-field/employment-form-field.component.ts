@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {find, startCase} from 'lodash';
-import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
+import {DATE_FORMAT} from '../../../shared/data/constants';
 
 import {EmploymentModalComponent} from '../employment-modal/employment-modal.component';
 
@@ -15,7 +16,7 @@ export class EmploymentFormFieldComponent {
   @Input() public step: any;
   public objectKeys = Object.keys;
   public startCase = startCase;
-  constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
+  constructor(public dialog: MatDialog) {}
 
   private openModal(index = null, action) {
     const dialogRef = this.dialog.open(EmploymentModalComponent, {
@@ -63,7 +64,7 @@ export class EmploymentFormFieldComponent {
 
   public formatValue(value) {
     if (value instanceof Date) {
-      return this.datePipe.transform(value, 'dd/MM/yyyy');
+      return moment(value).format(DATE_FORMAT);
     }
     return value;
   }
@@ -89,5 +90,57 @@ export class EmploymentFormFieldComponent {
       this.step.formGroup.controls[i94Number].enable();
       this.step.formGroup.controls[expireDate].enable();
     }
+  }
+
+  getErrorMessage() {
+    const { formControl, label } = this.field;
+    const { errors } = formControl;
+    if (!errors) {
+      return;
+    }
+
+    if (errors.matDatepickerParse) {
+      return `Invalid Date should be ${DATE_FORMAT}`;
+    }
+
+    if (errors.matDatepickerMin) {
+      return `${label} must be greater than ${moment(this.field.minValue).format(DATE_FORMAT)}`;
+    }
+
+    if (errors.matDatepickerMax) {
+      return `${label} must not be greater than ${moment(this.field.maxValue).format(DATE_FORMAT)}`;
+    }
+
+    if (errors.required) {
+      return `${label} is required`;
+    }
+    if (errors.min) {
+      return `Value can not be less than ${this.field.minValue}`;
+    }
+    if (errors.max) {
+      return `Value can not be greater than ${this.field.maxValue}`;
+    }
+    if (errors.email) {
+      return 'Invalid Email';
+    }
+
+    if (errors.pattern) {
+      return this.field.errorMessage ? this.field.errorMessage.pattern : '';
+    }
+
+    if (errors.invalidEndDate) {
+      return errors.invalidEndDate;
+    }
+  }
+
+  onDateChange() {
+    if (this.field.isStartDate) {
+      this.step.formGroup.controls.endDate.updateValueAndValidity();
+    }
+  }
+
+  onTextBlur() {
+    this.field.formControl.setValue(this.field.formControl.value.trim());
+    this.field.formControl.updateValueAndValidity();
   }
 }

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {DateValidator} from '../../shared/validators';
 
 @Injectable()
 export class EmploymentFormService {
@@ -28,6 +29,9 @@ export class EmploymentFormService {
       }
       if (field.pattern) {
         validators.push(Validators.pattern(field.pattern));
+      }
+      if (field.isEndDate) {
+        validators.push(DateValidator.validateEndDate('startDate'));
       }
       const formControl = new FormControl({
         value: values[field.name] || '',
