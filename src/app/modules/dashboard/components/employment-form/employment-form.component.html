@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2 offset-lg-2 offset-sm-0 mt-5 mb-5">
         <mat-card>
-          <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-vertical-stepper [linear]="false" #stepper>
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
               <mat-step [stepControl]="step.formGroup">
                 <form [formGroup]="step.formGroup">
@@ -33,6 +33,62 @@
                 </form>
               </mat-step>
             </ng-container>
+            <mat-step>
+              <ng-template matStepLabel>Sign In Policy</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <app-panzoom>
+                    <app-sign-in-form></app-sign-in-form>
+                  </app-panzoom>
+                </div>
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Cellular Phone Policy</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <app-panzoom>
+                    <app-cellular-phone-policy></app-cellular-phone-policy>
+                  </app-panzoom>
+                </div>
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Drug and Alcohol Policy</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <app-panzoom>
+                    <app-drug-and-alcohol-policy></app-drug-and-alcohol-policy>
+                  </app-panzoom>
+                </div>
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>FCRA Authorization and Disclosure</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <app-panzoom>
+                    <app-fcr-auth-policy></app-fcr-auth-policy>
+                  </app-panzoom>
+                </div>
+              </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </mat-step>
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
               <div>

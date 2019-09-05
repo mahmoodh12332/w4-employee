@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles/variable.scss";
 @import "styles/authentication.scss";
+@import "styles/documents.scss";
 @import "styles/employment-form.scss";
+@import "styles/shared.scss";
 html, body {
   height: 100vh;
 }
