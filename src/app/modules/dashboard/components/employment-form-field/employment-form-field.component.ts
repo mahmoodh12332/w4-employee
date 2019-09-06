@@ -14,6 +14,7 @@ import {EmploymentModalComponent} from '../employment-modal/employment-modal.com
 export class EmploymentFormFieldComponent {
   @Input() public field: any;
   @Input() public step: any;
+  @Input() public formData: any;
   public objectKeys = Object.keys;
   public startCase = startCase;
   constructor(public dialog: MatDialog) {}

@@ -11,6 +11,7 @@ import {CookieService} from '../../../shared/services';
 })
 export class EmploymentFormComponent implements OnInit {
   stepFormGroups: Array<any> = [];
+  private formData: any = {};
   constructor(private employmentFormService: EmploymentFormService, private cookieService: CookieService) {}
 
   ngOnInit(): void {
@@ -24,23 +25,24 @@ export class EmploymentFormComponent implements OnInit {
   }
 
   get formValue() {
-    const data = {};
-    this.stepFormGroups.forEach((step) => {
-      data[step.name] = step.formGroup.value;
-      step.fields.forEach((field) => {
-        if (field.type === 'group') {
-          data[step.name][field.name] = field.groupValues;
-        }
-      });
+    return this.formData;
+  }
+
+  set formValue(step: any) {
+    this.formData[step.name] = step.formGroup.getRawValue();
+    step.fields.forEach((field) => {
+      if (field.type === 'group') {
+        this.formData[step.name][field.name] = field.groupValues;
+      }
     });
-    return data;
   }
 
   submitForm(): void {
     console.log(this.formValue);
   }
 
-  onNextStep(formGroup) {
-    formGroup.markAsTouched();
+  onNextStep(step) {
+    step.formGroup.markAsTouched();
+    this.formValue = step;
   }
 }

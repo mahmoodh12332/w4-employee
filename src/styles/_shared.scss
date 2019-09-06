@@ -5,8 +5,14 @@
   background-color: $primary;
   .scene{
     &:active,
+    &:focus,
     &:hover{
       outline: none !important;
     }
+  }
+  &:active,
+  &:focus,
+  &:hover{
+    outline: none !important;
   }
 }

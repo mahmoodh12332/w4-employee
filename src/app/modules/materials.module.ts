@@ -22,7 +22,8 @@ import {
   MatTabsModule,
   MatCardModule,
   MatStepperModule,
-  MatDividerModule
+  MatDividerModule,
+  MatCheckboxModule,
 } from '@angular/material';
 
 export const MaterialModules = [
@@ -49,4 +50,5 @@ export const MaterialModules = [
   MatStepperModule,
   MatCardModule,
   NgxMaskModule,
+  MatCheckboxModule,
 ];

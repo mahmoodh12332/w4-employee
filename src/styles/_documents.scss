@@ -1,12 +1,10 @@
 .docs-width{
-  background-color: white;
-  border: 1px solid black;
   width: 1024px;
-  padding: 15px;
-  display: inline-block;
+  padding: 0 15px;
   text-align: left;
   margin: 0 auto;
   position: relative;
+  background-color: white;
 }
 .watermark {
   width: 677px;
@@ -34,25 +32,50 @@ ul li{
   font-size: 14px;
 }
 .w-70{
-  width: 420px;
+  width: 48%;
   float: left;
 }
 .w-30{
-  width: 380px;
+  width: 45%;
   float: right;
 }
 .w-30 p,.w-70 p{
   padding: 15px 0;
 }
 .w-70Drug{
-  width: 420px;
+  width: 41%;
   float: left;
 }
 .w-30Drug{
-  width: 380px;
+  width: 37%;
   float: right;
 }
 .w-30Drug p,
 .w-70Drug p{
   margin: 0;
+}
+.listofagrement{
+  float: left;
+  width: 100%;
+}
+.ol-50{
+  width: 5%;
+  float: left;
+  margin: 0;
+}
+.ol-100{
+  width: 95%;
+  float: left;
+  margin: 0;
+}
+ol{
+  padding: 0 0 0 ;
+  margin: 0;
+}
+ol li{
+  padding: 3px 0;
+}
+.data-value{
+  font-weight: bold;
+  font-size: 2rem;
 }
