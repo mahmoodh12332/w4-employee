@@ -38,7 +38,7 @@
 
   <!-- Date Picker Field -->
   <ng-container *ngSwitchCase="field.type === 'date'">
-    <mat-form-field class="w-100 mb-3">
+    <mat-form-field class="w-100 mb-3" hintLabel="DD/MM/YYYY">
       <input matInput
              [formControl]="field.formControl"
              [matDatepicker]="picker"
@@ -49,7 +49,7 @@
              [placeholder]="field.label">
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker [disabled]="false"></mat-datepicker>
+      <mat-datepicker startView="multi-year" touchUi #picker [disabled]="false"></mat-datepicker>
     </mat-form-field>
   </ng-container>
 

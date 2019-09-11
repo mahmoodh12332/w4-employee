@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {EmploymentForm} from '../../../shared/data/employment-form';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EmploymentFormService} from '../../services';
 import {CookieService} from '../../../shared/services';
-
 
 
 @Component({
@@ -10,18 +8,23 @@ import {CookieService} from '../../../shared/services';
   templateUrl: './employment-form.component.html'
 })
 export class EmploymentFormComponent implements OnInit {
+  @Input() public steps: any;
+  @Input() public dataValues: any = {};
+  @Output() public formSubmit: EventEmitter<any> = new EventEmitter();
   stepFormGroups: Array<any> = [];
   private formData: any = {};
   constructor(private employmentFormService: EmploymentFormService, private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.initStepFormGroups();
+    this.formData = this.dataValues;
   }
 
   initStepFormGroups(): void {
-    this.stepFormGroups = EmploymentForm.map( (step): any => this.employmentFormService.buildFormGroup(step, {
-      ssn: this.cookieService.getCookie('currentSSN')
-    }));
+    this.stepFormGroups = this.steps
+      .map( (step): any => this.employmentFormService.buildFormGroup(step, this.dataValues[step.name] || {
+        ssn: this.cookieService.getCookie('currentSSN')
+      }));
   }
 
   get formValue() {
@@ -38,10 +41,11 @@ export class EmploymentFormComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.formValue);
+    this.formSubmit.emit(this.formValue);
   }
 
-  onNextStep(step) {
+  onStepperSelectionChange(event) {
+    const step = this.stepFormGroups[event.previouslySelectedIndex];
     step.formGroup.markAsTouched();
     this.formValue = step;
   }

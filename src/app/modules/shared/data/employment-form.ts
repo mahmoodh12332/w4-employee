@@ -29,7 +29,7 @@ const commonFieldsForDocumentType = {
   required: true,
 };
 
-export const EmploymentForm: Array<any> = [
+export const EmploymentApplicationForm: Array<any> = [
   {
     name: 'basicInformation',
     label: 'Basic Information',
@@ -69,13 +69,9 @@ export const EmploymentForm: Array<any> = [
         isMasked: false,
         disabled: false,
         mask: null,
-        pattern: new RegExp('[A-Z]{2}', 'g'),
-        errorMessage: {
-          pattern: 'Should be 2 capital alphabets'
-        },
         required: false,
-        minLength: 0,
-        maxLength: 3
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength
       },
       {
         id: 'bi-lastName',
@@ -214,12 +210,12 @@ export const EmploymentForm: Array<any> = [
         label: 'Zip Code',
         type: 'text',
         defaultValue: '',
-        // isMasked: true,
+        isMasked: true,
         disabled: false,
         required: true,
         mask: '00000',
         minLength: 0,
-        pattern: new RegExp('^[0-9]{5}', 'g'),
+        pattern: /^[0-9]{5}/,
         errorMessage: {
           pattern: 'Should be 5 digit number'
         },
@@ -264,6 +260,10 @@ export const EmploymentForm: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
+        pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,63}$/,
+        errorMessage: {
+          pattern: 'Invalid Email'
+        },
         isEmail: true,
         disabled: false,
         required: false,
@@ -834,7 +834,8 @@ export const EmploymentForm: Array<any> = [
       }
     ]
   },
-  // Documents Step
+];
+export const EmploymentContractForm: Array<any> = [
   {
     name: 'arbitraryAgreement',
     label: 'Arbitration Agreement',
@@ -985,4 +986,4 @@ export const EmploymentForm: Array<any> = [
       }
     ]
   },
-];
+]

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AuthGuardService} from '../shared/services';
+import {EmployeeContractGuardService} from './services';
 import {DashboardComponent} from './dashboard.component';
-import {EmploymentFormComponent} from './components/employment-form/employment-form.component';
+import {EmploymentApplicationComponent} from './components/employment-application/employment-application.component';
+import {EmploymentContractComponent} from './components/employment-contract/employment-contract.component';
 
 const routes: Routes = [
   {
@@ -12,12 +14,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'employment-form',
+        redirectTo: 'employment-application',
         pathMatch: 'full'
       },
       {
-        path: 'employment-form',
-        component: EmploymentFormComponent
+        path: 'employment-application',
+        component: EmploymentApplicationComponent
+      },
+      {
+        path: 'employment-contract',
+        canActivate: [EmployeeContractGuardService],
+        component: EmploymentContractComponent
       }
     ]
   },
