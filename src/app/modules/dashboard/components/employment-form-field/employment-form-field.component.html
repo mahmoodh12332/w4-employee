@@ -147,4 +147,19 @@
       color="primary"
     >I agree</mat-checkbox>
   </ng-container>
+
+  <ng-container *ngSwitchCase="field.type ==='submit'">
+    <div class="w-100 text-center pb-3 pt-3">
+      <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.label}}</button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="field.type ==='signature'">
+    <div class="w-100 mt-3 mb-3" style="border: 1px dotted black">
+      <app-signature-pad></app-signature-pad>
+    </div>
+    <div class="w-100 pb-3 pt-3">
+      <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.controlLabels.buttons.submit}}</button>
+    </div>
+  </ng-container>
 </ng-container>

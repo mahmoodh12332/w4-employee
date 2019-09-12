@@ -14,7 +14,6 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   }
   ngOnInit(): void {
     super.ngOnInit();
-    console.log('this is Contract');
   }
   onFormSubmit(data) {
     console.log(data);

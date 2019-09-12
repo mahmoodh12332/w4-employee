@@ -3,21 +3,26 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {PanZoomComponent} from './components/pan-zoom/pan-zoom.component';
+import {SignaturePadComponent} from './components/signature-pad/signature-pad.component';
 import {SharedDirectives} from './directives';
 import { MaterialModules } from '../materials.module';
+import {SignaturePadModule} from 'angular2-signaturepad';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     MaterialModules,
+    SignaturePadModule,
   ],
   declarations: [
     PanZoomComponent,
+    SignaturePadComponent,
     ...SharedDirectives,
   ],
   exports: [
     PanZoomComponent,
+    SignaturePadComponent
   ]
 })
 export class SharedModule { }

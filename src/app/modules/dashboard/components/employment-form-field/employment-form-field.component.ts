@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {find, startCase} from 'lodash';
 import * as moment from 'moment';
@@ -15,6 +15,7 @@ export class EmploymentFormFieldComponent {
   @Input() public field: any;
   @Input() public step: any;
   @Input() public formData: any;
+  @Output() public submitForm: EventEmitter<any> = new EventEmitter();
   public objectKeys = Object.keys;
   public startCase = startCase;
   constructor(public dialog: MatDialog) {}

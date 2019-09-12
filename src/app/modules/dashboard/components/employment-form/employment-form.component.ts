@@ -46,6 +46,9 @@ export class EmploymentFormComponent implements OnInit {
 
   onStepperSelectionChange(event) {
     const step = this.stepFormGroups[event.previouslySelectedIndex];
+    if (!step) {
+      return;
+    }
     step.formGroup.markAsTouched();
     this.formValue = step;
   }

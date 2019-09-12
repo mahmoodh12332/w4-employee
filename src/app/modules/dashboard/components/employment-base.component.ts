@@ -12,7 +12,6 @@ export class EmploymentBaseComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log('=========This is Base');
     try {
       this.formValues = JSON.parse(this.cookieService.getCookie(FORM_COOKIE_NAME));
     } catch (e) {

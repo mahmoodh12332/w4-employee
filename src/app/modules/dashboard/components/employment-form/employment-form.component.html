@@ -12,14 +12,15 @@
                     <ng-container *ngFor="let field of step.fields">
                       <app-employment-form-field
                         [ngClass]="{
-                        'col-md-6 col-sm-12': field.type !== 'document' && field.type !== 'radioButton' && field.type !== 'group',
+                        'col-md-6 col-sm-12': field.type !== 'signature' && field.type !== 'document' && field.type !== 'submit' && field.type !== 'radioButton' && field.type !== 'group',
                         'w-100': field.type === 'date',
-                        'col-12': field.type === 'radioButton' || field.type === 'group' || field.type === 'document'
+                        'col-12': field.type == 'signature' || field.type === 'radioButton' || field.type === 'group' || field.type === 'document' || field.type === 'submit'
                         }"
                         *ngIf="field.formControl.enabled || field.id === 'bi-ssn'"
                         [step]="step"
                         [field]="field"
                         [formData]="this.formValue"
+                        (submitForm)="submitForm()"
                       ></app-employment-form-field>
                     </ng-container>
                   </div>
@@ -28,19 +29,12 @@
                       <ng-container *ngIf="currentStep !== 0">
                         <button mat-raised-button matStepperPrevious>Back</button>
                       </ng-container>
-                      <button mat-raised-button color="primary" matStepperNext>Next</button>
+                      <button mat-raised-button color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">Next</button>
                     </div>
                   </div>
                 </form>
               </mat-step>
             </ng-container>
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
-              </div>
-            </mat-step>
           </mat-vertical-stepper>
 
         </mat-card>
