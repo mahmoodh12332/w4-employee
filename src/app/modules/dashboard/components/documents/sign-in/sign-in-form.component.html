@@ -38,6 +38,9 @@
     My signature below attests that I have read the Sign-In Policy, understand it, and agree to abide by the policy.
   </p>
   <div class="w-70">
+    <span class="data-value">
+      {{getPrintName()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Print Name
     </p>
@@ -50,10 +53,19 @@
     </p>
   </div>
   <div class="w-30">
+    <span class="data-value">
+      {{getValue('basicInformation.ssn')}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Social Security Number
     </p>
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">Today's Date</p>
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Date
     </p>
@@ -66,6 +78,9 @@
     </p>
   </div>
   <div class="w-30">
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Date
     </p>

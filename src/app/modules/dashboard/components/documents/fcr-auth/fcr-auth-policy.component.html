@@ -27,11 +27,29 @@
   </p>
   <div class="applicant">
     <p>Applicant/Employee Signature </p>
+    <span class="data-value">
+      {{getPrintName()}}
+    </span>
     <p>Applicant/Employee Name</p>
+    <span class="data-value">
+      {{getValue('basicInformation.dateOfBirth', true)}}
+    </span>
     <p>Applicant/Employee Date of Birth	</p>
+    <span class="data-value">
+      {{getValue('basicInformation.ssn')}}
+    </span>
     <p>Applicant/Employee Social Security Number</p>
+    <span class="data-value">
+      {{getValue('address.streetName')}} {{getValue('address.streetNumber')}}
+    </span>
     <p>Current Street Address</p>
+    <span class="data-value">
+      {{getValue('address.city')}}/{{getValue('address.state')}}/{{getValue('address.zipCode')}}
+    </span>
     <p>City/State/Zip </p>
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p>Today’s Date</p>
   </div>
   <p style="border-bottom: 1px solid #000;width:250px;margin:30px 0 0 0;"></p>

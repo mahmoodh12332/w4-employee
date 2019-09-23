@@ -842,7 +842,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'wh-serviceBaseExp',
         name: 'formSubmit',
         type: 'submit',
-        label: 'Lets Sign Contracts'
+        label: 'Submit'
       }
     ]
   }
@@ -869,6 +869,136 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
+    name: 'confidentialityAgreement',
+    label: 'Confidentiality Agreement',
+    fields: [
+      {
+        componentRef: ConfidentialityAgreementPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'drugAndAlcohol',
+    label: 'Drug and Alcohol Policy',
+    fields: [
+      {
+        componentRef: DrugAndAlcoholPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'employmentContract',
+    label: 'Employment Contract',
+    fields: [
+      {
+        componentRef: EmploymentContractPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'fcrAuth',
+    label: 'FCRA Authorization and Disclosure',
+    fields: [
+      {
+        componentRef: FcrAuthPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'medicalRelease',
+    label: 'Medical Release',
+    fields: [
+      {
+        componentRef: MedicalReleasePolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'payrollDeductionAuthorization',
+    label: 'Payroll Deduction Authorization',
+    fields: [
+      {
+        componentRef: PayrollDeductionAuthorizationPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'professionalLanguageAndBehaviourPolicy',
+    label: 'Professional Language And Behavior Policy',
+    fields: [
+      {
+        componentRef: ProfessionalLanguageAndBehaviourPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'sexualHarassment',
+    label: 'Sexual Harassment Policy',
+    fields: [
+      {
+        componentRef: SexualHarasmentPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'signIn',
+    label: 'Sign In',
+    fields: [
+      {
+        componentRef: SignInFormComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'unlawfullEmployment',
+    label: 'Unlawful Employment Practices Policy',
+    fields: [
+      {
+        componentRef: UnlawfullEmploymentPracticePolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'unsafeWorkPolicy',
+    label: 'Unsafe Working Conditions Policy',
+    fields: [
+      {
+        componentRef: UnsafeWorkingConditionsPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'wavierOfRight',
+    label: 'Waiver of Right to Trial By Jury',
+    fields: [
+      {
+        componentRef: WaiverOfRightToTrialByJuryPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'workerComp',
+    label: 'Workers Comp (TX)',
+    fields: [
+      {
+        componentRef: WorkersCompTxPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
     name: 'yourSignature',
     label: 'Create Your Signature',
     fields: [
@@ -879,141 +1009,11 @@ export const EmploymentContractForm: Array<any> = [
         controlLabels: {
           buttons: {
             reset: 'Clear',
-            submit: 'You are done',
+            submit: 'Let\'s sign',
           },
         },
         required: true
       }
     ]
   }
-  // {
-  //   name: 'confidentialityAgreement',
-  //   label: 'Confidentiality Agreement',
-  //   fields: [
-  //     {
-  //       componentRef: ConfidentialityAgreementPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'drugAndAlcohol',
-  //   label: 'Drug and Alcohol Policy',
-  //   fields: [
-  //     {
-  //       componentRef: DrugAndAlcoholPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'employmentContract',
-  //   label: 'Employment Contract',
-  //   fields: [
-  //     {
-  //       componentRef: EmploymentContractPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'fcrAuth',
-  //   label: 'FCRA Authorization and Disclosure',
-  //   fields: [
-  //     {
-  //       componentRef: FcrAuthPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'medicalRelease',
-  //   label: 'Medical Release',
-  //   fields: [
-  //     {
-  //       componentRef: MedicalReleasePolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'payrollDeductionAuthorization',
-  //   label: 'Payroll Deduction Authorization',
-  //   fields: [
-  //     {
-  //       componentRef: PayrollDeductionAuthorizationPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'professionalLanguageAndBehaviourPolicy',
-  //   label: 'Professional Language And Behavior Policy',
-  //   fields: [
-  //     {
-  //       componentRef: ProfessionalLanguageAndBehaviourPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'sexualHarassment',
-  //   label: 'Sexual Harassment Policy',
-  //   fields: [
-  //     {
-  //       componentRef: SexualHarasmentPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'signIn',
-  //   label: 'Sign In',
-  //   fields: [
-  //     {
-  //       componentRef: SignInFormComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'unlawfullEmployment',
-  //   label: 'Unlawful Employment Practices Policy',
-  //   fields: [
-  //     {
-  //       componentRef: UnlawfullEmploymentPracticePolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'unsafeWorkPolicy',
-  //   label: 'Unsafe Working Conditions Policy',
-  //   fields: [
-  //     {
-  //       componentRef: UnsafeWorkingConditionsPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'wavierOfRight',
-  //   label: 'Waiver of Right to Trial By Jury',
-  //   fields: [
-  //     {
-  //       componentRef: WaiverOfRightToTrialByJuryPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'workerComp',
-  //   label: 'Workers Comp (TX)',
-  //   fields: [
-  //     {
-  //       componentRef: WorkersCompTxPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
 ];

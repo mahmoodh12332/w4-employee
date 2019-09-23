@@ -33,9 +33,15 @@
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Signature
     </p>
+    <span class="data-value">
+      {{getPrintName()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Name
     </p>
+    <span class="data-value">
+      {{getValue('basicInformation.ssn')}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Social Security Number
     </p>
@@ -48,6 +54,9 @@
     <p style="border-top:1px solid #fff;padding-top: 5px;margin-top:35px;">
       &nbsp;
     </p>
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:35px;">
       Today’s Date
     </p>

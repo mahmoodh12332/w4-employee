@@ -79,3 +79,7 @@ ol li{
   font-weight: bold;
   font-size: 2rem;
 }
+.text-decoration-underline{
+  @extend .data-value;
+  text-decoration: underline;
+}

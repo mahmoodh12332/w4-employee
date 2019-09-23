@@ -1,7 +1,7 @@
 <div class="docs-width">
   <h1>Medical Authorization Release</h1>
   <p style="font-size: 18px;">Completion of this form is <b><u>optional</u></b>.</p>
-  <p>I, ________________________________ (employee), hereby authorize the release, use, or disclosure of my health information as follows:                 </p>
+  <p>I, <span class="text-decoration-underline"> {{getValue('basicInformation.firstName')}} {{getValue('basicInformation.lastName')}}</span> (employee), hereby authorize the release, use, or disclosure of my health information as follows:                 </p>
   <p><b>This authorization pertains to the following type of medical information about me: </b></p>
   <ul>
     <li>results of fitness-for-duty examination, including but not limited to medical records related to any illness or injury sustained by me, including but not limited to hospital records, documents related to my medical history, doctor’s or nurse’s notes, consultation records, prescription records, x-rays or other films;                    </li>
@@ -15,8 +15,8 @@
   <p>I understand that the information used or disclosed pursuant to this Authorization may be subject to re-disclosure by the named recipient, and may no longer be protected by HIPAA’s privacy rules after the authorized disclosure.</p>
   <p>I understand that I am signing this release voluntarily.  Whether or not I sign this release will not affect in any way, or result in the denial of, any treatment, payment, enrollment or eligibility for benefits</p>
   <hr style="border:1px solid #000;">
-  <p>Employee’s Printed Name: ___________________________________________________ </p>
-  <p>Today’s Date: _______________________ </p>
+  <p>Employee’s Printed Name: <span class="text-decoration-underline"> {{getPrintName()}}</span> </p>
+  <p>Today’s Date: <span class="text-decoration-underline">{{getTodayDate()}}</span> </p>
   <p>Employee’s Signature: ______________________________________________________ </p>
   <p>Employee’s Personal Representative (if applicable)</p>
   <p>Signature of Employee’s Representative: _______________________________________</p>

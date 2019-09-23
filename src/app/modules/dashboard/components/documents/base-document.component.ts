@@ -11,11 +11,24 @@ import {DATE_FORMAT} from '../../../shared/data/constants';
 export class BaseDocumentComponent {
   @Input() formData: any;
 
-  getValue(path) {
-    return get(this.formData, path, 'No Value');
+  getValue(path, isDate = false) {
+    const val = get(this.formData, path, 'No Value');
+
+    if (isDate) {
+      return moment(val).format(DATE_FORMAT);
+    }
+
+    return val;
   }
 
   getTodayDate() {
     return moment().format(DATE_FORMAT);
+  }
+
+  getPrintName() {
+    const firstName = this.getValue('basicInformation.firstName');
+    const lastName = this.getValue('basicInformation.lastName');
+    const middleName = this.getValue('basicInformation.middleInitial');
+    return `${firstName} ${middleName} ${lastName}`;
   }
 }

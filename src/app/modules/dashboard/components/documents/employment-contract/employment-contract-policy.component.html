@@ -27,6 +27,9 @@
   </ol>
   <p>I acknowledge that I have read the foregoing agreement and certify that the information I provided in my application for employment with Company is true and correct, and that no attempt has been made to conceal pertinent information.  In case of employment, any false statement or less than full disclosure of relevant information will be considered sufficient cause for dismissal.</p>
   <div class="w-70">
+    <span class="data-value">
+      {{getPrintName()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Print Name
     </p>
@@ -35,9 +38,15 @@
     </p>
   </div>
   <div class="w-30">
+    <span class="data-value">
+      {{getValue('basicInformation.ssn')}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Social Security Number
     </p>
+    <span class="data-value">
+      {{getTodayDate()}}
+    </span>
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Today's Date
     </p>

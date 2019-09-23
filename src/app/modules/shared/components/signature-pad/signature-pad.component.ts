@@ -12,6 +12,8 @@ export class SignaturePadComponent implements AfterViewInit {
 
   private signaturePadOptions: object = { // passed through to szimek/signature_pad constructor
     minWidth: 1,
+    canvasWidth: 500,
+    canvasHeight: 300
   };
 
   constructor() {
