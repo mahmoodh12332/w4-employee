@@ -835,11 +835,11 @@ export const EmploymentApplicationForm: Array<any> = [
     ]
   },
   {
-    name: 'formDone',
+    name: 'applicationDone',
     label: 'Done',
     fields: [
       {
-        id: 'wh-serviceBaseExp',
+        id: 'ad-done',
         name: 'formSubmit',
         type: 'submit',
         label: 'Submit'
@@ -848,6 +848,25 @@ export const EmploymentApplicationForm: Array<any> = [
   }
 ];
 export const EmploymentContractForm: Array<any> = [
+  {
+    name: 'yourSignature',
+    label: 'Let\'s Create Your Signature',
+    fields: [
+      {
+        id: 'yourSig-signature',
+        name: 'signature',
+        type: 'signature',
+        label: 'Signature',
+        controlLabels: {
+          buttons: {
+            reset: 'Clear',
+            submit: 'Let\'s sign',
+          },
+        },
+        required: true
+      }
+    ]
+  },
   {
     name: 'arbitraryAgreement',
     label: 'Arbitration Agreement',
@@ -999,20 +1018,14 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
-    name: 'yourSignature',
-    label: 'Create Your Signature',
+    name: 'contractDone',
+    label: 'Done',
     fields: [
       {
-        id: 'yourSig-signature',
-        type: 'signature',
-        label: '',
-        controlLabels: {
-          buttons: {
-            reset: 'Clear',
-            submit: 'Let\'s sign',
-          },
-        },
-        required: true
+        id: 'cd-done',
+        name: 'formSubmit',
+        type: 'submit',
+        label: 'You are done'
       }
     ]
   }

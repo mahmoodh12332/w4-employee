@@ -30,6 +30,7 @@
   <p>I understand and agree that if a Court finds that this waiver of a right to a jury trial is invalid or unenforceable, or that any part of this waiver of a right to a jury trial is found to be invalid or unenforceable, that resolution of all claims and/or disputes between and among myself and the Company, including but not limited to claims listed herein, will be decided by arbitration pursuant to the Arbitration Agreement that I have signed.  </p>
   <p>I further understand and agree that between the two agreements, unless the Company and I otherwise agree in writing, the resolution of all claims and/or disputes between and among myself and the Company, including but not limited to claims listed herein, will be decided by a Court, sitting <u>without a jury</u>.</p>
   <div class="w-70">
+    <img *ngIf="getValue('yourSignature.signature') !== 'No Value'" [src]="getValue('yourSignature.signature')" alt="">
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Signature
     </p>

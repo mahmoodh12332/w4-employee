@@ -1,13 +1,22 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {SignaturePad} from 'angular2-signaturepad/signature-pad';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-signature-pad',
-  template: '<signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>'
+  template: `
+    <div class="w-100 mt-2 mb-2 text-right">
+      <button mat-raised-button (click)="clearValue()">Clear</button>
+    </div>
+    <div class="w-100" style="border: 1px dotted black">
+      <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+    </div>
+  `
 })
 
 export class SignaturePadComponent implements AfterViewInit {
 
+  @Input() fc: FormControl;
   @ViewChild(SignaturePad, {static: false}) signaturePad: SignaturePad;
 
   private signaturePadOptions: object = { // passed through to szimek/signature_pad constructor
@@ -21,18 +30,17 @@ export class SignaturePadComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.signaturePad is now available
-    this.signaturePad.set('minWidth', 1); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+    this.signaturePad.set('minWidth', 1);
+    this.signaturePad.clear();
   }
 
   drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    console.log(this.signaturePad.toDataURL());
+    this.fc.setValue(this.signaturePad.toDataURL());
   }
 
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
+  clearValue() {
+    this.fc.reset();
+    this.signaturePad.clear();
   }
+  drawStart() {}
 }

@@ -155,11 +155,11 @@
   </ng-container>
 
   <ng-container *ngSwitchCase="field.type ==='signature'">
-    <div class="w-100 mt-3 mb-3" style="border: 1px dotted black">
-      <app-signature-pad></app-signature-pad>
+    <div class="w-100 mt-3 mb-3">
+      <app-signature-pad [fc]="field.formControl"></app-signature-pad>
     </div>
-    <div class="w-100 pb-3 pt-3">
-      <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.controlLabels.buttons.submit}}</button>
+    <div class="w-100 mt-1 mb-1">
+      <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </div>
   </ng-container>
 </ng-container>

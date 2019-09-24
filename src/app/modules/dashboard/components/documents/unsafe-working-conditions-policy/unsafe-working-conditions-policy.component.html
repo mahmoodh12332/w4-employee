@@ -5,6 +5,7 @@
   <p>I understand that an employee who reports unsafe working conditions will <b><u>not</u></b> be retaliated against or discriminated against because he or she complains about any unsafe working condition.</p>
   <h3>I HAVE READ AND I UNDERSTAND THE UNSAFE WORKING CONDITIONS POLICY.</h3>
   <div class="w-70">
+    <img *ngIf="getValue('yourSignature.signature') !== 'No Value'" [src]="getValue('yourSignature.signature')" alt="">
     <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
       Applicant/Employee Signature
     </p>

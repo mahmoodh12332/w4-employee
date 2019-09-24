@@ -41,6 +41,9 @@ export class EmploymentFormComponent implements OnInit {
   }
 
   submitForm(): void {
+    this.steps.forEach((step, i) => {
+      this.formValue = this.stepFormGroups[i];
+    });
     this.formSubmit.emit(this.formValue);
   }
 
