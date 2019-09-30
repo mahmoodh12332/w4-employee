@@ -848,25 +848,7 @@ export const EmploymentApplicationForm: Array<any> = [
   }
 ];
 export const EmploymentContractForm: Array<any> = [
-  {
-    name: 'yourSignature',
-    label: 'Let\'s Create Your Signature',
-    fields: [
-      {
-        id: 'yourSig-signature',
-        name: 'signature',
-        type: 'signature',
-        label: 'Signature',
-        controlLabels: {
-          buttons: {
-            reset: 'Clear',
-            submit: 'Let\'s sign',
-          },
-        },
-        required: true
-      }
-    ]
-  },
+  
   {
     name: 'arbitraryAgreement',
     label: 'Arbitration Agreement',
@@ -1017,16 +999,36 @@ export const EmploymentContractForm: Array<any> = [
       }
     ]
   },
+  // {
+  //   name: 'contractDone',
+  //   label: 'Done',
+  //   fields: [
+  //     {
+  //       id: 'cd-done',
+  //       name: 'formSubmit',
+  //       type: 'submit',
+  //       label: 'You are done'
+  //     }
+  //   ]
+  // },
   {
-    name: 'contractDone',
-    label: 'Done',
+    name: 'yourSignature',
+    label: 'Your Signature',
     fields: [
       {
-        id: 'cd-done',
-        name: 'formSubmit',
-        type: 'submit',
-        label: 'You are done'
+        id: 'yourSig-signature',
+        name: 'signature',
+        type: 'signature',
+        label: 'Signature',
+        controlLabels: {
+          buttons: {
+            reset: 'Clear',
+            submit: 'Let\'s sign',
+          },
+        },
+        required: true
       }
     ]
   }
+  
 ];
