@@ -140,12 +140,12 @@
 
   <ng-container *ngSwitchCase="field.type === 'document'">
     <app-panzoom [componentToPan]="field.componentRef" [formData]="formData"></app-panzoom>
-    <mat-checkbox
+    <!-- <mat-checkbox
       [formControl]="field.formControl"
       [required]="field.required"
       [ngClass]="{'mat-error': step.formGroup.touched && field.formControl.hasError('required')}"
       color="primary"
-    >I agree</mat-checkbox>
+    >I agree</mat-checkbox> -->
   </ng-container>
 
   <ng-container *ngSwitchCase="field.type ==='submit'">

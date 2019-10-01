@@ -25,18 +25,38 @@
                     </ng-container>
                   </div>
                   <div class="row">
-                    <div class="col-12 text-right">
-                      <ng-container *ngIf="currentStep !== 0">
-                        <button mat-raised-button matStepperPrevious>Back</button>
-                      </ng-container>
-                      <div class="float-right" *ngIf="currentStep === 14">
-                        <button mat-raised-button color="primary" matStepperNext >Let’s Sign Contract</button>
-                      </div>
-                      <div class="float-right" *ngIf="currentStep !== 14">
-                        <button mat-raised-button color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">Next</button>
-                      </div>
-                      <div class="float-right" *ngIf="currentStep === 15">
-                        <button mat-raised-button  class="btn-success" color="success"  >Submit</button>
+                    <div class="col-12">
+                      
+                      
+                      <div class="float-left w-100 text-center">
+                        <div  *ngIf="currentStep !== 0">
+                          <button class="float-left"  mat-raised-button matStepperPrevious>Back</button>
+                        </div>
+                        <!-- *******Start employment-application****** -->
+                        <div  class="float-right" *ngIf="stepFormGroups.length === 10">
+                            <button mat-raised-button  color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">Next</button>
+                        </div>
+                        <!-- *******End employment-application*** -->
+                        <!-- ********************************************* -->
+                        <!------- Start employment-contract --------->
+                        <div class="float-right" *ngIf="stepFormGroups.length === 16">
+                          <div   *ngIf="currentStep !== 14">
+                            <button mat-raised-button  color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">I agree, Next</button>
+                          </div>
+                        </div>
+                        
+                        <div style="display: inline-block" *ngIf="currentStep !== 15">
+                          <button mat-raised-button color="danger" class="btn-danger mx-1"   *ngIf="stepFormGroups.length === 16" >I disagree</button>
+                        </div>
+
+                        <div class="float-right" *ngIf="currentStep === 14">
+                          <button mat-raised-button color="primary" matStepperNext >Let’s Sign Contract</button>
+                        </div>
+
+                        <div class="float-right" *ngIf="currentStep === 15">
+                            <button mat-raised-button  class="btn-primary ml-1" color="primary"  >Submit</button>
+                          </div>
+                        <!------- End employment-contract --------->
                       </div>
                     </div>
                   </div>

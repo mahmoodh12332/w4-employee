@@ -26,7 +26,7 @@ const commonFieldsForDocumentType = {
   name: 'agreed',
   label: '',
   type: 'document',
-  required: true,
+  required: false,
 };
 
 export const EmploymentApplicationForm: Array<any> = [

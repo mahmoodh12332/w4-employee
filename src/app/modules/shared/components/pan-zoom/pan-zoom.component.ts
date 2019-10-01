@@ -20,11 +20,11 @@ export class PanZoomComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.panController = panzoom(this.scene.nativeElement, {
-      maxZoom: 1.5,
-      minZoom: 0.1
-    });
-    this.panController.zoomTo(0, 0, 0.3);
+    // this.panController = panzoom(this.scene.nativeElement, {
+    //   maxZoom: 1.5,
+    //   minZoom: 0.1
+    // });
+    // this.panController.zoomTo(0, 0, 0.3);
   }
 
   loadComponent(): void {

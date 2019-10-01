@@ -18,7 +18,6 @@ export class EmploymentApplicationComponent extends EmploymentBaseComponent impl
     super.ngOnInit();
   }
   onFormSubmit(data) {
-    console.log(data);
     this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(data), 1);
     this.router.navigate(['/dashboard/employment-contract']);
   }

@@ -20,3 +20,16 @@ button{
     outline: none !important;
   }
 }
+
+@media (max-width: 768px){
+  .mat-card{
+    padding: 0 !important;
+  }
+  .mat-vertical-content-container {
+    margin-left: 15px !important;
+  }
+  .mat-vertical-stepper-header{
+    padding: 24px 5px !important;
+  }
+
+}

@@ -26,7 +26,11 @@ export class EmploymentFormComponent implements OnInit {
         ssn: this.cookieService.getCookie('currentSSN')
       }));
   }
-
+  clickMethod(name: string) {
+    if(confirm("Are you sure to delete "+name)) {
+      console.log("Implement delete functionality here");
+    }
+  }
   get formValue() {
     return this.formData;
   }

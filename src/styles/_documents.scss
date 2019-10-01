@@ -1,5 +1,5 @@
 .docs-width{
-  width: 1024px;
+  width: 100%;
   padding: 0 15px;
   text-align: left;
   margin: 0 auto;
@@ -27,9 +27,12 @@
   margin-top: 30px;
   padding-top: 2px;
 }
+ul{
+  padding-left: 10px;
+}
 ul li{
   padding: 5px 0;
-  font-size: 14px;
+  font-size: 13px;
 }
 .w-70{
   width: 48%;
@@ -76,10 +79,48 @@ ol li{
   padding: 3px 0;
 }
 .data-value{
-  font-weight: bold;
-  font-size: 2rem;
+  font-weight: 600;
+  font-size: 14px;
+}
+.docs-width h1{
+  font-size: 1.8rem;
+}
+.docs-width h4,
+.docs-width h3{
+  font-size: 1.25rem;
+}
+.docs-width p{
+  font-size: 14px;
 }
 .text-decoration-underline{
   @extend .data-value;
   text-decoration: underline;
+}
+
+
+
+
+// custom
+.w-70Drug p,
+.w-70 p{
+  margin-top: 10px !important;
+  padding-bottom: 0 !important;
+}
+.w-30Drug p,
+.w-30 p{
+  margin-top: 10px !important;
+  padding-bottom: 0 !important;
+
+}
+
+@media (max-width: 768px){
+  .w-70Drug,.w-30Drug,.w-70,.w-30{
+    width: 100%;
+    float: left !important;
+  }
+  .docs-width {
+    width: 100%;
+    padding: 0 10px;
+  }
+
 }
