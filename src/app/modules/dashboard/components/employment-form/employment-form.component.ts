@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EmploymentFormService} from '../../services';
 import {CookieService} from '../../../shared/services';
+import {CURRENT_SSN_COOKIE_NAME} from '../../../shared/data/constants';
 
 
 @Component({
@@ -8,6 +9,8 @@ import {CookieService} from '../../../shared/services';
   templateUrl: './employment-form.component.html'
 })
 export class EmploymentFormComponent implements OnInit {
+  @Input() public showNextButton: boolean;
+  @Input() public showBackButton: boolean;
   @Input() public steps: any;
   @Input() public dataValues: any = {};
   @Output() public formSubmit: EventEmitter<any> = new EventEmitter();
@@ -23,12 +26,11 @@ export class EmploymentFormComponent implements OnInit {
   initStepFormGroups(): void {
     this.stepFormGroups = this.steps
       .map( (step): any => this.employmentFormService.buildFormGroup(step, this.dataValues[step.name] || {
-        ssn: this.cookieService.getCookie('currentSSN')
+        ssn: this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)
       }));
   }
   clickMethod(name: string) {
     if(confirm("Are you sure to delete "+name)) {
-      console.log("Implement delete functionality here");
     }
   }
   get formValue() {

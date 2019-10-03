@@ -24,6 +24,7 @@ import {
   MatStepperModule,
   MatDividerModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from '@angular/material';
 
 export const MaterialModules = [
@@ -51,4 +52,5 @@ export const MaterialModules = [
   MatCardModule,
   NgxMaskModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 ];

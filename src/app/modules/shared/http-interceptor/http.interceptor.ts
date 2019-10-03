@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { API_KEY, API_KEY_HEADER } from '../data/constants';
 import {
   HttpRequest,
   HttpHandler,
@@ -13,7 +13,9 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('this is runung');
+    req = req.clone({
+      headers: req.headers.set(API_KEY_HEADER, API_KEY),
+    });
     return next.handle(req);
   }
 }

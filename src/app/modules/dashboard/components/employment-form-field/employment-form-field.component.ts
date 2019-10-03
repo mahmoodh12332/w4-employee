@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {find, startCase} from 'lodash';
 import * as moment from 'moment';
 import {DATE_FORMAT} from '../../../shared/data/constants';
 
 import {EmploymentModalComponent} from '../employment-modal/employment-modal.component';
+import {AppService} from '../../../shared/services';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,13 +14,16 @@ import {EmploymentModalComponent} from '../employment-modal/employment-modal.com
   templateUrl: './employment-form-field.component.html'
 })
 export class EmploymentFormFieldComponent {
+  public dateFormat = DATE_FORMAT;
+  @Input() public stepper: any;
   @Input() public field: any;
   @Input() public step: any;
   @Input() public formData: any;
   @Output() public submitForm: EventEmitter<any> = new EventEmitter();
+  @ViewChild('onDisagreeModalTemplate', {static: true}) public disagreeModalTemplate;
   public objectKeys = Object.keys;
   public startCase = startCase;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private appService: AppService, private router: Router) {}
 
   private openModal(index = null, action) {
     const dialogRef = this.dialog.open(EmploymentModalComponent, {
@@ -36,6 +41,7 @@ export class EmploymentFormFieldComponent {
   isAddedGroupExits(group) {
     return find(this.field.groupValues, group);
   }
+
   onGroupNewGroupAdd() {
     const dialogRef = this.openModal(null, 'add');
     dialogRef.afterClosed().subscribe(result => {
@@ -144,5 +150,24 @@ export class EmploymentFormFieldComponent {
   onTextBlur() {
     this.field.formControl.setValue(this.field.formControl.value.trim());
     this.field.formControl.updateValueAndValidity();
+  }
+
+  handleStepperNext(value) {
+    this.field.formControl.setValue(value);
+    this.stepper.next();
+  }
+
+  handlerDocumentDisagree() {
+    if (this.field.required) {
+      const modalRef = this.dialog.open(this.disagreeModalTemplate);
+      modalRef.afterClosed().subscribe(disagreed => {
+        if (disagreed) {
+          this.appService.logoutUser();
+          this.router.navigate(['authentication']);
+        }
+      });
+      return;
+    }
+    this.stepper.next();
   }
 }

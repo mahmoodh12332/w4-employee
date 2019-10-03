@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { RequestInterceptor } from './modules/shared/http-interceptor/http.interceptor';
+import { ConnectionServiceModule } from 'ng-connection-service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { SignaturePadModule } from 'angular2-signaturepad';
 import { SharedModule } from './modules/shared/shared.module';
 import {DashboardModule} from './modules/dashboard/dashboard.module';
 import { MaterialModules } from './modules/materials.module';
@@ -23,6 +23,7 @@ import { Services } from './modules/shared/services';
     AppRoutingModule,
     AuthenticationModule,
     BrowserAnimationsModule,
+    ConnectionServiceModule,
     HttpClientModule,
     MaterialModules,
     DashboardModule,

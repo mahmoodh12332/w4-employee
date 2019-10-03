@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Encryptor} from '../classes/base64';
 
 @Injectable()
 export class CookieService {
@@ -10,7 +11,7 @@ export class CookieService {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     const expires = 'expires=' + d.toUTCString();
-    document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+    document.cookie = cname + '=' + Encryptor.encode(cvalue) + ';' + expires + ';path=/';
   }
 
   getCookie(cname: any): string {
@@ -21,14 +22,15 @@ export class CookieService {
       while (c.charAt(0) === ' ') {
         c = c.substring(1);
       }
+      console.log(c);
       if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
+        return Encryptor.decode(c.substring(name.length, c.length));
       }
     }
     return '';
   }
 
-  removeCookie() {
-    document.cookie = 'currentSSN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  removeCookie(cookieName) {
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
 }

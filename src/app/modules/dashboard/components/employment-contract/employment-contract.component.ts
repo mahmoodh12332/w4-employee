@@ -16,7 +16,6 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
     super.ngOnInit();
   }
   onFormSubmit(data) {
-    console.log(data);
     this.cookieService.getCookie('');
   }
 }

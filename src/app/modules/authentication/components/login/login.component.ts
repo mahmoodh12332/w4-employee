@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  public submitting = false;
 
   constructor(private appService: AppService, private router: Router) {}
 
@@ -37,8 +38,12 @@ export class LoginComponent implements OnInit {
       this.loginForm.markAsDirty();
       return;
     }
-    this.appService.loginUser(this.loginForm.value).then(() => {
-      this.router.navigate(['dashboard']);
-    });
+    this.submitting = true;
+    this.appService.loginUser(this.loginForm.value)
+      .then(() => {
+        this.router.navigate(['dashboard']);
+      }).finally(() => {
+        this.submitting = false;
+      });
   }
 }

@@ -38,7 +38,7 @@
 
   <!-- Date Picker Field -->
   <ng-container *ngSwitchCase="field.type === 'date'">
-    <mat-form-field class="w-100 mb-3" hintLabel="DD/MM/YYYY">
+    <mat-form-field class="w-100 mb-3" [hintLabel]="dateFormat">
       <input matInput
              [formControl]="field.formControl"
              [matDatepicker]="picker"
@@ -55,7 +55,9 @@
 
   <!--Radio Button Field-->
   <ng-container *ngSwitchCase="field.type === 'radioButton'">
-    <label [ngClass]="{'mat-error': step.formGroup.touched && field.formControl.hasError('required')}">
+    <label [ngClass]="{
+    'mat-error': field.formControl.hasError('required')
+    }">
       {{field.label}} {{field.required ? '*' : ''}}
     </label>
     <mat-radio-group class="d-flex flex-column"
@@ -67,7 +69,7 @@
       </mat-radio-button>
       <mat-error
         class="mat-form-field-subscript-wrapper"
-        *ngIf="step.formGroup.touched && field.formControl.hasError('required')"
+        *ngIf="field.formControl.hasError('required')"
       >{{getErrorMessage()}}</mat-error>
     </mat-radio-group>
   </ng-container>
@@ -136,24 +138,41 @@
     </div>
   </ng-container>
 
-
-
+  <!--Document Field-->
   <ng-container *ngSwitchCase="field.type === 'document'">
     <app-panzoom [componentToPan]="field.componentRef" [formData]="formData"></app-panzoom>
-    <!-- <mat-checkbox
-      [formControl]="field.formControl"
-      [required]="field.required"
-      [ngClass]="{'mat-error': step.formGroup.touched && field.formControl.hasError('required')}"
-      color="primary"
-    >I agree</mat-checkbox> -->
-  </ng-container>
-
-  <ng-container *ngSwitchCase="field.type ==='submit'">
-    <div class="w-100 text-center pb-3 pt-3">
-      <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.label}}</button>
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 mb-4 text-left">
+        <button mat-raised-button (click)="stepper.previous()" [hidden]="stepper.selectedIndex === 0">
+          Back
+        </button>
+      </div>
+      <div class="col-6 col-md-4 col-lg-4 text-sm-left text-md-center text-lg-center">
+        <button mat-raised-button color="warn" (click)="handlerDocumentDisagree()">
+          {{this.field.controlLabels.buttons.disagree}}
+        </button>
+      </div>
+      <div class="col-6 col-md-4 col-lg-4 text-right">
+        <button mat-raised-button color="primary" (click)="handleStepperNext(true)">
+          {{this.field.controlLabels.buttons.agree}}
+        </button>
+      </div>
     </div>
   </ng-container>
 
+  <!--Submit Field-->
+  <ng-container *ngSwitchCase="field.type ==='submit'">
+    <div class="row">
+      <div class="col text-left">
+        <button mat-raised-button (click)="stepper.previous()">Back</button>
+      </div>
+      <div class="col text-right">
+        <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.label}}</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <!--Signature Field-->
   <ng-container *ngSwitchCase="field.type ==='signature'">
     <div class="w-100 mt-3 mb-3">
       <app-signature-pad [fc]="field.formControl"></app-signature-pad>
@@ -163,3 +182,26 @@
     </div>
   </ng-container>
 </ng-container>
+
+<ng-template #onDisagreeModalTemplate>
+  <h1 mat-dialog-title>Are you sure?</h1>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>
+            You employment with Pacesetter Personnel Services is contingent upon Your acceptance of the Company's
+            Policies and Procedures.
+            If you do not accept these terms you can not be placed on assigment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button color="warn" [mat-dialog-close]="true">Confirm to Disagree</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    </div>
+  </div>
+</ng-template>

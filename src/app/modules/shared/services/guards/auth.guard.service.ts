@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router, CanActivate} from '@angular/router';
 import {Observable} from 'rxjs';
 import {CookieService} from '../cookie.service';
+import {CURRENT_SSN_COOKIE_NAME} from '../../data/constants';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate(): boolean | Observable<boolean> {
-    if (!this.cookieService.getCookie('currentSSN')) {
+    if (!this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)) {
       this.router.navigate(['/authentication']);
       return false;
     }

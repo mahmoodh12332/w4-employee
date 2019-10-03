@@ -26,7 +26,13 @@ const commonFieldsForDocumentType = {
   name: 'agreed',
   label: '',
   type: 'document',
-  required: false,
+  required: true,
+  controlLabels: {
+    buttons: {
+      agree: 'I agree, Next',
+      disagree: 'I disagree',
+    }
+  }
 };
 
 export const EmploymentApplicationForm: Array<any> = [
@@ -316,7 +322,7 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         minLength: null,
         maxLength: null,
-        minValue: 1,
+        minValue: 0,
         maxValue: 10,
       },
       {
@@ -517,7 +523,7 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: false,
         disabled: false,
         mask: null,
-        required: false,
+        required: true,
         minLength: null,
         maxLength: null,
       },
@@ -820,8 +826,14 @@ export const EmploymentApplicationForm: Array<any> = [
         ],
         groupValues: [],
       },
+    ]
+  },
+  {
+    name: 'aboutUs',
+    label: 'About Us',
+    fields: [
       {
-        id: 'wh-aboutUs',
+        id: 'au-aboutUs',
         name: 'aboutUs',
         label: 'How did you hear about us?',
         type: 'text',
@@ -831,24 +843,17 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
-      }
-    ]
-  },
-  {
-    name: 'applicationDone',
-    label: 'Done',
-    fields: [
+      },
       {
         id: 'ad-done',
         name: 'formSubmit',
         type: 'submit',
-        label: 'Submit'
+        label: 'Continue to contract forms'
       }
     ]
   }
 ];
 export const EmploymentContractForm: Array<any> = [
-  
   {
     name: 'arbitraryAgreement',
     label: 'Arbitration Agreement',
@@ -916,6 +921,7 @@ export const EmploymentContractForm: Array<any> = [
       {
         componentRef: MedicalReleasePolicyComponent,
         ...commonFieldsForDocumentType,
+        required: false,
       }
     ]
   },
@@ -996,21 +1002,15 @@ export const EmploymentContractForm: Array<any> = [
       {
         componentRef: WorkersCompTxPolicyComponent,
         ...commonFieldsForDocumentType,
+        controlLabels: {
+          buttons: {
+            agree: 'Let\'s Sign Contract',
+            disagree: 'I disagree',
+          }
+        }
       }
     ]
   },
-  // {
-  //   name: 'contractDone',
-  //   label: 'Done',
-  //   fields: [
-  //     {
-  //       id: 'cd-done',
-  //       name: 'formSubmit',
-  //       type: 'submit',
-  //       label: 'You are done'
-  //     }
-  //   ]
-  // },
   {
     name: 'yourSignature',
     label: 'Your Signature',
@@ -1027,8 +1027,13 @@ export const EmploymentContractForm: Array<any> = [
           },
         },
         required: true
+      },
+      {
+        id: 'yourSig-done',
+        name: 'formSubmit',
+        type: 'submit',
+        label: 'Submit'
       }
     ]
   }
-  
 ];

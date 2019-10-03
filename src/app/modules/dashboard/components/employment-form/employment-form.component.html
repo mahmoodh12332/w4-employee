@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2 offset-lg-2 offset-sm-0 mt-5 mb-5">
         <mat-card>
-          <mat-vertical-stepper (selectionChange)="onStepperSelectionChange($event)" [linear]="true" #stepper>
+          <mat-vertical-stepper (selectionChange)="onStepperSelectionChange($event)" [linear]="false" #cdkStepper>
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
               <mat-step [stepControl]="step.formGroup">
                 <form [formGroup]="step.formGroup">
@@ -19,6 +19,7 @@
                         *ngIf="field.formControl.enabled || field.id === 'bi-ssn'"
                         [step]="step"
                         [field]="field"
+                        [stepper]="cdkStepper"
                         [formData]="this.formValue"
                         (submitForm)="submitForm()"
                       ></app-employment-form-field>
@@ -26,37 +27,13 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      
-                      
                       <div class="float-left w-100 text-center">
-                        <div  *ngIf="currentStep !== 0">
+                        <div  *ngIf="currentStep !== 0 && currentStep !== stepFormGroups.length - 1 && showBackButton">
                           <button class="float-left"  mat-raised-button matStepperPrevious>Back</button>
                         </div>
-                        <!-- *******Start employment-application****** -->
-                        <div  class="float-right" *ngIf="stepFormGroups.length === 10">
+                        <div  class="float-right" *ngIf="showNextButton">
                             <button mat-raised-button  color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">Next</button>
                         </div>
-                        <!-- *******End employment-application*** -->
-                        <!-- ********************************************* -->
-                        <!------- Start employment-contract --------->
-                        <div class="float-right" *ngIf="stepFormGroups.length === 16">
-                          <div   *ngIf="currentStep !== 14">
-                            <button mat-raised-button  color="primary" matStepperNext *ngIf="currentStep !== stepFormGroups.length - 1">I agree, Next</button>
-                          </div>
-                        </div>
-                        
-                        <div style="display: inline-block" *ngIf="currentStep !== 15">
-                          <button mat-raised-button color="danger" class="btn-danger mx-1"   *ngIf="stepFormGroups.length === 16" >I disagree</button>
-                        </div>
-
-                        <div class="float-right" *ngIf="currentStep === 14">
-                          <button mat-raised-button color="primary" matStepperNext >Let’s Sign Contract</button>
-                        </div>
-
-                        <div class="float-right" *ngIf="currentStep === 15">
-                            <button mat-raised-button  class="btn-primary ml-1" color="primary"  >Submit</button>
-                          </div>
-                        <!------- End employment-contract --------->
                       </div>
                     </div>
                   </div>
