@@ -23,7 +23,7 @@ import {
 const textTypeDefaultMinLength = 0;
 const textTypeDefaultMaxLength = 255;
 const commonFieldsForDocumentType = {
-  name: 'agreed',
+  name: 'contractAgree',
   label: '',
   type: 'document',
   required: true,
@@ -298,7 +298,7 @@ export const EmploymentApplicationForm: Array<any> = [
             label: 'Married'
           },
           {
-            value: 'marriedBut',
+            value: 'H',
             label: 'Married, but withhold at higher Single Rate'
           },
         ],
@@ -312,7 +312,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'w4i-totalDependant',
-        name: 'totalDependant',
+        name: 'w4TotalAllowances',
         label: 'Total Dependant',
         type: 'number',
         defaultValue: '',
@@ -393,7 +393,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'ec-mobilePhone',
-        name: 'mobilePhone',
+        name: 'contactMobile',
         label: 'Mobile Phone',
         type: 'text',
         defaultValue: '',
@@ -425,21 +425,21 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'identDoc-identification',
-        name: 'identification',
+        name: 'dmvType',
         label: 'Identification',
         type: 'radioButton',
         options: [
           {
             label: 'Driver License',
-            value: 'driverLicense'
+            value: 'DL'
           },
           {
             label: 'Commercial Driver License',
-            value: 'commercialDriverLicense'
+            value: 'CD'
           },
           {
             label: 'State ID',
-            value: 'stateId'
+            value: 'ID'
           },
         ],
         defaultValue: '',
@@ -452,7 +452,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'identDoc-document',
-        name: 'document',
+        name: 'dMVDocumentNbr',
         label: 'Document',
         type: 'text',
         defaultValue: '',
@@ -465,7 +465,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'identDoc-issueState',
-        name: 'issueState',
+        name: 'stateIssuingAuthority',
         label: 'Issue State',
         type: 'dropdown',
         options: States,
@@ -479,7 +479,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'identDoc-expireDate',
-        name: 'expireDate',
+        name: 'dmvExpirationDate',
         label: 'Exp. Date (if any)',
         type: 'date',
         defaultValue: '',
@@ -504,19 +504,19 @@ export const EmploymentApplicationForm: Array<any> = [
         options: [
           {
             label: 'A citizen of the United States',
-            value: 'usCitizen'
+            value: 4
           },
           {
             label: 'A noncitizen national of the United States',
-            value: 'nonUSCitizen'
+            value: 5
           },
           {
             label: 'A lawful permanent resident',
-            value: 'lawfulPermanentResident'
+            value: 6
           },
           {
             label: 'An alien authorized to work',
-            value: 'alien'
+            value: 7
           },
         ],
         defaultValue: '',
@@ -529,7 +529,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'citizen-uscisNumber',
-        name: 'uscisNumber',
+        name: 'lPRAlienNumber',
         label: 'USCIS #',
         type: 'text',
         defaultValue: '',
@@ -568,7 +568,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'citizen-expireDate',
-        name: 'expireDate',
+        name: 'alienExpirationDate',
         label: 'Exp. Date (if any)',
         type: 'date',
         defaultValue: '',
@@ -698,7 +698,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'wh-history',
-        name: 'workHistory',
+        name: 'workHistories',
         label: 'History',
         type: 'group',
         isUnique: true,
@@ -812,7 +812,7 @@ export const EmploymentApplicationForm: Array<any> = [
           },
           {
             id: 'wh-history-reasonLeaving',
-            name: 'reasonLeaving',
+            name: 'reasonForLeaving',
             label: 'Reason Leaving',
             type: 'text',
             defaultValue: '',

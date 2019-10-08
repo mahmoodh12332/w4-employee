@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2 offset-lg-2 offset-sm-0 mt-5 mb-5">
         <mat-card>
-          <mat-vertical-stepper (selectionChange)="onStepperSelectionChange($event)" [linear]="false" #cdkStepper>
+          <mat-vertical-stepper (selectionChange)="onStepperSelectionChange($event)" [linear]="true" #cdkStepper>
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
               <mat-step [stepControl]="step.formGroup" [editable]="!isSubmitting">
                 <form [formGroup]="step.formGroup">

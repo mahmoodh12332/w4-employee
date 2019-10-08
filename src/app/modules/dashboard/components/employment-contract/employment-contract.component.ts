@@ -10,7 +10,10 @@ import {EmploymentContractForm} from '../../../shared/data/employment-form';
 export class EmploymentContractComponent extends EmploymentBaseComponent implements OnInit {
   public readonly steps = EmploymentContractForm;
   public isSubmitting = false;
-  constructor(cookieService: CookieService, private appService: AppService) {
+  constructor(
+    cookieService: CookieService,
+    private appService: AppService,
+  ) {
     super(cookieService);
   }
   ngOnInit(): void {
@@ -21,7 +24,7 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
     this.cookieService.getCookie('');
     this.appService.submitApplication(this.formValues).then((res) => {
       this.isSubmitting = false;
-      console.log('-==============>>>> ');
+      this.appService.logoutUser();
     });
   }
 }

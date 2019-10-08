@@ -33,8 +33,16 @@ export class EmploymentFormService {
       if (field.isEndDate) {
         validators.push(DateValidator.validateEndDate('startDate'));
       }
+      let currentValue: any = '';
+      if (field.type === 'date' && values[field.name]) {
+        currentValue = new Date(values[field.name]);
+      } else if (field.type === 'group' && values[field.name]) {
+        field.groupValues = values[field.name];
+      } else if (values[field.name]) {
+        currentValue = values[field.name];
+      }
       const formControl = new FormControl({
-        value: values[field.name] || '',
+        value: currentValue,
         disabled: field.disabled,
       }, validators);
       fields.push({

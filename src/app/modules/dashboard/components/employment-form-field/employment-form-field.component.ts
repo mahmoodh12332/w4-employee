@@ -83,18 +83,18 @@ export class EmploymentFormFieldComponent{
     if (this.field.name !== 'citizenship') {
       return;
     }
-    const uscisNumber = 'uscisNumber';
+    const uscisNumber = 'lPRAlienNumber';
     const alienNumber = 'alienNumber';
     const i94Number = 'i94Number';
-    const expireDate = 'expireDate';
+    const expireDate = 'alienExpirationDate';
     this.step.formGroup.controls[uscisNumber].disable();
     this.step.formGroup.controls[alienNumber].disable();
     this.step.formGroup.controls[i94Number].disable();
     this.step.formGroup.controls[expireDate].disable();
-    if (this.field.formControl.value === 'lawfulPermanentResident') {
+    if (this.field.formControl.value === 6) {
       this.step.formGroup.controls[uscisNumber].enable();
       return;
-    } else if (this.field.formControl.value === 'alien') {
+    } else if (this.field.formControl.value === 7) {
       this.step.formGroup.controls[alienNumber].enable();
       this.step.formGroup.controls[i94Number].enable();
       this.step.formGroup.controls[expireDate].enable();
@@ -164,7 +164,6 @@ export class EmploymentFormFieldComponent{
       modalRef.afterClosed().subscribe(disagreed => {
         if (disagreed) {
           this.appService.logoutUser();
-          this.router.navigate(['authentication']);
         }
       });
       return;
