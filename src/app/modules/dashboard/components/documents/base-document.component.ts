@@ -28,7 +28,7 @@ export class BaseDocumentComponent {
   getPrintName() {
     const firstName = this.getValue('basicInformation.firstName');
     const lastName = this.getValue('basicInformation.lastName');
-    const middleName = this.getValue('basicInformation.middleInitial');
+    const middleName = this.getValue('basicInformation.middleName');
     return `${firstName} ${middleName} ${lastName}`;
   }
 }

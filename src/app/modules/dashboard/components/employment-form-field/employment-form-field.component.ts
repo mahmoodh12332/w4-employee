@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {find, startCase} from 'lodash';
 import * as moment from 'moment';
@@ -13,9 +13,10 @@ import {Router} from '@angular/router';
   selector: 'app-employment-form-field',
   templateUrl: './employment-form-field.component.html'
 })
-export class EmploymentFormFieldComponent {
+export class EmploymentFormFieldComponent{
   public dateFormat = DATE_FORMAT;
   @Input() public stepper: any;
+  @Input() public isSubmitting: boolean;
   @Input() public field: any;
   @Input() public step: any;
   @Input() public formData: any;

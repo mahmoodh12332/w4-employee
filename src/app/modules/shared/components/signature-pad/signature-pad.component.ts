@@ -6,7 +6,7 @@ import {FormControl} from '@angular/forms';
   selector: 'app-signature-pad',
   template: `
     <div class="w-100 mt-2 mb-2 text-right">
-      <button mat-raised-button (click)="clearValue()">Clear</button>
+      <button mat-raised-button (click)="clearValue()" [disabled]="canClear">Clear</button>
     </div>
     <div class="w-100" style="border: 1px dotted black">
       <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
@@ -17,6 +17,7 @@ import {FormControl} from '@angular/forms';
 export class SignaturePadComponent implements AfterViewInit {
 
   @Input() fc: FormControl;
+  @Input() canClear: boolean;
   @ViewChild(SignaturePad, {static: false}) signaturePad: SignaturePad;
 
   private signaturePadOptions: object = { // passed through to szimek/signature_pad constructor

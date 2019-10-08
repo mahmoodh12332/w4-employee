@@ -11,6 +11,7 @@ import {CURRENT_SSN_COOKIE_NAME} from '../../../shared/data/constants';
 export class EmploymentFormComponent implements OnInit {
   @Input() public showNextButton: boolean;
   @Input() public showBackButton: boolean;
+  @Input() public isSubmitting: boolean;
   @Input() public steps: any;
   @Input() public dataValues: any = {};
   @Output() public formSubmit: EventEmitter<any> = new EventEmitter();
@@ -26,7 +27,7 @@ export class EmploymentFormComponent implements OnInit {
   initStepFormGroups(): void {
     this.stepFormGroups = this.steps
       .map( (step): any => this.employmentFormService.buildFormGroup(step, this.dataValues[step.name] || {
-        ssn: this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)
+        socialSecurityNo: this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)
       }));
   }
   clickMethod(name: string) {

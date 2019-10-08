@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EmploymentBaseComponent} from '../employment-base.component';
-import {CookieService} from '../../../shared/services';
+import {AppService, CookieService} from '../../../shared/services';
 import {EmploymentContractForm} from '../../../shared/data/employment-form';
 
 @Component({
@@ -9,13 +9,19 @@ import {EmploymentContractForm} from '../../../shared/data/employment-form';
 })
 export class EmploymentContractComponent extends EmploymentBaseComponent implements OnInit {
   public readonly steps = EmploymentContractForm;
-  constructor(cookieService: CookieService) {
+  public isSubmitting = false;
+  constructor(cookieService: CookieService, private appService: AppService) {
     super(cookieService);
   }
   ngOnInit(): void {
     super.ngOnInit();
   }
   onFormSubmit(data) {
+    this.isSubmitting = true;
     this.cookieService.getCookie('');
+    this.appService.submitApplication(this.formValues).then((res) => {
+      this.isSubmitting = false;
+      console.log('-==============>>>> ');
+    });
   }
 }

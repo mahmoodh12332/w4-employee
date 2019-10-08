@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {reduce, assign} from 'lodash';
+import * as moment from 'moment';
 import {
   API_ROUTES,
+  DATE_FORMAT,
   CURRENT_SSN_COOKIE_NAME,
   FORM_COOKIE_NAME,
   SITE_INFO_COOKIE_NAME,
@@ -43,5 +46,35 @@ export class AppService {
     this.cookieService.removeCookie(CURRENT_SSN_COOKIE_NAME);
     this.cookieService.removeCookie(FORM_COOKIE_NAME);
     this.cookieService.removeCookie(SITE_INFO_COOKIE_NAME);
+  }
+
+  submitApplication(formValue: any) {
+    return new Promise ((resolve, reject) => {
+      const siteInfo: any = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));
+      const constantFormValues = {
+        employeeId: 0,
+        masterId: 0,
+        siteId: siteInfo.siteId,
+        webCode: siteInfo.code,
+        applicationDate: moment(),
+      };
+      const formBody = reduce(formValue, (c, v) => {
+        assign(c, v);
+        return c;
+      }, {});
+      assign(formBody, constantFormValues);
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+      // this.http.post(API_ROUTES.saveApplication, formBody)
+      //   .subscribe(
+      //   (response) => {
+      //     console.log(response);
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      //   );
+    });
   }
 }

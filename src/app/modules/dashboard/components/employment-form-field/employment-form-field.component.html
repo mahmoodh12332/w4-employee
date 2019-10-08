@@ -167,7 +167,7 @@
         <button mat-raised-button (click)="stepper.previous()">Back</button>
       </div>
       <div class="col text-right">
-        <button mat-raised-button color="primary" (click)="submitForm.emit()">{{field.label}}</button>
+        <button mat-raised-button color="primary" [disabled]="isSubmitting" (click)="submitForm.emit()">{{field.label}}</button>
       </div>
     </div>
   </ng-container>
@@ -175,7 +175,7 @@
   <!--Signature Field-->
   <ng-container *ngSwitchCase="field.type ==='signature'">
     <div class="w-100 mt-3 mb-3">
-      <app-signature-pad [fc]="field.formControl"></app-signature-pad>
+      <app-signature-pad [fc]="field.formControl" [canClear]="isSubmitting"></app-signature-pad>
     </div>
     <div class="w-100 mt-1 mb-1">
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>

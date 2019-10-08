@@ -42,7 +42,7 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'bi-ssn',
-        name: 'ssn',
+        name: 'socialSecurityNo',
         label: 'SSN',
         type: 'text',
         defaultValue: '',
@@ -68,7 +68,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'bi-middleInitial',
-        name: 'middleInitial',
+        name: 'middleName',
         label: 'Middle Initial',
         type: 'text',
         defaultValue: '',
@@ -105,7 +105,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'bi-dateOfBirth',
-        name: 'dateOfBirth',
+        name: 'birthDate',
         label: 'DOB',
         type: 'date',
         disabled: false,
@@ -127,11 +127,11 @@ export const EmploymentApplicationForm: Array<any> = [
         options: [
           {
             label: 'Male',
-            value: 'male',
+            value: 'M',
           },
           {
             label: 'Female',
-            value: 'female'
+            value: 'F'
           }
         ],
         required: true,
@@ -146,7 +146,7 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'add-streetNo',
-        name: 'streetNumber',
+        name: 'streetNo',
         label: 'Street Number',
         type: 'text',
         defaultValue: '',
@@ -159,7 +159,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'add-streetName',
-        name: 'streetName',
+        name: 'address',
         label: 'Street Name',
         type: 'text',
         defaultValue: '',
@@ -172,7 +172,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'add-apartmentNumber',
-        name: 'apartmentNumber',
+        name: 'aptno',
         label: 'Apartment Number',
         type: 'text',
         defaultValue: '',
@@ -235,7 +235,7 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'pe-homePhone',
-        name: 'homePhone',
+        name: 'phone',
         label: 'Home Phone',
         type: 'text',
         defaultValue: '',
@@ -248,7 +248,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'pe-mobilePhone',
-        name: 'mobilePhone',
+        name: 'altPhone',
         label: 'Mobile Phone',
         type: 'text',
         defaultValue: '',
@@ -285,16 +285,16 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'w4i-maritalStatus',
-        name: 'maritalStatus',
+        name: 'w4MaritalStatus',
         label: 'Marital Status',
         type: 'radioButton',
         options: [
           {
-            value: 'single',
+            value: 'S',
             label: 'Single'
           },
           {
-            value: 'married',
+            value: 'M',
             label: 'Married'
           },
           {
@@ -327,17 +327,17 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'w4i-taxExempt',
-        name: 'taxExempt',
+        name: 'w4_Exempt',
         label: 'Are you tax exempt',
         type: 'radioButton',
         defaultValue: '',
         options: [
           {
-            value: 'yes',
+            value: true,
             label: 'Yes'
           },
           {
-            value: 'no',
+            value: false,
             label: 'No'
           }
         ],
@@ -356,7 +356,7 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'ec-firstName',
-        name: 'firstName',
+        name: 'contactFirst',
         label: 'First Name',
         type: 'text',
         defaultValue: '',
@@ -368,7 +368,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'ec-lastName',
-        name: 'lastName',
+        name: 'contactLast',
         label: 'Last Name',
         type: 'text',
         defaultValue: '',
@@ -380,7 +380,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'ec-homePhone',
-        name: 'homePhone',
+        name: 'contactHome',
         label: 'Home Phone',
         type: 'text',
         defaultValue: '',
@@ -406,7 +406,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'ec-relationship',
-        name: 'relationship',
+        name: 'contactRelationship',
         label: 'Relationship',
         type: 'text',
         defaultValue: '',
@@ -676,17 +676,17 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'wh-serviceBaseExp',
-        name: 'serviceBaseExp',
+        name: 'workTemp',
         label: 'Have you ever worked for a temporary employment service before?',
         type: 'radioButton',
         options: [
           {
             label: 'Yes',
-            value: 'yes'
+            value: true,
           },
           {
             label: 'No',
-            value: 'no'
+            value: false
           }
         ],
         defaultValue: '',
@@ -698,7 +698,7 @@ export const EmploymentApplicationForm: Array<any> = [
       },
       {
         id: 'wh-history',
-        name: 'history',
+        name: 'workHistory',
         label: 'History',
         type: 'group',
         isUnique: true,
@@ -717,7 +717,7 @@ export const EmploymentApplicationForm: Array<any> = [
         fields: [
           {
             id: 'wh-history-companyName',
-            name: 'companyName',
+            name: 'company',
             label: 'Company',
             type: 'text',
             defaultValue: '',
@@ -834,7 +834,7 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'au-aboutUs',
-        name: 'aboutUs',
+        name: 'hearAboutUs',
         label: 'How did you hear about us?',
         type: 'text',
         defaultValue: '',
@@ -922,6 +922,7 @@ export const EmploymentContractForm: Array<any> = [
         componentRef: MedicalReleasePolicyComponent,
         ...commonFieldsForDocumentType,
         required: false,
+        name: 'medicalAuthorization'
       }
     ]
   },
@@ -1017,7 +1018,7 @@ export const EmploymentContractForm: Array<any> = [
     fields: [
       {
         id: 'yourSig-signature',
-        name: 'signature',
+        name: 'signature64',
         type: 'signature',
         label: 'Signature',
         controlLabels: {
