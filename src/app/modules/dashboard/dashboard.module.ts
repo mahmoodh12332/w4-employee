@@ -10,12 +10,10 @@ import {EmploymentFormFieldComponent} from './components/employment-form-field/e
 import {EmploymentModalComponent} from './components/employment-modal/employment-modal.component';
 import {EmploymentContractComponent} from './components/employment-contract/employment-contract.component';
 import {EmploymentApplicationComponent} from './components/employment-application/employment-application.component';
+import {SkillsComponent} from './components/skills/skills-component';
 import {DashboardServices} from './services';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material';
 import {DocumentComponents} from './components/documents';
-import { TransportationAgreementComponent } from './components/documents/transportation-agreement/transportation-agreement.component';
-import { WelcomeToPPSCompanyPoliciesAndProceduresComponent } from './components/documents/welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component';
-import { ProhibitedWorkPolicyComponent } from './components/documents/prohibited-work-policy/prohibited-work-policy.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +23,8 @@ import { ProhibitedWorkPolicyComponent } from './components/documents/prohibited
     EmploymentModalComponent,
     EmploymentContractComponent,
     EmploymentApplicationComponent,
+    SkillsComponent,
     ...DocumentComponents,
-    TransportationAgreementComponent,
-    WelcomeToPPSCompanyPoliciesAndProceduresComponent,
-    ProhibitedWorkPolicyComponent,
   ],
   imports: [
     MaterialModules,
@@ -41,6 +37,7 @@ import { ProhibitedWorkPolicyComponent } from './components/documents/prohibited
     EmploymentModalComponent,
     EmploymentContractComponent,
     EmploymentApplicationComponent,
+    SkillsComponent,
     ...DocumentComponents,
   ],
   providers: [
@@ -52,6 +49,7 @@ import { ProhibitedWorkPolicyComponent } from './components/documents/prohibited
   ],
   entryComponents: [
     EmploymentModalComponent,
+    SkillsComponent,
     ...DocumentComponents,
   ],
   bootstrap: [DashboardComponent]

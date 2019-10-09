@@ -22,6 +22,7 @@ import {
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
   ProhibitedWorkPolicyComponent,
 } from '../../dashboard/components/documents';
+import {SkillsComponent} from '../../dashboard/components/skills/skills-component';
 
 const textTypeDefaultMinLength = 0;
 const textTypeDefaultMaxLength = 255;
@@ -593,6 +594,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'skills',
         label: 'Skills',
         type: 'group',
+        useCustomComponent: SkillsComponent,
         controlLabels: {
           modal: {
             add: 'Add Skill',
@@ -989,7 +991,6 @@ export const EmploymentContractForm: Array<any> = [
       }
     ]
   },
-  
   {
     name: 'confidentialityAgreement',
     label: 'Confidentiality Agreement',
@@ -1000,7 +1001,6 @@ export const EmploymentContractForm: Array<any> = [
       }
     ]
   },
-  
   {
     name: 'ProhibitedWorkPolicy',
     label: 'Prohibited Work Policy',
@@ -1072,6 +1072,4 @@ export const EmploymentContractForm: Array<any> = [
       }
     ]
   },
-  
-  
 ];

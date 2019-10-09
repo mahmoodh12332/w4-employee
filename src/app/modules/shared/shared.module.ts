@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import {PanZoomComponent} from './components/pan-zoom/pan-zoom.component';
 import {SignaturePadComponent} from './components/signature-pad/signature-pad.component';
-import {SharedDirectives} from './directives';
+import {DocumentHostDirective, SharedDirectives} from './directives';
 import { MaterialModules } from '../materials.module';
 import {SignaturePadModule} from 'angular2-signaturepad';
 
@@ -22,7 +22,8 @@ import {SignaturePadModule} from 'angular2-signaturepad';
   ],
   exports: [
     PanZoomComponent,
-    SignaturePadComponent
+    SignaturePadComponent,
+    DocumentHostDirective
   ]
 })
 export class SharedModule { }

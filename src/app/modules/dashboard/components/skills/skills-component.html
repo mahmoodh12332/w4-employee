@@ -1,0 +1,52 @@
+<ng-container *ngIf="loadingData">
+  <p>Loading skills data...</p>
+</ng-container>
+<ng-container *ngIf="!loadingData && !skillsData">
+  <div class="row">
+    <div class="col-12">
+      <p>Something went wrong. <button mat-raised-button color="primary" (click)="getSkillsData()">Retry Now</button></p>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="skillsData">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-6">
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Skill</mat-label>
+        <mat-select
+          [required]="true"
+          (selectionChange)="onSkillChange($event)"
+          [formControl]="this.step.formGroup.controls.skillName">
+          <mat-option
+            *ngFor="let option of allSkills;"
+            [value]="option">{{option}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="this.step.formGroup.controls.skillName.invalid" >Skill is required.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6">
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Level</mat-label>
+        <mat-select
+          [required]="true"
+          [formControl]="this.step.formGroup.controls.level">
+          <mat-option
+            *ngFor="let option of levelOfCurrentSkill;"
+            [value]="option.description">{{option.description}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="this.step.formGroup.controls.level.invalid" >Level is required.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-12 col-md-6 col-lg-6">
+      <mat-form-field class="w-100 mb-3">
+        <mat-label>Years</mat-label>
+        <mat-select
+          [required]="true"
+          [formControl]="this.step.formGroup.controls.years">
+          <mat-option *ngFor="let option of yearsMap;" [value]="option.label">{{option.label}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="this.step.formGroup.controls.years.invalid" >Year is required.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</ng-container>

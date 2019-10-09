@@ -1,14 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import {BaseDocumentComponent} from '../base-document.component';
 
 @Component({
   selector: 'app-transportation-agreement',
   templateUrl: './transportation-agreement.component.html',
 })
-export class TransportationAgreementComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class TransportationAgreementComponent extends BaseDocumentComponent {}

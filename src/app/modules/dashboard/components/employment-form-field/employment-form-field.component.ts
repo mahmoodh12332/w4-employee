@@ -71,7 +71,7 @@ export class EmploymentFormFieldComponent{
     this.field.groupValues.splice(index, 1);
   }
 
-  public formatValue(value) {
+  public formatGroupValue(value) {
     if (value instanceof Date) {
       return moment(value).format(DATE_FORMAT);
     }
@@ -91,6 +91,10 @@ export class EmploymentFormFieldComponent{
     this.step.formGroup.controls[alienNumber].disable();
     this.step.formGroup.controls[i94Number].disable();
     this.step.formGroup.controls[expireDate].disable();
+    this.step.formGroup.controls[uscisNumber].reset();
+    this.step.formGroup.controls[alienNumber].reset();
+    this.step.formGroup.controls[i94Number].reset();
+    this.step.formGroup.controls[expireDate].reset();
     if (this.field.formControl.value === 6) {
       this.step.formGroup.controls[uscisNumber].enable();
       return;
@@ -168,6 +172,7 @@ export class EmploymentFormFieldComponent{
       });
       return;
     }
+    this.field.formControl.setValue(false);
     this.stepper.next();
   }
 }
