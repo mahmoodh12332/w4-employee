@@ -13,6 +13,9 @@ import {EmploymentApplicationComponent} from './components/employment-applicatio
 import {DashboardServices} from './services';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material';
 import {DocumentComponents} from './components/documents';
+import { TransportationAgreementComponent } from './components/documents/transportation-agreement/transportation-agreement.component';
+import { WelcomeToPPSCompanyPoliciesAndProceduresComponent } from './components/documents/welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component';
+import { ProhibitedWorkPolicyComponent } from './components/documents/prohibited-work-policy/prohibited-work-policy.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import {DocumentComponents} from './components/documents';
     EmploymentContractComponent,
     EmploymentApplicationComponent,
     ...DocumentComponents,
+    TransportationAgreementComponent,
+    WelcomeToPPSCompanyPoliciesAndProceduresComponent,
+    ProhibitedWorkPolicyComponent,
   ],
   imports: [
     MaterialModules,

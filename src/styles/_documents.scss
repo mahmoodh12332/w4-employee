@@ -124,3 +124,14 @@ ol li{
   }
 
 }
+@media (max-width: 768px){
+  .w-3030{
+      width: 100%;
+      float: left;
+      
+  }
+  .w-3030 p{
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+  }
+}

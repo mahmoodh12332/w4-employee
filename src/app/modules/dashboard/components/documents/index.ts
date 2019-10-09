@@ -13,6 +13,9 @@ import {UnlawfullEmploymentPracticePolicyComponent} from './unlawfull-employment
 import {UnsafeWorkingConditionsPolicyComponent} from './unsafe-working-conditions-policy/unsafe-working-conditions-policy.component';
 import {WaiverOfRightToTrialByJuryPolicyComponent} from './waiver-of-right-to-trial-by-jury/waiver-of-right-to-trial-by-jury-policy.component';
 import {WorkersCompTxPolicyComponent} from './workers-comp-tx/workers-comp-tx-policy.component';
+import {TransportationAgreementComponent} from './transportation-agreement/transportation-agreement.component';
+import {WelcomeToPPSCompanyPoliciesAndProceduresComponent} from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component'
+import {ProhibitedWorkPolicyComponent} from './prohibited-work-policy/prohibited-work-policy.component'
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -30,6 +33,9 @@ export const DocumentComponents = [
   UnsafeWorkingConditionsPolicyComponent,
   WaiverOfRightToTrialByJuryPolicyComponent,
   WorkersCompTxPolicyComponent,
+  TransportationAgreementComponent,
+  WelcomeToPPSCompanyPoliciesAndProceduresComponent,
+  ProhibitedWorkPolicyComponent,
 ];
 
 export default {
@@ -48,6 +54,9 @@ export default {
   UnsafeWorkingConditionsPolicyComponent,
   WaiverOfRightToTrialByJuryPolicyComponent,
   WorkersCompTxPolicyComponent,
+  TransportationAgreementComponent,
+  WelcomeToPPSCompanyPoliciesAndProceduresComponent,
+  ProhibitedWorkPolicyComponent,
 };
 
 export * from './arbitration-agreement/arbitration-agreement-policy.component';
@@ -65,3 +74,6 @@ export * from './unlawfull-employment-practice-policy/unlawfull-employment-pract
 export * from './unsafe-working-conditions-policy/unsafe-working-conditions-policy.component';
 export * from './waiver-of-right-to-trial-by-jury/waiver-of-right-to-trial-by-jury-policy.component';
 export * from './workers-comp-tx/workers-comp-tx-policy.component';
+export * from './transportation-agreement/transportation-agreement.component';
+export * from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component'
+export * from './prohibited-work-policy/prohibited-work-policy.component'

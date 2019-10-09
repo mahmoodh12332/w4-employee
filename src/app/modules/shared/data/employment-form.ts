@@ -18,6 +18,9 @@ import {
   UnsafeWorkingConditionsPolicyComponent,
   WaiverOfRightToTrialByJuryPolicyComponent,
   WorkersCompTxPolicyComponent,
+  TransportationAgreementComponent,
+  WelcomeToPPSCompanyPoliciesAndProceduresComponent,
+  ProhibitedWorkPolicyComponent,
 } from '../../dashboard/components/documents';
 
 const textTypeDefaultMinLength = 0;
@@ -855,11 +858,11 @@ export const EmploymentApplicationForm: Array<any> = [
 ];
 export const EmploymentContractForm: Array<any> = [
   {
-    name: 'arbitraryAgreement',
-    label: 'Arbitration Agreement',
+    name: 'employmentContract',
+    label: 'Employment Contract',
     fields: [
       {
-        componentRef: ArbitrationAgreementPolicyComponent,
+        componentRef: EmploymentContractPolicyComponent,
         ...commonFieldsForDocumentType,
       }
     ]
@@ -875,16 +878,6 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
-    name: 'confidentialityAgreement',
-    label: 'Confidentiality Agreement',
-    fields: [
-      {
-        componentRef: ConfidentialityAgreementPolicyComponent,
-        ...commonFieldsForDocumentType,
-      }
-    ]
-  },
-  {
     name: 'drugAndAlcohol',
     label: 'Drug and Alcohol Policy',
     fields: [
@@ -895,21 +888,21 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
-    name: 'employmentContract',
-    label: 'Employment Contract',
-    fields: [
-      {
-        componentRef: EmploymentContractPolicyComponent,
-        ...commonFieldsForDocumentType,
-      }
-    ]
-  },
-  {
     name: 'fcrAuth',
     label: 'FCRA Authorization and Disclosure',
     fields: [
       {
         componentRef: FcrAuthPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'workerComp',
+    label: 'Workers Comp (TX)',
+    fields: [
+      {
+        componentRef: WorkersCompTxPolicyComponent,
         ...commonFieldsForDocumentType,
       }
     ]
@@ -967,11 +960,53 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
+    name: 'transportationAgreement',
+    label: 'Transportation Agreement',
+    fields: [
+      {
+        componentRef: TransportationAgreementComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
     name: 'unlawfullEmployment',
     label: 'Unlawful Employment Practices Policy',
     fields: [
       {
         componentRef: UnlawfullEmploymentPracticePolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'arbitraryAgreement',
+    label: 'Arbitration Agreement',
+    fields: [
+      {
+        componentRef: ArbitrationAgreementPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  
+  {
+    name: 'confidentialityAgreement',
+    label: 'Confidentiality Agreement',
+    fields: [
+      {
+        componentRef: ConfidentialityAgreementPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  
+  {
+    name: 'ProhibitedWorkPolicy',
+    label: 'Prohibited Work Policy',
+    fields: [
+      {
+        componentRef: ProhibitedWorkPolicyComponent,
         ...commonFieldsForDocumentType,
       }
     ]
@@ -997,11 +1032,11 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
-    name: 'workerComp',
-    label: 'Workers Comp (TX)',
+    name: 'WelcomeToPPSCompanyPoliciesAndProcedures',
+    label: 'Welcome To PPS Company Policies And Procedures',
     fields: [
       {
-        componentRef: WorkersCompTxPolicyComponent,
+        componentRef: WelcomeToPPSCompanyPoliciesAndProceduresComponent,
         ...commonFieldsForDocumentType,
         controlLabels: {
           buttons: {
@@ -1036,5 +1071,7 @@ export const EmploymentContractForm: Array<any> = [
         label: 'Submit'
       }
     ]
-  }
+  },
+  
+  
 ];
