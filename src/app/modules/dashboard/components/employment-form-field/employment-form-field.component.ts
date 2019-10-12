@@ -7,6 +7,7 @@ import {DATE_FORMAT} from '../../../shared/data/constants';
 import {EmploymentModalComponent} from '../employment-modal/employment-modal.component';
 import {AppService} from '../../../shared/services';
 import {Router} from '@angular/router';
+import {Helper} from '../../../shared/classes/helper';
 
 
 @Component({
@@ -72,7 +73,7 @@ export class EmploymentFormFieldComponent{
   }
 
   public formatGroupValue(value) {
-    if (value instanceof Date) {
+    if (value instanceof Date || Helper.isDateString(value)) {
       return moment(value).format(DATE_FORMAT);
     }
     return value;

@@ -50,6 +50,6 @@ export class EmploymentModalComponent implements OnInit {
       this.validateAllFormFields();
       return;
     }
-    this.dialogRef.close(this.step.formGroup.value);
+    this.dialogRef.close(this.step.formGroup.getRawValue());
   }
 }

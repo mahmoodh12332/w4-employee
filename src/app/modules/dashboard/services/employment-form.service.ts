@@ -1,6 +1,39 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidator} from '../../shared/validators';
+import {reduce} from 'lodash';
+import * as moment from 'moment';
+
+class MyCustomFormControl extends FormControl {
+  private readonly fieldType: string;
+  constructor(type: string, ...args) {
+    super(...args);
+    this.fieldType = type;
+  }
+
+  $getValue() {
+    if (this.value instanceof Date || this.fieldType === 'date') {
+      return moment(this.value.toISOString()).format('YYYY-MM-DD');
+    }
+    return this.value;
+  }
+}
+class MyCustomFormGroup extends FormGroup {
+  constructor(a, b?, c?) {
+    super(a, b, c);
+  }
+
+  getRawValue(): any {
+    return this.$getValues();
+  }
+
+  $getValues() {
+    return reduce(this.controls, (acc: any, c: MyCustomFormControl, key: string) => {
+      acc[key] = c.$getValue();
+      return acc;
+    }, {});
+  }
+}
 
 @Injectable()
 export class EmploymentFormService {
@@ -41,7 +74,7 @@ export class EmploymentFormService {
       } else if (values[field.name]) {
         currentValue = values[field.name];
       }
-      const formControl = new FormControl({
+      const formControl = new MyCustomFormControl(field.type,{
         value: currentValue,
         disabled: field.disabled,
       }, validators);
@@ -51,7 +84,7 @@ export class EmploymentFormService {
       });
       formControlForGroup[field.name] = formControl;
     });
-    const formGroup = new FormGroup(formControlForGroup);
+    const formGroup = new MyCustomFormGroup(formControlForGroup);
     return {
       ...step,
       formGroup,
