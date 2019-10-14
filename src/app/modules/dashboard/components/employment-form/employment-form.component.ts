@@ -2,7 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EmploymentFormService} from '../../services';
 import {CookieService} from '../../../shared/services';
 import {CURRENT_SSN_COOKIE_NAME} from '../../../shared/data/constants';
-
+import {every} from 'lodash';
 
 @Component({
   selector: 'app-employment-form',
@@ -61,5 +61,9 @@ export class EmploymentFormComponent implements OnInit {
     }
     step.formGroup.markAsTouched();
     this.formValue = step;
+  }
+
+  isStepperLinear() {
+    return !every(this.stepFormGroups, s => s.formGroup.valid);
   }
 }

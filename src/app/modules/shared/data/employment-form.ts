@@ -23,6 +23,7 @@ import {
   ProhibitedWorkPolicyComponent,
 } from '../../dashboard/components/documents';
 import {SkillsComponent} from '../../dashboard/components/skills/skills-component';
+import {UscisI9FormComponent} from '../../dashboard/components/documents/uscis-i-9-form/uscis-i-9-form.component';
 
 const textTypeDefaultMinLength = 0;
 const textTypeDefaultMaxLength = 255;
@@ -31,6 +32,7 @@ const commonFieldsForDocumentType = {
   label: '',
   type: 'document',
   required: true,
+  isPanEnabled: false,
   controlLabels: {
     buttons: {
       agree: 'I agree, Next',
@@ -1028,6 +1030,17 @@ export const EmploymentContractForm: Array<any> = [
       {
         componentRef: WaiverOfRightToTrialByJuryPolicyComponent,
         ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'uscisI9Form',
+    label: 'USCIS Form I9',
+    fields: [
+      {
+        componentRef: UscisI9FormComponent,
+        ...commonFieldsForDocumentType,
+        isPanEnabled: true,
       }
     ]
   },

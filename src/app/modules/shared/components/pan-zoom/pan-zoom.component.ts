@@ -9,6 +9,7 @@ import {DocumentHostDirective} from '../../directives';
 export class PanZoomComponent implements AfterViewInit, OnInit {
   panController: any;
   @Input() componentToPan: any;
+  @Input() field: any;
   @Input() formData: any;
   @ViewChild('scene', {static: false}) scene: ElementRef;
   @ViewChild(DocumentHostDirective, {static: true}) documentHost: DocumentHostDirective;
@@ -20,11 +21,13 @@ export class PanZoomComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.panController = panzoom(this.scene.nativeElement, {
-    //   maxZoom: 1.5,
-    //   minZoom: 0.1
-    // });
-    // this.panController.zoomTo(0, 0, 0.3);
+    if (this.field.isPanEnabled) {
+      this.panController = panzoom(this.scene.nativeElement, {
+        maxZoom: 1.5,
+        minZoom: 0.1
+      });
+      this.panController.zoomTo(0, 0, 0.45);
+    }
   }
 
   loadComponent(): void {

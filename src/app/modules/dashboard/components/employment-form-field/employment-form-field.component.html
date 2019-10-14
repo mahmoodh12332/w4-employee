@@ -140,7 +140,7 @@
 
   <!--Document Field-->
   <ng-container *ngSwitchCase="field.type === 'document'">
-    <app-panzoom [componentToPan]="field.componentRef" [formData]="formData"></app-panzoom>
+    <app-panzoom [componentToPan]="field.componentRef" [formData]="formData" [field]="field"></app-panzoom>
     <div class="row">
       <div class="col-12 col-md-4 col-lg-4 mb-4 text-left">
         <button mat-raised-button (click)="stepper.previous()" [hidden]="stepper.selectedIndex === 0">

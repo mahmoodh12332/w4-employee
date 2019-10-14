@@ -15,7 +15,8 @@ import {WaiverOfRightToTrialByJuryPolicyComponent} from './waiver-of-right-to-tr
 import {WorkersCompTxPolicyComponent} from './workers-comp-tx/workers-comp-tx-policy.component';
 import {TransportationAgreementComponent} from './transportation-agreement/transportation-agreement.component';
 import {WelcomeToPPSCompanyPoliciesAndProceduresComponent} from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component'
-import {ProhibitedWorkPolicyComponent} from './prohibited-work-policy/prohibited-work-policy.component'
+import {ProhibitedWorkPolicyComponent} from './prohibited-work-policy/prohibited-work-policy.component';
+import {UscisI9FormComponent} from './uscis-i-9-form/uscis-i-9-form.component';
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -36,6 +37,7 @@ export const DocumentComponents = [
   TransportationAgreementComponent,
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
   ProhibitedWorkPolicyComponent,
+  UscisI9FormComponent,
 ];
 
 export default {

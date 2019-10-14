@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidator} from '../../shared/validators';
-import {reduce} from 'lodash';
+import {reduce, map} from 'lodash';
 import * as moment from 'moment';
 
 class MyCustomFormControl extends FormControl {
@@ -12,7 +12,7 @@ class MyCustomFormControl extends FormControl {
   }
 
   $getValue() {
-    if (this.value instanceof Date || this.fieldType === 'date') {
+    if (this.value && (this.value instanceof Date || this.fieldType === 'date')) {
       return moment(this.value.toISOString()).format('YYYY-MM-DD');
     }
     return this.value;
@@ -22,7 +22,6 @@ class MyCustomFormGroup extends FormGroup {
   constructor(a, b?, c?) {
     super(a, b, c);
   }
-
   getRawValue(): any {
     return this.$getValues();
   }
@@ -33,6 +32,16 @@ class MyCustomFormGroup extends FormGroup {
       return acc;
     }, {});
   }
+
+  /**
+   * Loop and touch all it has
+   *
+   * @param {FormGroup} formGroup
+   * @param func << function name: [markAsTouched, markAsUntouched, markAsDirty, markAsPristine, markAsPending
+   * @param opts
+   *
+   */
+
 }
 
 @Injectable()
@@ -74,7 +83,7 @@ export class EmploymentFormService {
       } else if (values[field.name]) {
         currentValue = values[field.name];
       }
-      const formControl = new MyCustomFormControl(field.type,{
+      const formControl = new MyCustomFormControl(field.type, {
         value: currentValue,
         disabled: field.disabled,
       }, validators);
