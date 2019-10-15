@@ -20,7 +20,7 @@ import {
   WorkersCompTxPolicyComponent,
   TransportationAgreementComponent,
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
-  ProhibitedWorkPolicyComponent,
+  ProhibitedWorkPolicyComponent, W4FormComponent,
 } from '../../dashboard/components/documents';
 import {SkillsComponent} from '../../dashboard/components/skills/skills-component';
 import {UscisI9FormComponent} from '../../dashboard/components/documents/uscis-i-9-form/uscis-i-9-form.component';
@@ -32,6 +32,7 @@ const commonFieldsForDocumentType = {
   label: '',
   type: 'document',
   required: true,
+  isFullWidthField: true,
   isPanEnabled: false,
   controlLabels: {
     buttons: {
@@ -52,6 +53,7 @@ export const EmploymentApplicationForm: Array<any> = [
         label: 'SSN',
         type: 'text',
         defaultValue: '',
+        isFullWidthField: false,
         isMasked: false,
         disabled: true,
         required: false,
@@ -67,6 +69,7 @@ export const EmploymentApplicationForm: Array<any> = [
         defaultValue: '',
         isMasked: false,
         disabled: false,
+        isFullWidthField: false,
         mask: null,
         required: true,
         minLength: textTypeDefaultMinLength,
@@ -79,6 +82,7 @@ export const EmploymentApplicationForm: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
+        isFullWidthField: false,
         disabled: false,
         mask: null,
         required: false,
@@ -92,6 +96,7 @@ export const EmploymentApplicationForm: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
+        isFullWidthField: false,
         mask: null,
         required: true,
         minLength: textTypeDefaultMinLength,
@@ -102,6 +107,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'otherName',
         label: 'Other Name',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         mask: null,
@@ -113,6 +119,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'bi-dateOfBirth',
         name: 'birthDate',
         label: 'DOB',
+        isFullWidthField: false,
         type: 'date',
         disabled: false,
         defaultValue: new Date(),
@@ -126,6 +133,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'bi-gender',
         name: 'gender',
         label: 'Gender',
+        isFullWidthField: true,
         type: 'radioButton',
         isMasked: false,
         defaultValue: null,
@@ -156,6 +164,7 @@ export const EmploymentApplicationForm: Array<any> = [
         label: 'Street Number',
         type: 'text',
         defaultValue: '',
+        isFullWidthField: false,
         isMasked: false,
         disabled: false,
         required: true,
@@ -170,6 +179,7 @@ export const EmploymentApplicationForm: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
+        isFullWidthField: false,
         disabled: false,
         required: true,
         mask: null,
@@ -183,6 +193,7 @@ export const EmploymentApplicationForm: Array<any> = [
         type: 'text',
         defaultValue: '',
         isMasked: false,
+        isFullWidthField: false,
         disabled: false,
         required: false,
         mask: null,
@@ -195,6 +206,7 @@ export const EmploymentApplicationForm: Array<any> = [
         label: 'City',
         type: 'text',
         defaultValue: '',
+        isFullWidthField: false,
         isMasked: false,
         disabled: false,
         required: true,
@@ -207,6 +219,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'state',
         label: 'State',
         type: 'dropdown',
+        isFullWidthField: false,
         options: States,
         defaultValue: '',
         isMasked: false,
@@ -220,6 +233,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'add-zipCode',
         name: 'zipCode',
         label: 'Zip Code',
+        isFullWidthField: false,
         type: 'text',
         defaultValue: '',
         isMasked: true,
@@ -243,6 +257,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'pe-homePhone',
         name: 'phone',
         label: 'Home Phone',
+        isFullWidthField: false,
         type: 'text',
         defaultValue: '',
         isMasked: true,
@@ -256,6 +271,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'pe-mobilePhone',
         name: 'altPhone',
         label: 'Mobile Phone',
+        isFullWidthField: false,
         type: 'text',
         defaultValue: '',
         isMasked: true,
@@ -270,6 +286,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'email',
         label: 'Email',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,63}$/,
@@ -294,6 +311,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'w4MaritalStatus',
         label: 'Marital Status',
         type: 'radioButton',
+        isFullWidthField: true,
         options: [
           {
             value: 'S',
@@ -321,6 +339,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'w4TotalAllowances',
         label: 'Total Dependant',
         type: 'number',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         disabled: false,
@@ -347,6 +366,7 @@ export const EmploymentApplicationForm: Array<any> = [
             label: 'No'
           }
         ],
+        isFullWidthField: true,
         isMasked: false,
         disabled: false,
         required: true,
@@ -365,6 +385,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'contactFirst',
         label: 'First Name',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         disabled: false,
@@ -377,6 +398,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'contactLast',
         label: 'Last Name',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         mask: null,
@@ -389,6 +411,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'contactHome',
         label: 'Home Phone',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: true,
         disabled: false,
@@ -402,6 +425,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'contactMobile',
         label: 'Mobile Phone',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: true,
         disabled: false,
@@ -416,6 +440,7 @@ export const EmploymentApplicationForm: Array<any> = [
         label: 'Relationship',
         type: 'text',
         defaultValue: '',
+        isFullWidthField: false,
         isMasked: false,
         disabled: false,
         mask: null,
@@ -434,6 +459,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'dmvType',
         label: 'Identification',
         type: 'radioButton',
+        isFullWidthField: true,
         options: [
           {
             label: 'Driver License',
@@ -460,6 +486,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'identDoc-document',
         name: 'dMVDocumentNbr',
         label: 'Document',
+        isFullWidthField: false,
         type: 'text',
         defaultValue: '',
         isMasked: false,
@@ -474,6 +501,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'stateIssuingAuthority',
         label: 'Issue State',
         type: 'dropdown',
+        isFullWidthField: false,
         options: States,
         defaultValue: '',
         isMasked: false,
@@ -489,6 +517,7 @@ export const EmploymentApplicationForm: Array<any> = [
         label: 'Exp. Date (if any)',
         type: 'date',
         defaultValue: '',
+        isFullWidthField: false,
         isMasked: false,
         disabled: false,
         mask: null,
@@ -507,6 +536,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'citizenship',
         label: 'Citizenship',
         type: 'radioButton',
+        isFullWidthField: true,
         options: [
           {
             label: 'A citizen of the United States',
@@ -521,7 +551,7 @@ export const EmploymentApplicationForm: Array<any> = [
             value: 6
           },
           {
-            label: 'An alien authorized to work',
+            label: 'An alien authorized to work until expiration',
             value: 7
           },
         ],
@@ -537,32 +567,7 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'citizen-uscisNumber',
         name: 'lPRAlienNumber',
         label: 'USCIS #',
-        type: 'text',
-        defaultValue: '',
-        isMasked: false,
-        disabled: true,
-        required: false,
-        mask: null,
-        minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
-      },
-      {
-        id: 'citizen-alienNumber',
-        name: 'alienNumber',
-        label: 'Alien Number',
-        type: 'text',
-        defaultValue: '',
-        isMasked: false,
-        disabled: true,
-        required: false,
-        mask: null,
-        minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
-      },
-      {
-        id: 'citizen-i94Number',
-        name: 'i94Number',
-        label: 'I-94 Number',
+        isFullWidthField: false,
         type: 'text',
         defaultValue: '',
         isMasked: false,
@@ -575,8 +580,9 @@ export const EmploymentApplicationForm: Array<any> = [
       {
         id: 'citizen-expireDate',
         name: 'alienExpirationDate',
-        label: 'Exp. Date (if any)',
+        label: 'Expiration Date (if any)',
         type: 'date',
+        isFullWidthField: true,
         defaultValue: '',
         isMasked: false,
         disabled: true,
@@ -584,6 +590,68 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         minLength: null,
         maxLength: null,
+      },
+      {
+        id: 'citizen-alienNumber',
+        name: 'alienNumber',
+        label: 'Alien Registration Number',
+        bottomText: 'OR',
+        showFieldNumber: '1',
+        type: 'text',
+        isFullWidthField: true,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
+        id: 'citizen-i94Number',
+        name: 'i94Number',
+        label: 'Form I-94 Admission Number',
+        showFieldNumber: '2',
+        type: 'text',
+        bottomText: 'OR',
+        isFullWidthField: true,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
+        id: 'citizen-foreignPassportNumber',
+        name: 'foreignPassportNumber',
+        label: 'Foreign Passport Number',
+        showFieldNumber: '3',
+        type: 'text',
+        isFullWidthField: true,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
+        id: 'citizen-countryOfIssuance',
+        name: 'countryOfIssuance',
+        label: 'Country Of Issuance',
+        type: 'dropdown',
+        options: [],
+        isFullWidthField: true,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
       },
     ]
   },
@@ -596,6 +664,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'skills',
         label: 'Skills',
         type: 'group',
+        isFullWidthField: true,
         useCustomComponent: SkillsComponent,
         controlLabels: {
           modal: {
@@ -618,6 +687,7 @@ export const EmploymentApplicationForm: Array<any> = [
             type: 'dropdown',
             options: Skills,
             defaultValue: '',
+            isFullWidthField: false,
             isMasked: false,
             disabled: false,
             required: true,
@@ -631,6 +701,7 @@ export const EmploymentApplicationForm: Array<any> = [
             label: 'Level',
             type: 'dropdown',
             options: Levels,
+            isFullWidthField: false,
             defaultValue: '',
             isMasked: false,
             disabled: false,
@@ -644,6 +715,7 @@ export const EmploymentApplicationForm: Array<any> = [
             name: 'years',
             label: 'Years',
             type: 'dropdown',
+            isFullWidthField: false,
             options: [
               {
                 label: 'Less than a Year',
@@ -686,6 +758,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'workTemp',
         label: 'Have you ever worked for a temporary employment service before?',
         type: 'radioButton',
+        isFullWidthField: true,
         options: [
           {
             label: 'Yes',
@@ -708,6 +781,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'workHistories',
         label: 'History',
         type: 'group',
+        isFullWidthField: true,
         isUnique: true,
         controlLabels: {
           modal: {
@@ -844,6 +918,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'hearAboutUs',
         label: 'How did you hear about us?',
         type: 'text',
+        isFullWidthField: false,
         defaultValue: '',
         isMasked: false,
         mask: null,
@@ -855,10 +930,117 @@ export const EmploymentApplicationForm: Array<any> = [
         id: 'ad-done',
         name: 'formSubmit',
         type: 'submit',
-        label: 'Continue to contract forms'
+        isFullWidthField: true,
+        label: 'Continue to verification'
       }
     ]
   }
+];
+export const EmploymentConfirmationForm: Array<any> = [
+  {
+    name: 'fieldToVerify',
+    label: 'Verify Information',
+    fields: [
+      {
+        id: 'ftv-firstName',
+        label: 'First Name',
+        type: 'displayValue',
+        isFullWidthField: false,
+        required: false,
+        valueAccessor: 'basicInformation.firstName',
+      },
+      {
+        id: 'ftv-lastName',
+        label: 'Last Name',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'basicInformation.lastName',
+      },
+      {
+        id: 'ftv-ssn',
+        label: 'SSN',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'basicInformation.socialSecurityNo',
+      },
+      {
+        id: 'ftv-dateOfBirth',
+        label: 'DOB',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'basicInformation.birthDate',
+      },
+      {
+        id: 'ftv-address',
+        label: 'Address',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'address.address',
+      },
+      {
+        id: 'ftv-phone',
+        label: 'Phone Number',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'phoneAndEmail.phone',
+      },
+      {
+        id: 'ftv-email',
+        label: 'Email',
+        type: 'displayValue',
+        required: false,
+        isFullWidthField: false,
+        valueAccessor: 'phoneAndEmail.email',
+      },
+      {
+        id: 'ftv-verificationControls',
+        type: 'verificationControls',
+        required: true,
+        isFullWidthField: true,
+        controlLabels: {
+          buttons: {
+            verify: 'Confirm',
+            back: 'Edit Info',
+          }
+        },
+        onBackLink: '/dashboard/employment-application'
+      }
+    ]
+  },
+  {
+    name: 'uscisI9Form',
+    label: 'USCIS Form I9',
+    fields: [
+      {
+        componentRef: UscisI9FormComponent,
+        ...commonFieldsForDocumentType,
+        isPanEnabled: true,
+      }
+    ]
+  },
+  {
+    name: 'w4Form',
+    label: 'Form W-4',
+    fields: [
+      {
+        componentRef: W4FormComponent,
+        ...commonFieldsForDocumentType,
+        isPanEnabled: true,
+        submitOnNext: true,
+        controlLabels: {
+          buttons: {
+            agree: 'Continue to Contracts',
+            disagree: 'I disagree',
+          }
+        }
+      }
+    ]
+  },
 ];
 export const EmploymentContractForm: Array<any> = [
   {
@@ -1034,17 +1216,6 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
   {
-    name: 'uscisI9Form',
-    label: 'USCIS Form I9',
-    fields: [
-      {
-        componentRef: UscisI9FormComponent,
-        ...commonFieldsForDocumentType,
-        isPanEnabled: true,
-      }
-    ]
-  },
-  {
     name: 'WelcomeToPPSCompanyPoliciesAndProcedures',
     label: 'Welcome To PPS Company Policies And Procedures',
     fields: [
@@ -1069,6 +1240,7 @@ export const EmploymentContractForm: Array<any> = [
         name: 'signature64',
         type: 'signature',
         label: 'Signature',
+        isFullWidthField: true,
         controlLabels: {
           buttons: {
             reset: 'Clear',
@@ -1081,6 +1253,7 @@ export const EmploymentContractForm: Array<any> = [
         id: 'yourSig-done',
         name: 'formSubmit',
         type: 'submit',
+        isFullWidthField: true,
         label: 'Submit'
       }
     ]

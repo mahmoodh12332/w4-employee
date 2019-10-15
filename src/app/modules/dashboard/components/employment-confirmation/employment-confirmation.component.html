@@ -1,18 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2 offset-lg-2 offset-sm-0 mb-2 mt-5">
-      <button mat-raised-button color="default" [disabled]="isSubmitting" routerLink="/dashboard/employment-confirmation">
+      <button mat-raised-button color="default" routerLink="/dashboard/employment-application">
         <span class="icon-arrow-left2"></span>
-        Back to Confirmation
+        Back To Application
       </button>
     </div>
   </div>
 </div>
 <app-employment-form
   [dataValues]="formValues"
+  [steps]="steps"
   [showNextButton]="false"
   [showBackButton]="false"
-  [steps]="steps"
-  [isSubmitting]="isSubmitting"
   (formSubmit)="onFormSubmit($event)">
 </app-employment-form>

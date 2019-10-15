@@ -14,6 +14,7 @@ import {SkillsComponent} from './components/skills/skills-component';
 import {DashboardServices} from './services';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material';
 import {DocumentComponents} from './components/documents';
+import {EmploymentConfirmationComponent} from './components/employment-confirmation/employment-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {DocumentComponents} from './components/documents';
     EmploymentModalComponent,
     EmploymentContractComponent,
     EmploymentApplicationComponent,
+    EmploymentConfirmationComponent,
     SkillsComponent,
     ...DocumentComponents,
   ],
@@ -37,6 +39,7 @@ import {DocumentComponents} from './components/documents';
     EmploymentModalComponent,
     EmploymentContractComponent,
     EmploymentApplicationComponent,
+    EmploymentConfirmationComponent,
     SkillsComponent,
     ...DocumentComponents,
   ],

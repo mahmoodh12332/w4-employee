@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {find, startCase} from 'lodash';
+import {find, startCase, get} from 'lodash';
 import * as moment from 'moment';
 import {DATE_FORMAT} from '../../../shared/data/constants';
 
@@ -14,7 +14,7 @@ import {Helper} from '../../../shared/classes/helper';
   selector: 'app-employment-form-field',
   templateUrl: './employment-form-field.component.html'
 })
-export class EmploymentFormFieldComponent{
+export class EmploymentFormFieldComponent {
   public dateFormat = DATE_FORMAT;
   @Input() public stepper: any;
   @Input() public isSubmitting: boolean;
@@ -88,14 +88,20 @@ export class EmploymentFormFieldComponent{
     const alienNumber = 'alienNumber';
     const i94Number = 'i94Number';
     const expireDate = 'alienExpirationDate';
+    const countryOfIssuance = 'countryOfIssuance';
+    const foreignPassportNumber = 'foreignPassportNumber';
     this.step.formGroup.controls[uscisNumber].disable();
     this.step.formGroup.controls[alienNumber].disable();
     this.step.formGroup.controls[i94Number].disable();
     this.step.formGroup.controls[expireDate].disable();
+    this.step.formGroup.controls[countryOfIssuance].disable();
+    this.step.formGroup.controls[foreignPassportNumber].disable();
     this.step.formGroup.controls[uscisNumber].reset();
     this.step.formGroup.controls[alienNumber].reset();
     this.step.formGroup.controls[i94Number].reset();
     this.step.formGroup.controls[expireDate].reset();
+    this.step.formGroup.controls[countryOfIssuance].reset();
+    this.step.formGroup.controls[foreignPassportNumber].reset();
     if (this.field.formControl.value === 6) {
       this.step.formGroup.controls[uscisNumber].enable();
       return;
@@ -103,6 +109,8 @@ export class EmploymentFormFieldComponent{
       this.step.formGroup.controls[alienNumber].enable();
       this.step.formGroup.controls[i94Number].enable();
       this.step.formGroup.controls[expireDate].enable();
+      this.step.formGroup.controls[countryOfIssuance].enable();
+      this.step.formGroup.controls[foreignPassportNumber].enable();
     }
   }
 
@@ -160,6 +168,10 @@ export class EmploymentFormFieldComponent{
 
   handleStepperNext(value) {
     this.field.formControl.setValue(value);
+    if (this.field.submitOnNext) {
+      this.submitForm.emit();
+      return;
+    }
     this.stepper.next();
   }
 
@@ -175,5 +187,15 @@ export class EmploymentFormFieldComponent{
     }
     this.field.formControl.setValue(false);
     this.stepper.next();
+  }
+
+  processValueAccessor() {
+    if (typeof this.field.valueAccessor === 'string') {
+      return (get(this.formData, this.field.valueAccessor, '-') || '-');
+    }
+  }
+
+  handleVerficationLinkClick() {
+    this.router.navigate([this.field.onBackLink]);
   }
 }

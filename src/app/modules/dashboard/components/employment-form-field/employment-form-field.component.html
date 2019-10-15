@@ -19,6 +19,9 @@
       >
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
+    <div class="w-100 text-center" *ngIf="field.bottomText">
+      <p><b>--{{field.bottomText}}--</b></p>
+    </div>
   </ng-container>
 
   <!--Number Field-->
@@ -179,6 +182,30 @@
     </div>
     <div class="w-100 mt-1 mb-1">
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
+    </div>
+  </ng-container>
+
+  <!--Display Field-->
+  <ng-container *ngSwitchCase="field.type ==='displayValue'">
+    <div class="w-100 mt-3 mb-3">
+      <h6>{{field.label}}</h6>
+      <p>{{processValueAccessor()}}</p>
+    </div>
+  </ng-container>
+
+  <!--Verification Control-->
+  <ng-container *ngSwitchCase="field.type ==='verificationControls'">
+    <div class="row">
+      <div class="col-6 text-left">
+        <button mat-raised-button (click)="handleVerficationLinkClick()">
+          {{field.controlLabels.buttons.back}}
+        </button>
+      </div>
+      <div class="col-6 text-right">
+        <button mat-raised-button color="primary" (click)="field.formControl.setValue(true);stepper.next()">
+          {{field.controlLabels.buttons.verify}}
+        </button>
+      </div>
     </div>
   </ng-container>
 </ng-container>

@@ -5,6 +5,7 @@ import {EmployeeContractGuardService} from './services';
 import {DashboardComponent} from './dashboard.component';
 import {EmploymentApplicationComponent} from './components/employment-application/employment-application.component';
 import {EmploymentContractComponent} from './components/employment-contract/employment-contract.component';
+import {EmploymentConfirmationComponent} from './components/employment-confirmation/employment-confirmation.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
         path: 'employment-contract',
         canActivate: [EmployeeContractGuardService],
         component: EmploymentContractComponent
+      },
+      {
+        path: 'employment-confirmation',
+        canActivate: [EmployeeContractGuardService],
+        component: EmploymentConfirmationComponent
       }
     ]
   },

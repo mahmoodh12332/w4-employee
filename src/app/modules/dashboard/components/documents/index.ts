@@ -17,6 +17,7 @@ import {TransportationAgreementComponent} from './transportation-agreement/trans
 import {WelcomeToPPSCompanyPoliciesAndProceduresComponent} from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component'
 import {ProhibitedWorkPolicyComponent} from './prohibited-work-policy/prohibited-work-policy.component';
 import {UscisI9FormComponent} from './uscis-i-9-form/uscis-i-9-form.component';
+import {W4FormComponent} from './w-4-form/w-4-form.component';
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -38,6 +39,7 @@ export const DocumentComponents = [
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
   ProhibitedWorkPolicyComponent,
   UscisI9FormComponent,
+  W4FormComponent,
 ];
 
 export default {
@@ -59,6 +61,7 @@ export default {
   TransportationAgreementComponent,
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
   ProhibitedWorkPolicyComponent,
+  W4FormComponent,
 };
 
 export * from './arbitration-agreement/arbitration-agreement-policy.component';
@@ -78,4 +81,6 @@ export * from './waiver-of-right-to-trial-by-jury/waiver-of-right-to-trial-by-ju
 export * from './workers-comp-tx/workers-comp-tx-policy.component';
 export * from './transportation-agreement/transportation-agreement.component';
 export * from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-company-policies-and-procedures.component'
-export * from './prohibited-work-policy/prohibited-work-policy.component'
+export * from './prohibited-work-policy/prohibited-work-policy.component';
+export * from './uscis-i-9-form/uscis-i-9-form.component';
+export * from './w-4-form/w-4-form.component';

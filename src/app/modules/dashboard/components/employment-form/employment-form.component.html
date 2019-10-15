@@ -12,9 +12,9 @@
                     <ng-container *ngFor="let field of step.fields">
                       <app-employment-form-field
                         [ngClass]="{
-                        'col-md-6 col-sm-12': field.type !== 'signature' && field.type !== 'document' && field.type !== 'submit' && field.type !== 'radioButton' && field.type !== 'group',
+                        'col-md-6 col-sm-12': !field.isFullWidthField,
                         'w-100': field.type === 'date',
-                        'col-12': field.type == 'signature' || field.type === 'radioButton' || field.type === 'group' || field.type === 'document' || field.type === 'submit'
+                        'col-12': field.isFullWidthField
                         }"
                         *ngIf="field.formControl.enabled || field.id === 'bi-ssn'"
                         [step]="step"
