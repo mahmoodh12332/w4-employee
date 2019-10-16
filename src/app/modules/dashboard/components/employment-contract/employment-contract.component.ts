@@ -19,9 +19,8 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   ngOnInit(): void {
     super.ngOnInit();
   }
-  onFormSubmit(data) {
+  onFormSubmit() {
     this.isSubmitting = true;
-    this.cookieService.getCookie('');
     this.appService.submitApplication(this.formValues).then((res) => {
       this.isSubmitting = false;
       this.appService.logoutUser();

@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import {States} from './states';
 import {Skills} from './skills';
 import {Levels} from './level';
+import {Countries} from './countries';
 import {
   ArbitrationAgreementPolicyComponent,
   CellularPhonePolicyComponent,
@@ -643,7 +644,7 @@ export const EmploymentApplicationForm: Array<any> = [
         name: 'countryOfIssuance',
         label: 'Country Of Issuance',
         type: 'dropdown',
-        options: [],
+        options: Countries,
         isFullWidthField: true,
         defaultValue: '',
         isMasked: false,
@@ -1000,6 +1001,7 @@ export const EmploymentConfirmationForm: Array<any> = [
       {
         id: 'ftv-verificationControls',
         type: 'verificationControls',
+        name: 'contractAgree',
         required: true,
         isFullWidthField: true,
         controlLabels: {

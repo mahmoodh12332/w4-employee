@@ -27,6 +27,9 @@
   </p>
   <div class="applicant">
     <!-- <img *ngIf="getValue('yourSignature.signature') !== 'No Value'" [src]="getValue('yourSignature.signature')" alt=""> -->
+    <span class="data-value">
+      {{getSignaturePlaceholder()}}
+    </span>
     <p>Applicant/Employee Signature </p>
     <span class="data-value">
       {{getPrintName()}}

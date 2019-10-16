@@ -1,7 +1,7 @@
 <div class="pannable-form">
   <div class="form-width">
     <div class="col-30">
-      <h1>Form W-4 (2019)</h1>
+      <h1>Form W-4 ({{getCurrentYear()}})</h1>
       <p><b>Future developments.</b> For the latest information about any future developments related to Form W-4, such as legislation enacted after it was published, go to www.irs.gov/FormW4.</p>
       <p><b>Purpose.</b> Complete Form W-4 so that your employer can withhold the correct federal income tax from your pay. Consider completing a new Form W-4 each year and when your personal or financial situation changes</p>
       <p><b>Exemption from withholding.</b> You may claim exemption from withholding for 2019 if <b>both</b> of the following apply.</p>
@@ -57,7 +57,7 @@
           </td>
           <td width="15%" class="border-bottom">
             <p class="font-10 text-center">OMB No. 1545-0074</p>
-            <h2 class="font-30 text-center">2019</h2>
+            <h2 class="font-30 text-center">{{getCurrentYear()}}</h2>
           </td>
         </tr>
       </table>
@@ -65,15 +65,21 @@
         <tr>
           <td width="33%" class="border-bottom">
             <p class="font-10">&nbsp;<b style="padding:0 8px;"> 1 </b>  &nbsp;    Your first name and middle initial</p>
-            <p class="background-color"> </p>
+            <p class="background-color">
+              <b>{{getValue('basicInformation.firstName')}} {{getValue('basicInformation.middleName')}}</b>
+            </p>
           </td>
           <td  width="%" class="border-left border-right border-bottom ">
             <p class="font-10"> &nbsp;Last name</p>
-            <p class="background-color"> </p>
+            <p class="background-color">
+              <b>{{getValue('basicInformation.lastName')}}</b>
+            </p>
           </td>
           <td width="30%" class="border-bottom" >
             <p class="font-10">&nbsp;<b style="padding:0 8px;"> 2</b> &nbsp;  Your social security number</p>
-            <p class="background-color"> </p>
+            <p class="background-color">
+              <b>{{getValue('basicInformation.socialSecurityNo')}}</b>
+            </p>
           </td>
         </tr>
       </table>
@@ -81,20 +87,22 @@
         <tr>
           <td class="border-bottom" width="42%">
             <p class="font-10">&nbsp;Home address (number and street or rural route) </p>
-            <p class="background-color"> </p>
+            <p class="background-color">
+              <b>{{getValue('address.streetNo')}} {{getValue('address.address')}}</b>
+            </p>
           </td>
           <td class="border-bottom border-left" >
             <p style="padding-top: 2px;" class="font-10">&nbsp; <b style="padding:0 8px;">3 </b>
               <label class="mycheckbox"> Single
-                <input type="checkbox" >
+                <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'S'">
                 <span class="checkmark"></span>
               </label>
               <label class="mycheckbox"> Married
-                <input type="checkbox" >
+                <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'M'">
                 <span class="checkmark"></span>
               </label>
               <label class="mycheckbox"> Married, but withhold at higher Single rate
-                <input type="checkbox" >
+                <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'H'">
                 <span class="checkmark"></span>
               </label>
             </p>
@@ -104,7 +112,11 @@
         <tr >
           <td class="border-bottom"  >
             <p class="font-10"> &nbsp;City or town, state, and ZIP code</p>
-            <p class="background-color"></p>
+            <p class="background-color">
+              <b>
+                {{getValue('address.city')}}, {{getValueStateORCountryDetail('address.state', 'state')}} and {{getValue('address.zipCode')}}
+              </b>
+            </p>
           </td>
           <td class="border-bottom border-left" >
             <p class="font-10">
@@ -129,7 +141,9 @@
 
           </td>
           <td class="border-bottom border-left" width="100">
-            <p class="background-color"></p>
+            <p class="background-color text-center">
+              <b>{{getValue('w4Information.w4TotalAllowances')}}</b>
+            </p>
 
           </td>
         </tr>
@@ -142,7 +156,7 @@
 
           </td>
           <td class="border-bottom border-left" width="100">
-            <p class="background-color">$</p>
+            <p class="background-color text-center">$ <b>0</b></p>
 
           </td>
         </tr>
@@ -168,7 +182,11 @@
             <p class="font-10 text-center"><b > 7</b></p>
           </td>
           <td class=" border-left border-top "  width="170">
-            <p class="background-color"></p>
+            <p class="background-color text-center">
+              {{
+                getValue('w4Information.w4_Exempt') ? 'Exempt' : ''
+              }}
+            </p>
           </td>
         </tr>
         <tr>
@@ -181,12 +199,12 @@
         <tr >
           <td class="border-bottom">
             <p class="font-10"><b>Employee’s signature </b></p>
-            <p class="font-10">(This form is not valid unless you sign it.) ▶</p>
+            <p class="font-10">(This form is not valid unless you sign it.) ▶   <b>{{getSignaturePlaceholder()}}</b></p>
 
           </td>
           <td class="border-bottom" width="30%">
             <p>  &nbsp;</p>
-            <p class="font-10">Date ▶</p>
+            <p class="font-10">Date ▶   <b>{{getTodayDate()}}</b></p>
           </td>
         </tr>
       </table>
@@ -194,18 +212,18 @@
         <tr>
           <td class="border-bottom">
             <p class="font-10">
-              &nbsp; <b style="padding:0 8px;float:left;width: 10px;">8</b><span style="width: 90%;float:left;"> Employer’s name and address (<b>Employer</b>: Complete boxes 8 and 10 if sending to IRS and complete
+              &nbsp; <b style="padding:0 8px;float:left;width: 30px;">8</b><span style="width: 90%;float:left;"> Employer’s name and address (<b>Employer</b>: Complete boxes 8 and 10 if sending to IRS and complete
                                         boxes 8, 9, and 10 if  sending to State Directory of New Hires.)</span>
             </p>
             <p class="background-color"></p>
           </td>
           <td class="border-left border-bottom">
-            <p class="font-10"> &nbsp; <b style="padding:0 8px;float:left;width: 10px;">9 </b><span style="width: 70%;float:left;">First date of
+            <p class="font-10"> &nbsp; <b style="padding:0 8px;float:left;width: 30px;">9 </b><span style="width: 70%;float:left;">First date of
                                         employment</span></p>
             <p class="background-color"></p>
           </td>
           <td  width="25%" class="border-left border-bottom">
-            <p class="font-10"> &nbsp; <b style="padding:0 8px;float:left;width: 10px;">10</b><span style="width: 70%;float:left;"> Employer identification
+            <p class="font-10"> &nbsp; <b style="padding:0 8px;float:left;width: 30px;">10</b><span style="width: 70%;float:left;"> Employer identification
                                         number (EIN)</span></p>
             <p class="background-color"></p>
           </td>

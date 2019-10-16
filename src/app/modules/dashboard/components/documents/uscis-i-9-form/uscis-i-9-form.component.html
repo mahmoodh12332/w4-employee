@@ -65,19 +65,28 @@
         <tr class="border-b" width="100%">
           <td >
             <p class="font-10">Last Name (Family Name)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('basicInformation.lastName')}}</b>
+            </p>
+
           </td>
           <td>
             <p class="font-10"> First Name (Given Name)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('basicInformation.firstName')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">Middle Initial</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('basicInformation.middleName')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">Other Last Names Used (if any)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('basicInformation.otherName')}}</b>
+            </p>
           </td>
         </tr>
       </table>
@@ -85,23 +94,34 @@
         <tr class="border-b">
           <td>
             <p class="font-10">Address (Street Number and Name)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('address.address')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">Apt. Number</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('address.aptno')}}</b>
+            </p>
+
           </td>
           <td>
             <p class="font-10">City or Town</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('address.city')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">State</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValueStateORCountryDetail('address.state', 'state')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">ZIP Code</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('address.zipCode')}}</b>
+            </p>
           </td>
         </tr>
       </table>
@@ -109,30 +129,50 @@
         <tr>
           <td >
             <p class="font-10">Date of Birth (mm/dd/yyyy)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('basicInformation.birthDate', true)}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">U.S. Social Security Number</p>
             <p style="padding-left: 10px;" class="font-10 space-bar">
-              <span></span>
-              <span ></span>
-              <span class="border-right"></span>
+              <span>
+                <b>{{getValue('basicInformation.socialSecurityNo')[0]}}</b>
+              </span>
+              <span><b>{{getValue('basicInformation.socialSecurityNo')[1]}}</b></span>
+              <span class="border-right">
+                <b>{{getValue('basicInformation.socialSecurityNo')[2]}}</b>
+              </span>
               <span style="border:0;padding:0 5px;">-</span>
-              <span></span>
-              <span class="border-right"></span>
+              <span>
+                <b>{{getValue('basicInformation.socialSecurityNo')[3]}}</b>
+              </span>
+              <span class="border-right">
+                <b>{{getValue('basicInformation.socialSecurityNo')[4]}}</b>
+              </span>
               <span style="border:0;padding:0 5px;">-</span>
-              <span></span>
-              <span></span>
-              <span class="border-right"></span>
+              <span>
+                <b>{{getValue('basicInformation.socialSecurityNo')[5]}}</b>
+              </span>
+              <span>
+                <b>{{getValue('basicInformation.socialSecurityNo')[6]}}</b>
+              </span>
+              <span class="border-right">
+                <b>{{getValue('basicInformation.socialSecurityNo')[7]}}</b>
+              </span>
             </p>
           </td>
           <td>
             <p class="font-10"> Employee's E-mail Address</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('phoneAndEmail.email')}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">Employee's Telephone Number</p>
-            <p>&nbsp;</p>
+            <p class="font-10 space-bar">
+              <b>{{getValue('phoneAndEmail.homePhone')}}</b>
+            </p>
           </td>
         </tr>
       </table>
@@ -143,7 +183,7 @@
         <tr >
           <td style=";border-right:2px solid;" colspan="2">
             <label class="mycheckbox"> 1. A citizen of the United States
-              <input type="checkbox" >
+              <input type="checkbox" [checked]="getValue('citizenship.citizenship') === 4">
               <span class="checkmark"></span>
             </label>
           </td>
@@ -151,34 +191,37 @@
         <tr>
           <td style="border-right:2px solid;" colspan="2">
             <label class="mycheckbox"> 2. A noncitizen national of the United States (See instructions)
-              <input type="checkbox" >
+              <input type="checkbox" [checked]="getValue('citizenship.citizenship') === 5">
               <span class="checkmark"></span>
             </label>
           </td>
         </tr>
         <tr>
           <td style="border-right:2px solid;" colspan="2">
-            <label class="mycheckbox"> 3. A lawful permanent resident (Alien Registration Number/USCIS Number): ________________________
-              <input type="checkbox" >
+            <label class="mycheckbox">
+              3. A lawful permanent resident (Alien Registration Number/USCIS Number): <b class="border-bottom">{{getValue('citizenship.lPRAlienNumber')}}</b>
+              <input type="checkbox" [checked]="getValue('citizenship.citizenship') === 6">
               <span class="checkmark"></span>
             </label>
           </td>
         </tr>
         <tr>
           <td style="border-bottom:2px solid;">
-            <label class="mycheckbox"> 4. An alien authorized to work until (expiration date, if applicable, mm/dd/yyyy): _____________________
-              <input type="checkbox" >
+            <label class="mycheckbox"> 4. An alien authorized to work until (expiration date, if applicable, mm/dd/yyyy): <b class="border-bottom">{{getValue('citizenship.alienExpirationDate', true)}}</b>
+              <input type="checkbox" [checked]="getValue('citizenship.citizenship') === 7">
               <span class="checkmark"></span>
             </label>
             <p style="padding-left:25px;" class="font-10">Some aliens may write "N/A" in the expiration date field. (See instructions)</p>
             <p style="margin:10px 0;padding-left:25px;" class="font-10"><i>Aliens authorized to work must provide only one of the following document numbers to complete Form I-9:
               An Alien Registration Number/USCIS Number OR Form I-94 Admission Number OR Foreign Passport Number.</i></p>
-            <p  style="padding-left:25px;"  class="font-10">1. Alien Registration Number/USCIS Number:  ______________________</p>
+            <p  style="padding-left:25px;"  class="font-10">
+              1. Alien Registration Number/USCIS Number:  <b class="border-bottom">{{getValue('citizenship.alienNumber')}}</b>
+            </p>
             <b  class="font-10" style="padding-left:20%">OR</b>
-            <p style="padding-left:25px;"  class="font-10">2. Form I-94 Admission Number:  ________________________________</p>
+            <p style="padding-left:25px;"  class="font-10">2. Form I-94 Admission Number:  <b class="border-bottom">{{getValue('citizenship.i94Number')}}</b></p>
             <b   class="font-10" style="padding-left:20%">OR</b>
-            <p style="padding-left:25px;"  class="font-10">3. Foreign Passport Number:  ___________________________________</p>
-            <p  style="padding-left:25px;" class="font-10"> &nbsp; &nbsp; &nbsp;Country of Issuance:  _______________________________________</p>
+            <p style="padding-left:25px;"  class="font-10">3. Foreign Passport Number:  <b class="border-bottom">{{getValue('citizenship.foreignPassportNumber')}}</b></p>
+            <p  style="padding-left:25px;" class="font-10"> &nbsp; &nbsp; &nbsp;Country of Issuance:  <b class="border-bottom">{{getValueStateORCountryDetail('citizenship.countryOfIssuance', 'country')}}</b></p>
           </td>
           <td style="border-right: 0;border-bottom: 0;" width="20%">
             <div style="margin:30px 0px 0px 10px;height:160px;border:2px solid #000;">
@@ -192,11 +235,15 @@
         <tr>
           <td>
             <p class="font-10">Signature of Employee</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getSignaturePlaceholder()}}</b>
+            </p>
           </td>
           <td>
             <p class="font-10">Today's Date (mm/dd/yyyy)</p>
-            <p class="font-10 space-bar"></p>
+            <p class="font-10 space-bar">
+              <b>{{getTodayDate()}}</b>
+            </p>
           </td>
         </tr>
       </table>

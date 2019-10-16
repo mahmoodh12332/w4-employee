@@ -18,6 +18,9 @@
   <p>Employee’s Printed Name: <span class="text-decoration-underline"> {{getPrintName()}}</span> </p>
   <p>Today’s Date: <span class="text-decoration-underline">{{getTodayDate()}}</span> </p>
   <p>Employee’s Signature:
+    <span class="data-value">
+      {{getSignaturePlaceholder()}}
+    </span>
     <!--  <img *ngIf="getValue('yourSignature.signature') !== 'No Value'" [src]="getValue('yourSignature.signature')" alt=""> -->
   </p>
   <p>Employee’s Personal Representative (if applicable)</p>

@@ -18,6 +18,9 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
     super.ngOnInit();
   }
   onFormSubmit(data) {
+    if (data && data.fieldToVerify) {
+      delete data.fieldToVerify.undefined;
+    }
     this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(data), 1);
     this.router.navigate(['/dashboard/employment-contract']);
   }

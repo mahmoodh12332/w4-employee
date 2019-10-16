@@ -126,7 +126,7 @@ ol li{
     padding-bottom: 5px ;
   }
   .form-width{
-    width:1000px;
+    width: 1108px;
     text-align: left;
     margin: 0 auto;
     position: relative;
@@ -193,16 +193,16 @@ ol li{
     font-weight: 900;
   }
   .border-bottom{
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #000 !important;
   }
   .border-left{
-    border-left: 1px solid #000;
+    border-left: 1px solid #000 !important;
   }
   .border-right{
-    border-right: 1px solid #000;
+    border-right: 1px solid #000 !important;
   }
   .border-top{
-    border-top: 1px solid #000;
+    border-top: 1px solid #000 !important;
   }
   .text-center{
     text-align: center;
@@ -216,7 +216,7 @@ ol li{
   }
   .background-color{
     background-color: #f1f4ff;
-    height: 25px;
+    min-height: 25px;
     float: left;width:100%;
   }
   .space-bar{
@@ -252,6 +252,7 @@ ol li{
   /* Checkbox contain */
   .mycheckbox {
     position: relative;
+    pointer-events: none;
     padding-left: 25px;
     padding-right:5px;
     cursor: pointer;
@@ -309,10 +310,10 @@ ol li{
   }
   /* Style the checkmark/indicator */
   .mycheckbox .checkmark:after {
-    left: 5px;
+    left: 4px;
     top: 2px;
-    width: 3px;
-    height: 6px;
+    width: 5px;
+    height: 8px;
     border: solid white;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
