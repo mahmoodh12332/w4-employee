@@ -2,25 +2,32 @@
 
   <!--Text Field-->
   <ng-container *ngSwitchCase="field.type === 'text'">
-    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
-      <input matInput
-             [type]="field.type"
-             [mask]="field.isMasked ? field.mask : ''"
-             [validation]="field.isMasked"
-             [showMaskTyped]="field.isMasked"
-             [clearIfNotMatch]="field.isMasked"
-             [formControl]="field.formControl"
-             [placeholder]="field.label"
-             (blur)="onTextBlur()"
-             [minLength]="field.minLength"
-             [maxLength]="field.maxLength"
-             [required]="field.required"
-             [email]="!!field.isEmail"
-      >
-      <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <div class="text-center" *ngIf="field.bottomText" [ngClass]="{'w-50': !field.isFullColumnField,'w-100': field.isFullColumnField}">
-      <p><b>--{{field.bottomText}}--</b></p>
+    <div [ngClass]="{'row': !field.isFullColumnField}">
+      <div class="col-1 pr-0" *ngIf="field.showFieldNumber">
+        <span>{{field.showFieldNumber}}</span>
+      </div>
+      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12  pl-0': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+        <input matInput
+               [type]="field.type"
+               [mask]="field.isMasked ? field.mask : ''"
+               [validation]="field.isMasked"
+               [showMaskTyped]="field.isMasked"
+               [clearIfNotMatch]="field.isMasked"
+               [formControl]="field.formControl"
+               [placeholder]="field.label"
+               (blur)="onTextBlur()"
+               [minLength]="field.minLength"
+               [maxLength]="field.maxLength"
+               [required]="field.required"
+               [email]="!!field.isEmail"
+        >
+        <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div [ngClass]="{'row': !field.isFullColumnField}" *ngIf="field.bottomText">
+      <div class="text-center" *ngIf="field.bottomText" [ngClass]="{'col-md-6 col-lg-6 col-12': !field.isFullColumnField,'w-100': field.isFullColumnField}">
+        <p><b>--{{field.bottomText}}--</b></p>
+      </div>
     </div>
   </ng-container>
 
@@ -79,17 +86,22 @@
 
   <!--Drop Down field-->
   <ng-container *ngSwitchCase="field.type === 'dropdown'">
-    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
-      <mat-label>{{field.label}}</mat-label>
-      <mat-select
-        [required]="field.required"
-        [formControl]="field.formControl">
-        <mat-option
-          *ngFor="let option of field.options;"
-          [value]="option.value">{{option.label}}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="field.formControl.invalid" >{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
+    <div [ngClass]="{'row': !field.isFullColumnField}">
+      <div class="col-1 pr-0" *ngIf="field.showFieldNumber">
+        <span>{{field.showFieldNumber}}</span>
+      </div>
+      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12  pl-0': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+        <mat-label>{{field.label}}</mat-label>
+        <mat-select
+          [required]="field.required"
+          [formControl]="field.formControl">
+          <mat-option
+            *ngFor="let option of field.options;"
+            [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="field.formControl.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
   </ng-container>
 
   <!--Group Field-->
