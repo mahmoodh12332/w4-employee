@@ -2,7 +2,7 @@
 
   <!--Text Field-->
   <ng-container *ngSwitchCase="field.type === 'text'">
-    <mat-form-field class="w-100 mb-3">
+    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
       <input matInput
              [type]="field.type"
              [mask]="field.isMasked ? field.mask : ''"
@@ -19,14 +19,14 @@
       >
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
-    <div class="w-100 text-center" *ngIf="field.bottomText">
+    <div class="text-center" *ngIf="field.bottomText" [ngClass]="{'w-50': !field.isFullColumnField,'w-100': field.isFullColumnField}">
       <p><b>--{{field.bottomText}}--</b></p>
     </div>
   </ng-container>
 
   <!--Number Field-->
   <ng-container *ngSwitchCase="field.type === 'number'">
-    <mat-form-field class="w-100 mb-3">
+    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
       <input matInput
              [type]="field.type"
              [placeholder]="field.label"
@@ -41,7 +41,7 @@
 
   <!-- Date Picker Field -->
   <ng-container *ngSwitchCase="field.type === 'date'">
-    <mat-form-field class="w-100 mb-3" [hintLabel]="dateFormat">
+    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}" [hintLabel]="dateFormat">
       <input matInput
              [formControl]="field.formControl"
              [matDatepicker]="picker"
@@ -79,7 +79,7 @@
 
   <!--Drop Down field-->
   <ng-container *ngSwitchCase="field.type === 'dropdown'">
-    <mat-form-field class="w-100 mb-3">
+    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
       <mat-label>{{field.label}}</mat-label>
       <mat-select
         [required]="field.required"
@@ -187,7 +187,7 @@
 
   <!--Display Field-->
   <ng-container *ngSwitchCase="field.type ==='displayValue'">
-    <div class="w-100 mt-3 mb-3">
+    <div class="mt-3 mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
       <h6>{{field.label}}</h6>
       <p>{{processValueAccessor()}}</p>
     </div>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild, OnChanges, SimpleChanges, OnInit, AfterViewInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {find, startCase, get} from 'lodash';
 import * as moment from 'moment';
@@ -14,7 +14,7 @@ import {Helper} from '../../../shared/classes/helper';
   selector: 'app-employment-form-field',
   templateUrl: './employment-form-field.component.html'
 })
-export class EmploymentFormFieldComponent {
+export class EmploymentFormFieldComponent implements AfterViewInit {
   public dateFormat = DATE_FORMAT;
   @Input() public stepper: any;
   @Input() public isSubmitting: boolean;
@@ -26,6 +26,10 @@ export class EmploymentFormFieldComponent {
   public objectKeys = Object.keys;
   public startCase = startCase;
   constructor(public dialog: MatDialog, private appService: AppService, private router: Router) {}
+
+  ngAfterViewInit(): void {
+    this.citizenshipCase();
+  }
 
   private openModal(index = null, action) {
     const dialogRef = this.dialog.open(EmploymentModalComponent, {
@@ -96,21 +100,29 @@ export class EmploymentFormFieldComponent {
     this.step.formGroup.controls[expireDate].disable();
     this.step.formGroup.controls[countryOfIssuance].disable();
     this.step.formGroup.controls[foreignPassportNumber].disable();
-    this.step.formGroup.controls[uscisNumber].reset();
-    this.step.formGroup.controls[alienNumber].reset();
-    this.step.formGroup.controls[i94Number].reset();
-    this.step.formGroup.controls[expireDate].reset();
-    this.step.formGroup.controls[countryOfIssuance].reset();
-    this.step.formGroup.controls[foreignPassportNumber].reset();
+
     if (this.field.formControl.value === 6) {
       this.step.formGroup.controls[uscisNumber].enable();
+      this.step.formGroup.controls[alienNumber].reset();
+      this.step.formGroup.controls[i94Number].reset();
+      this.step.formGroup.controls[expireDate].reset();
+      this.step.formGroup.controls[countryOfIssuance].reset();
+      this.step.formGroup.controls[foreignPassportNumber].reset();
       return;
     } else if (this.field.formControl.value === 7) {
+      this.step.formGroup.controls[uscisNumber].reset();
       this.step.formGroup.controls[alienNumber].enable();
       this.step.formGroup.controls[i94Number].enable();
       this.step.formGroup.controls[expireDate].enable();
       this.step.formGroup.controls[countryOfIssuance].enable();
       this.step.formGroup.controls[foreignPassportNumber].enable();
+    } else {
+      this.step.formGroup.controls[uscisNumber].reset();
+      this.step.formGroup.controls[alienNumber].reset();
+      this.step.formGroup.controls[i94Number].reset();
+      this.step.formGroup.controls[expireDate].reset();
+      this.step.formGroup.controls[countryOfIssuance].reset();
+      this.step.formGroup.controls[foreignPassportNumber].reset();
     }
   }
 
@@ -162,7 +174,9 @@ export class EmploymentFormFieldComponent {
   }
 
   onTextBlur() {
-    this.field.formControl.setValue(this.field.formControl.value.trim());
+    if (this.field.formControl.value) {
+      this.field.formControl.setValue(this.field.formControl.value.trim());
+    }
     this.field.formControl.updateValueAndValidity();
   }
 
@@ -190,8 +204,13 @@ export class EmploymentFormFieldComponent {
   }
 
   processValueAccessor() {
+    let value = '';
     if (typeof this.field.valueAccessor === 'string') {
-      return (get(this.formData, this.field.valueAccessor, '-') || '-');
+      value = get(this.formData, this.field.valueAccessor, '-');
+      if (this.field.isDate) {
+        value = moment(value, 'YYYY-MM-DD').format(DATE_FORMAT);
+      }
+      return value;
     }
   }
 

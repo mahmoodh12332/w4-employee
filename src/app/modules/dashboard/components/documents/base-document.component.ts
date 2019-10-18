@@ -4,7 +4,7 @@ import {get, find} from 'lodash';
 import {DATE_FORMAT} from '../../../shared/data/constants';
 import {Countries} from '../../../shared/data/countries';
 import {States} from '../../../shared/data/states';
-
+const DEFAULT_VALUE = '';
 @Component({
   selector: 'app-base-document',
   template: ''
@@ -13,13 +13,12 @@ export class BaseDocumentComponent {
   @Input() formData: any;
 
   getValue(path, isDate = false) {
-    const val = get(this.formData, path, '-');
-
-    if (isDate) {
+    const val = get(this.formData, path);
+    if (val && isDate) {
       return moment(val).format(DATE_FORMAT);
     }
 
-    return val;
+    return val || DEFAULT_VALUE;
   }
 
   getTodayDate() {
@@ -37,7 +36,7 @@ export class BaseDocumentComponent {
       state: States
     };
     const value = this.getValue(path);
-    return (find(targetArray[type], (k) => k.value === value) || {label: '-'}).label;
+    return (find(targetArray[type], (k) => k.value === value) || {label: DEFAULT_VALUE}).label;
   }
   getPrintName() {
     const firstName = this.getValue('basicInformation.firstName');
