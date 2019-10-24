@@ -17,7 +17,9 @@ export class EmploymentFormComponent implements OnInit {
   @Output() public formSubmit: EventEmitter<any> = new EventEmitter();
   stepFormGroups: Array<any> = [];
   private formData: any = {};
-  constructor(private employmentFormService: EmploymentFormService, private cookieService: CookieService) {}
+  constructor(
+    private employmentFormService: EmploymentFormService,
+    private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.initStepFormGroups();
@@ -30,10 +32,7 @@ export class EmploymentFormComponent implements OnInit {
         socialSecurityNo: this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)
       }));
   }
-  clickMethod(name: string) {
-    if(confirm("Are you sure to delete "+name)) {
-    }
-  }
+
   get formValue() {
     return this.formData;
   }

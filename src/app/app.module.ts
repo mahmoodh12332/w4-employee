@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMaskModule } from 'ngx-mask';
+import {MaskPipe, NgxMaskModule} from 'ngx-mask';
 import { RequestInterceptor } from './modules/shared/http-interceptor/http.interceptor';
 import { ConnectionServiceModule } from 'ng-connection-service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -20,6 +20,7 @@ import { Services } from './modules/shared/services';
   ],
   imports: [
     BrowserModule,
+    NgxMaskModule.forRoot({}),
     AppRoutingModule,
     AuthenticationModule,
     BrowserAnimationsModule,
@@ -28,11 +29,13 @@ import { Services } from './modules/shared/services';
     MaterialModules,
     DashboardModule,
     SharedModule,
-    NgxMaskModule.forRoot({}),
-
   ],
   providers: [
     Services,
+    {
+      provide: MaskPipe,
+      useClass: MaskPipe,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,

@@ -1,19 +1,26 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidator} from '../../shared/validators';
-import {reduce, map} from 'lodash';
+import {reduce} from 'lodash';
+import {MaskPipe} from 'ngx-mask';
 import * as moment from 'moment';
 
 class MyCustomFormControl extends FormControl {
-  private readonly fieldType: string;
-  constructor(type: string, ...args) {
+  private readonly ppMasterFieldConfig: any;
+  private readonly maskPipeService: MaskPipe;
+  constructor(ppMasterFieldConfig: any, maskPipeService: MaskPipe, ...args) {
     super(...args);
-    this.fieldType = type;
+    this.ppMasterFieldConfig = ppMasterFieldConfig;
+    this.maskPipeService = maskPipeService;
   }
 
   $getValue() {
-    if (this.value && (this.value instanceof Date || this.fieldType === 'date')) {
+    if (this.value && (this.value instanceof Date || this.ppMasterFieldConfig.type === 'date')) {
       return moment(this.value.toISOString()).format('YYYY-MM-DD');
+    }
+
+    if (this.ppMasterFieldConfig.name === 'socialSecurityNo') {
+      return this.maskPipeService.transform(this.value, this.ppMasterFieldConfig.mask);
     }
     return this.value;
   }
@@ -33,19 +40,11 @@ class MyCustomFormGroup extends FormGroup {
     }, {});
   }
 
-  /**
-   * Loop and touch all it has
-   *
-   * @param {FormGroup} formGroup
-   * @param func << function name: [markAsTouched, markAsUntouched, markAsDirty, markAsPristine, markAsPending
-   * @param opts
-   *
-   */
-
 }
 
 @Injectable()
 export class EmploymentFormService {
+  constructor(private maskPipe: MaskPipe) {}
   public buildFormGroup(step, values) {
     const formControlForGroup = {};
     const fields = [];
@@ -83,7 +82,7 @@ export class EmploymentFormService {
       } else if (values[field.name]) {
         currentValue = values[field.name];
       }
-      const formControl = new MyCustomFormControl(field.type, {
+      const formControl = new MyCustomFormControl(field, this.maskPipe, {
         value: currentValue,
         disabled: field.disabled,
       }, validators);

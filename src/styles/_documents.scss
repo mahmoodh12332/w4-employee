@@ -324,6 +324,93 @@ ol li{
 }
 
 
+.amerigas-form {
+  p{
+    font-size: 18px;
+  }
+  h1{
+    font-size: 24px;
+  }
+  .AmeriGas{
+    font-size: 40px !important;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+  }
+
+  .docs-width{
+    max-width: 1024px;
+    padding:0 15px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+  }
+  .watermark {
+    width: 677px;
+    opacity: 0.1;
+    color: BLACK;
+    position: absolute;
+    left:10%;
+    top:40%;
+    font-size: 300px;
+    font-weight: 500;
+    letter-spacing: 10px;
+    transform: rotate(-55deg);
+  }
+  .applicant{
+    width: 300px;
+  }
+  .applicant p{
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 2px;
+  }
+  .w-70{
+    width: 48%;
+    float: left;
+  }
+  .w-30{
+    width: 45%;
+    float: right;
+  }
+  .w-30 p,.w-70 p{
+    padding: 15px 0;
+  }
+  .w-70Drug{
+    width: 41%;
+    float: left;
+  }
+  .w-30Drug{
+    width: 37%;
+    float: right;
+  }
+  .w-30Drug p,
+  .w-70Drug p{
+    margin: 0;
+  }
+  .listofagrement{
+    float: left;
+    width: 100%;
+  }
+  .ol-50{
+    width: 5%;
+    float: left;
+    margin: 0;
+  }
+  .ol-100{
+    width: 95%;
+    float: left;
+    margin: 0;
+  }
+  ol{
+    padding: 0 0 0 ;
+    margin: 0;
+  }
+  ol li{
+    padding: 3px 0;
+  }
+}
+
 @media (max-width: 768px){
   .w-70Drug,.w-30Drug,.w-70,.w-30{
     width: 100%;
@@ -341,5 +428,20 @@ ol li{
   .w-3030 p{
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  .amerigas-form {
+    .docs-width{
+      max-width:100%;
+      overflow-x: hidden;
+    }
+    .w-70{
+      width: 100%;
+      float: left;
+    }
+    .w-30{
+      width: 100%;
+      float: right;
+    }
   }
 }

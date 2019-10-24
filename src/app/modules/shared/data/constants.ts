@@ -6,6 +6,7 @@ export const SITE_INFO_COOKIE_NAME = '__si';
 export const API_BASE = 'https://ppsapplicationtest.azurewebsites.net/api/mobil';
 export const API_KEY = 'somelongrandomkey';
 export const API_KEY_HEADER = 'X-ApiKey';
+export const AMERIGAS_WEB_CODE = 'AMG01';
 export const EmploymentSkillsYearMap = {
   'Less than a Year': {
     label: 'Less than a Year',

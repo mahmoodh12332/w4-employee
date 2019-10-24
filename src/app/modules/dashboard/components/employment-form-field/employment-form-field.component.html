@@ -72,7 +72,7 @@
     </label>
     <mat-radio-group class="d-flex flex-column"
                      [formControl]="field.formControl"
-                     (change)="citizenshipCase()"
+                     (change)="handleOnChangeActions()"
                      [required]="field.required">
       <mat-radio-button *ngFor="let option of field.options" class="mt-2 mb-2" [value]="option.value">
         {{option.label}}

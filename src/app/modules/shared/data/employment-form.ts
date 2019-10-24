@@ -21,7 +21,10 @@ import {
   WorkersCompTxPolicyComponent,
   TransportationAgreementComponent,
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
-  ProhibitedWorkPolicyComponent, W4FormComponent,
+  ProhibitedWorkPolicyComponent,
+  W4FormComponent,
+  AmerigasFormComponent,
+  SafetyDisciplinePolicyComponent,
 } from '../../dashboard/components/documents';
 import {SkillsComponent} from '../../dashboard/components/skills/skills-component';
 import {UscisI9FormComponent} from '../../dashboard/components/documents/uscis-i-9-form/uscis-i-9-form.component';
@@ -57,10 +60,10 @@ export const EmploymentApplicationForm: Array<any> = [
         defaultValue: '',
         isFullRowField: false,
         isFullColumnField: true,
-        isMasked: false,
+        isMasked: true,
+        mask: '000-00-0000',
         disabled: true,
         required: false,
-        mask: null,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
       },
@@ -398,6 +401,115 @@ export const EmploymentApplicationForm: Array<any> = [
     ]
   },
   {
+    name: 'paymentOptions',
+    label: 'Payment Options',
+    fields: [
+      {
+        id: 'payOpt-howToPay',
+        name: 'paymentOptions',
+        label: 'How would you like to receive your Pay',
+        type: 'radioButton',
+        isFullRowField: true,
+        options: [
+          {
+            label: 'Paper Check',
+            value: 'paperCheck'
+          },
+          {
+            label: 'Global Cash Card',
+            value: 'globalCashCard'
+          },
+          {
+            label: 'Direct Deposit',
+            value: 'directDeposit'
+          },
+        ],
+        changeActions: {
+          paperCheck: [
+            {
+              action: 'disable',
+              fields: ['bankName', 'routingNo', 'bankAccountNo']
+            }
+          ],
+          globalCashCard: [
+            {
+              action: 'disable',
+              fields: ['bankName', 'routingNo', 'bankAccountNo']
+            }
+          ],
+          directDeposit: [
+            {
+              action: 'enable',
+              fields: ['bankName', 'routingNo', 'bankAccountNo']
+            },
+            {
+              action: 'showPopup',
+              textToShow: 'Direct deposit may not be available for all locations.',
+              buttons: [
+                {
+                  name: 'ok',
+                  label: 'OK'
+                }
+              ]
+            }
+          ],
+        },
+        defaultValue: 'paperCheck',
+        isMasked: false,
+        disabled: false,
+        mask: null,
+        required: true,
+        minLength: null,
+        maxLength: null,
+      },
+      {
+        id: 'payOpt-bankName',
+        name: 'bankName',
+        label: 'Bank Name',
+        type: 'text',
+        isFullRowField: true,
+        isFullColumnField: false,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
+        id: 'payOpt-routingNo',
+        name: 'routingNo',
+        label: 'Routing No',
+        type: 'text',
+        isFullRowField: true,
+        isFullColumnField: false,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
+        id: 'payOpt-bankAccountNo',
+        name: 'bankAccountNo',
+        label: 'Bank Account',
+        type: 'text',
+        isFullRowField: true,
+        isFullColumnField: false,
+        defaultValue: '',
+        isMasked: false,
+        disabled: true,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+    ],
+  },
+  {
     name: 'emergencyContact',
     label: 'Emergency Contact',
     fields: [
@@ -585,6 +697,66 @@ export const EmploymentApplicationForm: Array<any> = [
             value: 7
           },
         ],
+        changeActions: {
+          4: [
+            {
+              action: 'disable',
+              fields: [
+                'lPRAlienNumber',
+                'alienExpirationDate',
+                'alienNumber',
+                'i94Number',
+                'foreignPassportNumber',
+                'countryOfIssuance'
+              ]
+            }
+          ],
+          5: [
+            {
+              action: 'disable',
+              fields: [
+                'lPRAlienNumber',
+                'alienExpirationDate',
+                'alienNumber',
+                'i94Number',
+                'foreignPassportNumber',
+                'countryOfIssuance'
+              ]
+            }
+          ],
+          6: [
+            {
+              action: 'enable',
+              fields: ['lPRAlienNumber']
+            },
+            {
+              action: 'disable',
+              fields: [
+                'alienExpirationDate',
+                'alienNumber',
+                'i94Number',
+                'foreignPassportNumber',
+                'countryOfIssuance'
+              ],
+            },
+          ],
+          7: [
+            {
+              action: 'disable',
+              fields: ['lPRAlienNumber']
+            },
+            {
+              action: 'enable',
+              fields: [
+                'alienExpirationDate',
+                'alienNumber',
+                'i94Number',
+                'foreignPassportNumber',
+                'countryOfIssuance'
+              ],
+            },
+          ],
+        },
         defaultValue: '',
         isMasked: false,
         disabled: false,
@@ -1330,3 +1502,25 @@ export const EmploymentContractForm: Array<any> = [
     ]
   },
 ];
+export const EmploymentFormForAmerigasCode: Array<any>  = [
+  {
+    name: 'amerigasForm',
+    label: 'Amerigas Propane Exchange',
+    fields: [
+      {
+        componentRef: AmerigasFormComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+  {
+    name: 'safetyDiscipline',
+    label: 'Safety Discipline Policy',
+    fields: [
+      {
+        componentRef: SafetyDisciplinePolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+]

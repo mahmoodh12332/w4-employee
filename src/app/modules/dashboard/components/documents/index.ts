@@ -18,6 +18,8 @@ import {WelcomeToPPSCompanyPoliciesAndProceduresComponent} from './welcome-to-pp
 import {ProhibitedWorkPolicyComponent} from './prohibited-work-policy/prohibited-work-policy.component';
 import {UscisI9FormComponent} from './uscis-i-9-form/uscis-i-9-form.component';
 import {W4FormComponent} from './w-4-form/w-4-form.component';
+import {AmerigasFormComponent} from './amerigas-form/amerigas-form.component';
+import {SafetyDisciplinePolicyComponent} from './safety-discipline-policy/safety-discipline-policy.component';
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -40,6 +42,8 @@ export const DocumentComponents = [
   ProhibitedWorkPolicyComponent,
   UscisI9FormComponent,
   W4FormComponent,
+  AmerigasFormComponent,
+  SafetyDisciplinePolicyComponent,
 ];
 
 export default {
@@ -62,6 +66,8 @@ export default {
   WelcomeToPPSCompanyPoliciesAndProceduresComponent,
   ProhibitedWorkPolicyComponent,
   W4FormComponent,
+  AmerigasFormComponent,
+  SafetyDisciplinePolicyComponent,
 };
 
 export * from './arbitration-agreement/arbitration-agreement-policy.component';
@@ -84,3 +90,5 @@ export * from './welcome-to-pps-company-policies-and-procedures/welcome-to-pps-c
 export * from './prohibited-work-policy/prohibited-work-policy.component';
 export * from './uscis-i-9-form/uscis-i-9-form.component';
 export * from './w-4-form/w-4-form.component';
+export * from './amerigas-form/amerigas-form.component';
+export * from './safety-discipline-policy/safety-discipline-policy.component';

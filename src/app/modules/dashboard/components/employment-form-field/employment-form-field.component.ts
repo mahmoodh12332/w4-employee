@@ -28,7 +28,7 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
   constructor(public dialog: MatDialog, private appService: AppService, private router: Router) {}
 
   ngAfterViewInit(): void {
-    this.citizenshipCase();
+    this.handleOnChangeActions();
   }
 
   private openModal(index = null, action) {
@@ -83,49 +83,35 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
     return value;
   }
 
-  citizenshipCase() {
-    // TODO: NEED TO COME UP WITH BETTER APPROACH FOR NOW TO AVOID COMPLICATOIN I HAVE DONE IT.
-    if (this.field.name !== 'citizenship') {
+  handleOnChangeActions() {
+    if (!this.field.changeActions) {
       return;
     }
-    const uscisNumber = 'lPRAlienNumber';
-    const alienNumber = 'alienNumber';
-    const i94Number = 'i94Number';
-    const expireDate = 'alienExpirationDate';
-    const countryOfIssuance = 'countryOfIssuance';
-    const foreignPassportNumber = 'foreignPassportNumber';
-    this.step.formGroup.controls[uscisNumber].disable();
-    this.step.formGroup.controls[alienNumber].disable();
-    this.step.formGroup.controls[i94Number].disable();
-    this.step.formGroup.controls[expireDate].disable();
-    this.step.formGroup.controls[countryOfIssuance].disable();
-    this.step.formGroup.controls[foreignPassportNumber].disable();
-
-    if (this.field.formControl.value === 6) {
-      this.step.formGroup.controls[uscisNumber].enable();
-      this.step.formGroup.controls[alienNumber].reset();
-      this.step.formGroup.controls[i94Number].reset();
-      this.step.formGroup.controls[expireDate].reset();
-      this.step.formGroup.controls[countryOfIssuance].reset();
-      this.step.formGroup.controls[foreignPassportNumber].reset();
-      return;
-    } else if (this.field.formControl.value === 7) {
-      this.step.formGroup.controls[uscisNumber].reset();
-      this.step.formGroup.controls[alienNumber].enable();
-      this.step.formGroup.controls[i94Number].enable();
-      this.step.formGroup.controls[expireDate].enable();
-      this.step.formGroup.controls[countryOfIssuance].enable();
-      this.step.formGroup.controls[foreignPassportNumber].enable();
-    } else {
-      this.step.formGroup.controls[uscisNumber].reset();
-      this.step.formGroup.controls[alienNumber].reset();
-      this.step.formGroup.controls[i94Number].reset();
-      this.step.formGroup.controls[expireDate].reset();
-      this.step.formGroup.controls[countryOfIssuance].reset();
-      this.step.formGroup.controls[foreignPassportNumber].reset();
-    }
+    const actionsToPerform = this.field.changeActions[this.field.formControl.value] || [];
+    actionsToPerform.forEach((a) => {
+      switch (a.action) {
+        case 'enable':
+          this.performEnableActions(a.fields);
+          break;
+        case 'disable':
+          this.performDisableActions(a.fields);
+          break;
+        default:
+          console.log('No Action found');
+      }
+    });
   }
-
+  private performEnableActions(fieldsToEnable: Array<string>) {
+    fieldsToEnable.forEach((name) => {
+      this.step.formGroup.controls[name].enable();
+    });
+  }
+  private performDisableActions(fieldsToEnable: Array<string>) {
+    fieldsToEnable.forEach((name) => {
+      this.step.formGroup.controls[name].disable();
+      this.step.formGroup.controls[name].reset();
+    });
+  }
   getErrorMessage() {
     const { formControl, label } = this.field;
     const { errors } = formControl;
