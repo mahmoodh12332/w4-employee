@@ -44,4 +44,14 @@ export class BaseDocumentComponent {
     const middleName = this.getValue('basicInformation.middleName');
     return `${firstName} ${middleName} ${lastName}`;
   }
+  getAddress() {
+    const {
+      streetNo,
+      address,
+      zipCode,
+      city
+    } = this.getValue('address');
+    const state = this.getValueStateORCountryDetail('address.state', 'state');
+    return `${streetNo} ${address}, ${city}, ${state}, ${zipCode}`;
+  }
 }

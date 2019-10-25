@@ -8,6 +8,8 @@ import {EmploymentModalComponent} from '../employment-modal/employment-modal.com
 import {AppService} from '../../../shared/services';
 import {Router} from '@angular/router';
 import {Helper} from '../../../shared/classes/helper';
+import {Countries} from '../../../shared/data/countries';
+import {States} from '../../../shared/data/states';
 
 
 @Component({
@@ -191,16 +193,40 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
 
   processValueAccessor() {
     let value = '';
-    if (typeof this.field.valueAccessor === 'string') {
+    if (this.field.id === 'ftv-address') {
+      value = this.processAddressAccessor();
+    } else if (typeof this.field.valueAccessor === 'string') {
       value = get(this.formData, this.field.valueAccessor, '-');
       if (this.field.isDate) {
         value = moment(value, 'YYYY-MM-DD').format(DATE_FORMAT);
       }
-      return value;
     }
+    return value;
   }
 
-  handleVerficationLinkClick() {
+  processAddressAccessor() {
+    const {
+      streetNo,
+      address,
+      zipCode,
+      city
+    } = get(this.formData, 'address');
+    const state = this.getValueStateORCountryDetail('address.state', 'state');
+    return `${streetNo} ${address}, ${city}, ${state}, ${zipCode}`;
+  }
+
+  getValueStateORCountryDetail(path, type) {
+    const targetArray = {
+      country: Countries,
+      state: States
+    };
+    const value = get(this.formData, path);
+    return (find(targetArray[type], (k) => k.value === value) || {label: ''}).label;
+  }
+
+  handleVerificationLinkClick() {
     this.router.navigate([this.field.onBackLink]);
   }
+
+
 }
