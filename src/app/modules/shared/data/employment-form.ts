@@ -443,7 +443,7 @@ export const EmploymentApplicationForm: Array<any> = [
               fields: ['bankName', 'routingNo', 'bankAccountNo']
             },
             {
-              action: 'showPopup',
+              action: 'directDepositPopup',
               textToShow: 'Direct deposit may not be available for all locations.',
               buttons: [
                 {

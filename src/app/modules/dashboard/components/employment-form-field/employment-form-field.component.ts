@@ -25,12 +25,13 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
   @Input() public formData: any;
   @Output() public submitForm: EventEmitter<any> = new EventEmitter();
   @ViewChild('onDisagreeModalTemplate', {static: true}) public disagreeModalTemplate;
+  @ViewChild('directDepositPopUp', {static: true}) public directDepositPopUp;
   public objectKeys = Object.keys;
   public startCase = startCase;
   constructor(public dialog: MatDialog, private appService: AppService, private router: Router) {}
 
   ngAfterViewInit(): void {
-    this.handleOnChangeActions();
+    this.handleOnChangeActions(['directDepositPopup']);
   }
 
   private openModal(index = null, action) {
@@ -85,23 +86,28 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
     return value;
   }
 
-  handleOnChangeActions() {
+  handleOnChangeActions(actionsToIgnore = []) {
     if (!this.field.changeActions) {
       return;
     }
     const actionsToPerform = this.field.changeActions[this.field.formControl.value] || [];
-    actionsToPerform.forEach((a) => {
-      switch (a.action) {
-        case 'enable':
-          this.performEnableActions(a.fields);
-          break;
-        case 'disable':
-          this.performDisableActions(a.fields);
-          break;
-        default:
-          console.log('No Action found');
-      }
-    });
+    actionsToPerform
+      .filter(a => !actionsToIgnore.find(k => a.action === k))
+      .forEach((a) => {
+        switch (a.action) {
+          case 'enable':
+            this.performEnableActions(a.fields);
+            break;
+          case 'disable':
+            this.performDisableActions(a.fields);
+            break;
+          case 'directDepositPopup':
+            this.showPopUpForDirectDeposit();
+            break;
+          default:
+            console.log('No Action found');
+        }
+      });
   }
   private performEnableActions(fieldsToEnable: Array<string>) {
     fieldsToEnable.forEach((name) => {
@@ -228,5 +234,7 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
     this.router.navigate([this.field.onBackLink]);
   }
 
-
+  showPopUpForDirectDeposit() {
+    this.dialog.open(this.directDepositPopUp);
+  }
 }

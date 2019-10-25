@@ -9,7 +9,7 @@ import {SITE_INFO_COOKIE_NAME, AMERIGAS_WEB_CODE} from '../../../shared/data/con
   templateUrl: './employment-contract.component.html'
 })
 export class EmploymentContractComponent extends EmploymentBaseComponent implements OnInit {
-  public steps = EmploymentContractForm;
+  public steps = [...EmploymentContractForm];
   public isSubmitting = false;
   constructor(
     cookieService: CookieService,
@@ -25,7 +25,6 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   private handleAMG40CodeCase() {
     try {
       const siteInfo = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));
-      console.log({siteInfo});
       if (siteInfo.code === AMERIGAS_WEB_CODE) {
         this.steps.splice(this.steps.length - 1, 0, ...EmploymentFormForAmerigasCode);
       }

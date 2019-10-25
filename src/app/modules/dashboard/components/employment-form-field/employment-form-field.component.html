@@ -3,10 +3,10 @@
   <!--Text Field-->
   <ng-container *ngSwitchCase="field.type === 'text'">
     <div [ngClass]="{'row': !field.isFullColumnField}">
-      <div class="col-1 pr-0" *ngIf="field.showFieldNumber">
+      <div class="col-1 d-flex align-items-center justify-content-center" *ngIf="field.showFieldNumber">
         <span>{{field.showFieldNumber}}</span>
       </div>
-      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12  pl-0': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
         <input matInput
                [type]="field.type"
                [mask]="field.isMasked ? field.mask : ''"
@@ -87,10 +87,10 @@
   <!--Drop Down field-->
   <ng-container *ngSwitchCase="field.type === 'dropdown'">
     <div [ngClass]="{'row': !field.isFullColumnField}">
-      <div class="col-1 pr-0" *ngIf="field.showFieldNumber">
+      <div class="col-1 d-flex align-items-center justify-content-center" *ngIf="field.showFieldNumber">
         <span>{{field.showFieldNumber}}</span>
       </div>
-      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12  pl-0': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
         <mat-label>{{field.label}}</mat-label>
         <mat-select
           [required]="field.required"
@@ -241,6 +241,26 @@
     <div class="w-100 text-right">
       <button mat-raised-button color="warn" [mat-dialog-close]="true">Confirm to Disagree</button>
       <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #directDepositPopUp>
+  <h1 mat-dialog-title>NOTE</h1>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>
+            Direct deposit may not be available for all locations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button color="primary" [mat-dialog-close]="false">OK</button>
     </div>
   </div>
 </ng-template>
