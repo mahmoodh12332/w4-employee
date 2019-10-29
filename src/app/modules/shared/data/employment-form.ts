@@ -412,7 +412,7 @@ export const EmploymentApplicationForm: Array<any> = [
         isFullRowField: true,
         options: [
           {
-            label: 'Paper Cheque',
+            label: 'Paper Check',
             value: 'paperCheck'
           },
           {
