@@ -74,7 +74,7 @@ export class EmploymentFormService {
       if (field.isEndDate) {
         validators.push(DateValidator.validateEndDate('startDate'));
       }
-      let currentValue: any = '';
+      let currentValue: any = field.defaultValue || '';
       if (field.type === 'date' && values[field.name]) {
         currentValue = new Date(values[field.name]);
       } else if (field.type === 'group' && values[field.name]) {

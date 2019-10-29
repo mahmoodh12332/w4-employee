@@ -12,7 +12,7 @@
                [mask]="field.isMasked ? field.mask : ''"
                [validation]="field.isMasked"
                [showMaskTyped]="field.isMasked"
-               [clearIfNotMatch]="field.isMasked"
+               [clearIfNotMatch]="false"
                [formControl]="field.formControl"
                [placeholder]="field.label"
                (blur)="onTextBlur()"
