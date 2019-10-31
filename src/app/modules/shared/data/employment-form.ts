@@ -406,41 +406,41 @@ export const EmploymentApplicationForm: Array<any> = [
     fields: [
       {
         id: 'payOpt-howToPay',
-        name: 'paymentOptions',
+        name: 'paymentMethod',
         label: 'How would you like to receive your Pay',
         type: 'radioButton',
         isFullRowField: true,
         options: [
           {
             label: 'Paper Check',
-            value: 'paperCheck'
+            value: 'C'
           },
           {
             label: 'Global Cash Card',
-            value: 'globalCashCard'
+            value: 'G'
           },
           {
             label: 'Direct Deposit',
-            value: 'directDeposit'
+            value: 'D'
           },
         ],
         changeActions: {
-          paperCheck: [
+          C: [
             {
               action: 'disable',
-              fields: ['bankName', 'routingNo', 'bankAccountNo']
+              fields: ['bankName', 'bankRouting', 'bankAccount']
             }
           ],
-          globalCashCard: [
+          G: [
             {
               action: 'disable',
-              fields: ['bankName', 'routingNo', 'bankAccountNo']
+              fields: ['bankName', 'bankRouting', 'bankAccount']
             }
           ],
-          directDeposit: [
+          D: [
             {
               action: 'enable',
-              fields: ['bankName', 'routingNo', 'bankAccountNo']
+              fields: ['bankName', 'bankRouting', 'bankAccount']
             },
             {
               action: 'directDepositPopup',
@@ -454,7 +454,7 @@ export const EmploymentApplicationForm: Array<any> = [
             }
           ],
         },
-        defaultValue: 'paperCheck',
+        defaultValue: 'C',
         isMasked: false,
         disabled: false,
         mask: null,
@@ -478,8 +478,8 @@ export const EmploymentApplicationForm: Array<any> = [
         maxLength: textTypeDefaultMaxLength,
       },
       {
-        id: 'payOpt-routingNo',
-        name: 'routingNo',
+        id: 'payOpt-bankRouting',
+        name: 'bankRouting',
         label: 'Routing No',
         type: 'text',
         isFullRowField: true,
@@ -497,8 +497,8 @@ export const EmploymentApplicationForm: Array<any> = [
         },
       },
       {
-        id: 'payOpt-bankAccountNo',
-        name: 'bankAccountNo',
+        id: 'payOpt-bankAccount',
+        name: 'bankAccount',
         label: 'Bank Account',
         type: 'text',
         isFullRowField: true,
