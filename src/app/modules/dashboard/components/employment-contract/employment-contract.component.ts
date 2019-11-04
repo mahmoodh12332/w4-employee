@@ -1,8 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {EmploymentBaseComponent} from '../employment-base.component';
 import {AppService, CookieService} from '../../../shared/services';
-import {EmploymentContractForm, EmploymentFormForAmerigasCode} from '../../../shared/data/employment-form';
-import {SITE_INFO_COOKIE_NAME, AMERIGAS_WEB_CODE} from '../../../shared/data/constants';
+import {
+  EmploymentContractForm,
+  EmploymentFormForWorkWell,
+  EmploymentFormForAmerigasCode,
+} from '../../../shared/data/employment-form';
+import {
+  AMERIGAS_WEB_CODE,
+  WORKWELL_WEB_CODE
+} from '../../../shared/data/constants';
 
 @Component({
   selector: 'app-employment-contract',
@@ -19,19 +26,31 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   }
   ngOnInit(): void {
     super.ngOnInit();
-    this.handleAMG40CodeCase();
+    this.handleWorkWellCodeCase();
+    this.handleAMG01CodeCase();
+    this.setLastFormButtonLabel();
   }
 
-  private handleAMG40CodeCase() {
-    try {
-      const siteInfo = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));
-      if (siteInfo.code === AMERIGAS_WEB_CODE) {
-        this.steps.splice(this.steps.length - 1, 0, ...EmploymentFormForAmerigasCode);
-      }
-    } catch (e) {
-      console.log(e);
+  private handleAMG01CodeCase() {
+    if (this.appService.siteCode === AMERIGAS_WEB_CODE) {
+      this.steps.splice(this.steps.length - 1, 0, ...EmploymentFormForAmerigasCode);
     }
+  }
 
+  private handleWorkWellCodeCase() {
+    if (this.appService.siteCode === WORKWELL_WEB_CODE) {
+      this.steps.splice(this.steps.length - 1, 0, ...EmploymentFormForWorkWell);
+    }
+  }
+
+  private setLastFormButtonLabel() {
+    const lastStep = this.steps[this.steps.length - 2];
+    lastStep.fields[lastStep.fields.length - 1].controlLabels = {
+      buttons: {
+        agree: 'Let\'s Sign Contract',
+          disagree: 'I disagree',
+      }
+    };
   }
 
   onFormSubmit() {

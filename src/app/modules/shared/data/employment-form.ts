@@ -25,6 +25,8 @@ import {
   W4FormComponent,
   AmerigasFormComponent,
   SafetyDisciplinePolicyComponent,
+  AuthorizationToReleaseWorkHistoryComponent,
+  WorkWellComponent,
 } from '../../dashboard/components/documents';
 import {SkillsComponent} from '../../dashboard/components/skills/skills-component';
 import {UscisI9FormComponent} from '../../dashboard/components/documents/uscis-i-9-form/uscis-i-9-form.component';
@@ -1469,12 +1471,16 @@ export const EmploymentContractForm: Array<any> = [
       {
         componentRef: WelcomeToPPSCompanyPoliciesAndProceduresComponent,
         ...commonFieldsForDocumentType,
-        controlLabels: {
-          buttons: {
-            agree: 'Let\'s Sign Contract',
-            disagree: 'I disagree',
-          }
-        }
+      }
+    ]
+  },
+  {
+    name: 'authToWorkHistory',
+    label: 'Authorization To Release Work History',
+    fields: [
+      {
+        componentRef: AuthorizationToReleaseWorkHistoryComponent,
+        ...commonFieldsForDocumentType,
       }
     ]
   },
@@ -1527,4 +1533,16 @@ export const EmploymentFormForAmerigasCode: Array<any>  = [
       }
     ]
   },
-]
+];
+export const EmploymentFormForWorkWell: Array<any> = [
+  {
+    name: 'workWell',
+    label: 'Work Well Policy',
+    fields: [
+      {
+        componentRef: WorkWellComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
+];

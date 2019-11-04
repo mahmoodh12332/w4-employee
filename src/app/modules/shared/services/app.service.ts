@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {EmploymentSkillsYearMap} from '../data/constants';
+import {EmploymentFormForAmerigasCode} from '../data/employment-form';
 
 const SNACK_BAR_OPTIONS: any = {
   verticalPosition: 'top',
@@ -137,5 +138,14 @@ export class AppService {
         ...ApplicationBodyConstants
       };
     });
+  }
+
+  get siteCode() {
+    try {
+      const siteInfo = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));
+      return siteInfo.code;
+    } catch (e) {
+      return '';
+    }
   }
 }
