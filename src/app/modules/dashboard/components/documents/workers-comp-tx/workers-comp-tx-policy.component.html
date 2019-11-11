@@ -1,60 +1,70 @@
-<div class="docs-width">
-  <h1>Employee Acknowledgement of Workers' Compensation Network</h1>
-  <p>By signing this form, I acknowledge that I have received information that tells me how to get health care under the Company’s workers' compensation insurance.                 </p>
-  <p>If I am hurt on the job and live in the service area described in this information, I understand that:</p>
-  <div class="listofagrement">
-    <p class="ol-50">1.</p>
-    <p class="ol-100">I <u>must</u> choose a treating doctor from the list of doctors in the network. In the alternative, I may ask my HMO primary care physician to agree to serve as my treating doctor.</p>
-    <p class="ol-50">2.</p>
-    <p class="ol-100">I <u>must</u> go to my treating doctor for all health care for my injury. If I need a specialist, my treating doctor will refer me. </p>
-    <p class="ol-50">3.</p>
-    <p class="ol-100">If I need emergency care, I am not required to go to my treating doctor but may go anywhere for such care.</p>
-    <p class="ol-50">4.</p>
-    <p class="ol-100">The insurance carrier will pay the treating doctor and other network providers.</p>
-    <p class="ol-50">5.</p>
-    <p class="ol-100">If I go to an out-of-network doctor <b>without</b> network approval, I may be required to pay the full amount of the charges incurred for the medical services rendered.</p>
+<div class="work-well">
+  <div class="form-width">
+    <h2 style="text-align:left;">Employee Acknowledgement of <br> Workers' Compensation Network</h2>
+    <p>
+      By signing this form, I acknowledge that I have received information that tells me how to get health care under the Company's workers' compensation insurance.
+    </p>
+    <p>
+      If  I am hurt on the job and live in the service area described in this information, I understand that:
+    </p>
+    <p>
+      1. I must choose a treating doctor from the list of doctors in the network. In the alternative, I may ask my     HMO primary care physician to agree to serve as my treating doctor.
+    </p>
+    <p>
+      2. I must go to my treating doctor for all health care for my injury. If  I need a specialist, my treating doctor will     refer me
+    </p>
+    <p>
+      3. If  I need emergency care, I am not required to go to my treating doctor but may go anywhere for such care.
+    </p>
+    <p>
+      4. The insurance carrier will pay the treating doctor and other network providers.
+    </p>
+    <p>
+      5. If I go to an out-of-network doctor without network approval, I may be required to pay the full amount of the     charges incurred for the medical services rendered.
+    </p>
+    <div class="wl">
+      <div class="wl">
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getPrintName()}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          Applicant/Employee Print Name
+        </p>
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getSignaturePlaceholder()}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          Applicant/Employee Signature
+        </p>
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getAddress()}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          Current Street Address
+        </p>
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getValue('address.city')}}/{{getValueStateORCountryDetail('address.state', 'state')}}/{{getValue('address.zipCode')}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          City/State/Zip
+        </p>
+      </div>
+      <div class="w-40" style="float:right;">
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getValue('basicInformation.socialSecurityNo')}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          Social Security Number
+        </p>
+        <p style="border-bottom:1px solid #000;margin:0px;padding-bottom:0;padding-top: 12px;background-color: #f1f4ff;">
+          {{getTodayDate()}}
+        </p>
+        <p style="padding: 5px 0 0 0 ;margin-top:0px;">
+          Today's Date
+        </p>
+      </div>
+      <p style="width: 100%;float:left;">Name of Employer: Pacesetter Personnel Services</p>
+      <p style="width: 100%;float:left;"><b>Name of Network: Coventry Worker's Comp Network - applicable to employees in Texas only</b></p>
+    </div>
   </div>
-  <div class="w-70">
-    <span class="data-value">
-      {{getPrintName()}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      Applicant/Employee Print Name
-    </p>
-    <!-- <img *ngIf="getValue('yourSignature.signature') !== 'No Value'" [src]="getValue('yourSignature.signature')" alt=""> -->
-    <span class="data-value">
-      {{getSignaturePlaceholder()}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      Applicant/Employee Signature
-    </p>
-    <span class="data-value">
-      {{getAddress()}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      Current Street Address
-    </p>
-    <span class="data-value">
-      {{getValue('address.city')}}/{{getValue('address.state')}}/{{getValue('address.zipCode')}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      City/State/Zip
-    </p>
-  </div>
-  <div class="w-30">
-    <span class="data-value">
-      {{getValue('basicInformation.socialSecurityNo')}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      Social Security Number
-    </p>
-    <span class="data-value">
-      {{getTodayDate()}}
-    </span>
-    <p style="border-top:1px solid #000;padding-top: 5px;margin-top:30px;">
-      Today's Date
-    </p>
-  </div>
-  <h4 style="float: left;width:100%">Name of Employer: Pacesetter Personnel Services</h4>
-  <h4 style="float: left;width:100%">Name of Network: Coventry Worker's Comp Network – applicable to employees in Texas only</h4>
 </div>
