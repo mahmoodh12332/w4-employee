@@ -1,8 +1,8 @@
 import * as CryptoJS from 'crypto-js';
-import {COOKIE_ENCRPT_SECRET} from '../data/constants';
+import {COOKIE_ENCRYPT_SECRET} from '../data/constants';
 
 class Base64 {
-  private keyStr = COOKIE_ENCRPT_SECRET;
+  private keyStr = COOKIE_ENCRYPT_SECRET;
 
   encode(data) {
     return CryptoJS.AES.encrypt(data, this.keyStr).toString();

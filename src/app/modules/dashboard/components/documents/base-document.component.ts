@@ -11,6 +11,7 @@ const DEFAULT_VALUE = '';
 })
 export class BaseDocumentComponent {
   @Input() formData: any;
+  @Input() siteNamingConvention: any;
 
   getValue(path, isDate = false) {
     const val = get(this.formData, path);

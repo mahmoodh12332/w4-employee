@@ -8,7 +8,7 @@ import {
 } from '../../../shared/data/employment-form';
 import {
   AMERIGAS_WEB_CODE,
-  WORKWELL_WEB_CODE
+  WORKWELL_WEB_CODE,
 } from '../../../shared/data/constants';
 
 @Component({

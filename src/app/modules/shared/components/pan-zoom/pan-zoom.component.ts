@@ -1,6 +1,7 @@
 import {Component, AfterViewInit, ElementRef, ViewChild, Input, ComponentFactoryResolver, OnInit} from '@angular/core';
 import panzoom from 'panzoom';
 import {DocumentHostDirective} from '../../directives';
+import {AppService} from '../../services';
 
 @Component({
   selector: 'app-panzoom',
@@ -14,7 +15,7 @@ export class PanZoomComponent implements AfterViewInit, OnInit {
   @ViewChild('scene', {static: false}) scene: ElementRef;
   @ViewChild(DocumentHostDirective, {static: true}) documentHost: DocumentHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private appService: AppService) {}
 
   ngOnInit(): void {
     this.loadComponent();
@@ -34,5 +35,6 @@ export class PanZoomComponent implements AfterViewInit, OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.componentToPan);
     const componentRef: any = this.documentHost.viewContainerRef.createComponent(componentFactory);
     componentRef.instance.formData = this.formData;
+    componentRef.instance.siteNamingConvention = this.appService.siteNamingConvention;
   }
 }

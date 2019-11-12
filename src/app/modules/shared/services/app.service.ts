@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {reduce, assign} from 'lodash';
+import {reduce, assign, toUpper} from 'lodash';
 import {
   API_ROUTES,
   CURRENT_SSN_COOKIE_NAME,
   FORM_COOKIE_NAME,
   SITE_INFO_COOKIE_NAME,
+  SITE_NAMING_CONVENTION,
 } from '../data/constants';
 import {CookieService} from './cookie.service';
 import {MatSnackBar} from '@angular/material';
@@ -143,9 +144,13 @@ export class AppService {
   get siteCode() {
     try {
       const siteInfo = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));
-      return siteInfo.code;
+      return toUpper(siteInfo.code);
     } catch (e) {
       return '';
     }
+  }
+
+  get siteNamingConvention() {
+    return JSON.parse(JSON.stringify(SITE_NAMING_CONVENTION[this.siteCode] || SITE_NAMING_CONVENTION.default));
   }
 }
