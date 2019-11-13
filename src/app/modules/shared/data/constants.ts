@@ -36,7 +36,7 @@ export const FLORIDA_AND_GEO_GROUP_WEB_CODES = [
 export const SITE_NAMING_CONVENTION = {
   [SAN_ANTONIO_WEB_CODE]: {
     full: 'San Antonio Staffing',
-    email: 'hr@San Antonio Staffingpersonnel.com',
+    email: 'hr@sanantoniostaffing.com',
     shortCode: 'SAS',
     1: 'San Antonio Staffing'
   },
