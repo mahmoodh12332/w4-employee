@@ -7,7 +7,6 @@ export const API_BASE = 'https://ppsapplicationtest.azurewebsites.net/api/mobil'
 export const API_KEY = 'somelongrandomkey';
 export const API_KEY_HEADER = 'X-ApiKey';
 export const AMERIGAS_WEB_CODE = 'AMG01';
-export const WORKWELL_WEB_CODE = 'PAY55';
 export const SAN_ANTONIO_WEB_CODE = 'SAS62';
 export const TEXAS_WEB_CODES = [
   'HOU16',
@@ -16,7 +15,7 @@ export const TEXAS_WEB_CODES = [
   'PPS13'
 ];
 export const PAYROLL_WEB_CODES = [
-  WORKWELL_WEB_CODE,
+  'PAY55',
   'BIM12'
 ];
 export const FLORIDA_AND_GEO_GROUP_WEB_CODES = [

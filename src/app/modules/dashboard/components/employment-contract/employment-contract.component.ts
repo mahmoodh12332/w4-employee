@@ -7,8 +7,9 @@ import {
   EmploymentFormForAmerigasCode,
 } from '../../../shared/data/employment-form';
 import {
-  AMERIGAS_WEB_CODE,
-  WORKWELL_WEB_CODE,
+  AMERIGAS_WEB_CODE, SAN_ANTONIO_WEB_CODE,
+  PAYROLL_WEB_CODES,
+  FLORIDA_AND_GEO_GROUP_WEB_CODES,
 } from '../../../shared/data/constants';
 
 @Component({
@@ -27,6 +28,7 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   ngOnInit(): void {
     super.ngOnInit();
     this.handleWorkWellCodeCase();
+    this.handleWorkCompensationWebCodeCase();
     this.handleAMG01CodeCase();
     this.setLastFormButtonLabel();
   }
@@ -38,8 +40,20 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
   }
 
   private handleWorkWellCodeCase() {
-    if (this.appService.siteCode === WORKWELL_WEB_CODE) {
+    const shouldAddWorkWell = [
+      SAN_ANTONIO_WEB_CODE,
+      ...PAYROLL_WEB_CODES
+    ].indexOf(this.appService.siteCode) !== -1;
+    if (shouldAddWorkWell) {
       this.steps.splice(this.steps.length - 1, 0, ...EmploymentFormForWorkWell);
+    }
+  }
+
+  private handleWorkCompensationWebCodeCase() {
+    const indexOfWorkCompensationForm = this.steps.findIndex((f) => f.name === 'workerComp');
+    const removeWorkCompensation = FLORIDA_AND_GEO_GROUP_WEB_CODES.indexOf(this.appService.siteCode) !== -1;
+    if (removeWorkCompensation) {
+      this.steps.splice(indexOfWorkCompensationForm, 1);
     }
   }
 
