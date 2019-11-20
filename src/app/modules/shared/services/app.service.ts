@@ -64,7 +64,14 @@ export class AppService {
           }
           resolve(this.skillsData);
         },
-    _ => reject(_)
+    _ => {
+      reject(_);
+      this.snackBar.open(
+        'Having trouble fetching skills information. please try later',
+        'Ok',
+        SNACK_BAR_OPTIONS
+      );
+    }
         );
     });
   }
@@ -79,7 +86,6 @@ export class AppService {
           this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, socialNumber, 1);
           this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify(res.data), 1);
           resolve(res.data);
-          this.getSkillsData();
           return;
         }
         res.errors.forEach((e: any) => this.snackBar.open(e.message, 'OK', SNACK_BAR_OPTIONS));
@@ -134,7 +140,7 @@ export class AppService {
     return skills.map(s => {
       return {
         experienceId: 0,
-        skillId: this.skillsData.find(sk => sk.description === s.level),
+        skillId: this.skillsData.find(sk => sk.description === s.level).skillId,
         years: EmploymentSkillsYearMap[s.years].id,
         ...ApplicationBodyConstants
       };
