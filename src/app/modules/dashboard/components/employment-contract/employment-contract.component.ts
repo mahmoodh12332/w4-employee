@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {forEach} from 'lodash';
 import {EmploymentBaseComponent} from '../employment-base.component';
 import {AppService, CookieService} from '../../../shared/services';
 import {
@@ -31,6 +32,7 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
     this.handleWorkCompensationWebCodeCase();
     this.handleAMG01CodeCase();
     this.setLastFormButtonLabel();
+    this.changeStepperLabelAsPerNamingConvention();
   }
 
   private handleAMG01CodeCase() {
@@ -65,6 +67,14 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
           disagree: 'I disagree',
       }
     };
+  }
+
+  private changeStepperLabelAsPerNamingConvention() {
+    forEach(this.steps, (step) => {
+      forEach(this.appService.siteNamingConvention, (value, key) => {
+        step.label = step.label.replace(`{{${key}}}`, value);
+      });
+    });
   }
 
   onFormSubmit() {

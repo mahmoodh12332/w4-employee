@@ -16,6 +16,7 @@
                [formControl]="field.formControl"
                [placeholder]="field.label"
                (blur)="onTextBlur()"
+               [ngClass]="{'text-uppercase': field.isUppercase}"
                [minLength]="field.minLength"
                [maxLength]="field.maxLength"
                [required]="field.required"

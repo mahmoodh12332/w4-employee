@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidator} from '../../shared/validators';
-import {reduce} from 'lodash';
+import {reduce, upperCase} from 'lodash';
 import {MaskPipe} from 'ngx-mask';
 import * as moment from 'moment';
 
@@ -20,6 +20,10 @@ class MyCustomFormControl extends FormControl {
     }
 
     if (this.ppMasterFieldConfig.name === 'socialSecurityNo') {
+      return this.maskPipeService.transform(this.value, this.ppMasterFieldConfig.mask);
+    } else if (this.ppMasterFieldConfig.isUppercase) {
+      return upperCase(this.value);
+    } else if (this.ppMasterFieldConfig.isMasked) {
       return this.maskPipeService.transform(this.value, this.ppMasterFieldConfig.mask);
     }
     return this.value;

@@ -48,6 +48,7 @@ const commonFieldsForDocumentType = {
     }
   }
 };
+const phoneMask = '(000) 000 - 0000';
 
 export const EmploymentApplicationForm: Array<any> = [
   {
@@ -79,10 +80,11 @@ export const EmploymentApplicationForm: Array<any> = [
         disabled: false,
         isFullRowField: false,
         isFullColumnField: true,
+        isUppercase: true,
         mask: null,
         required: true,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
       },
       {
         id: 'bi-middleInitial',
@@ -93,11 +95,12 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: false,
         isFullRowField: false,
         isFullColumnField: true,
+        isUppercase: true,
         disabled: false,
         mask: null,
         required: false,
-        minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength
+        minLength: 0,
+        maxLength: 1
       },
       {
         id: 'bi-lastName',
@@ -108,10 +111,11 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: false,
         isFullRowField: false,
         isFullColumnField: true,
+        isUppercase: true,
         mask: null,
         required: true,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
       },
       {
         id: 'bi-otherName',
@@ -125,7 +129,8 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         required: false,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
+        isUppercase: true,
       },
       {
         id: 'bi-dateOfBirth',
@@ -185,7 +190,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 10,
       },
       {
         id: 'add-streetName',
@@ -200,7 +205,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
       },
       {
         id: 'add-apartmentNumber',
@@ -215,7 +220,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 5,
       },
       {
         id: 'add-city',
@@ -284,9 +289,9 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: true,
         disabled: false,
         required: false,
-        mask: '(000) - 000 - 0000',
+        mask: phoneMask,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 17,
       },
       {
         id: 'pe-mobilePhone',
@@ -299,9 +304,9 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: true,
         disabled: false,
         required: false,
-        mask: '(000) - 000 - 0000',
+        mask: phoneMask,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 17,
       },
       {
         id: 'pe-email',
@@ -312,7 +317,7 @@ export const EmploymentApplicationForm: Array<any> = [
         isFullColumnField: true,
         defaultValue: '',
         isMasked: false,
-        pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,63}$/,
+        pattern: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/,
         errorMessage: {
           pattern: 'Invalid Email'
         },
@@ -321,7 +326,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
       },
     ]
   },
@@ -372,7 +377,7 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         minLength: null,
         maxLength: null,
-        minValue: 0,
+        minValue: 1,
         maxValue: 10,
       },
       {
@@ -477,7 +482,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 50,
       },
       {
         id: 'payOpt-bankRouting',
@@ -511,7 +516,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 20,
       },
     ],
   },
@@ -558,9 +563,9 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: true,
         disabled: false,
         required: false,
-        mask: '(000) - 000 - 0000',
+        mask: phoneMask,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 17,
       },
       {
         id: 'ec-mobilePhone',
@@ -573,9 +578,9 @@ export const EmploymentApplicationForm: Array<any> = [
         isMasked: true,
         disabled: false,
         required: false,
-        mask: '(000) - 000 - 0000',
+        mask: phoneMask,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 17,
       },
       {
         id: 'ec-relationship',
@@ -849,7 +854,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 12,
       },
       {
         id: 'citizen-countryOfIssuance',
@@ -1026,11 +1031,12 @@ export const EmploymentApplicationForm: Array<any> = [
             isMasked: false,
             isFullRowField: false,
             isFullColumnField: true,
+            isUppercase: true,
             disabled: false,
             required: true,
             mask: null,
             minLength: textTypeDefaultMinLength,
-            maxLength: textTypeDefaultMaxLength,
+            maxLength: 50,
           },
           {
             id: 'wh-history-startDate',
@@ -1077,7 +1083,7 @@ export const EmploymentApplicationForm: Array<any> = [
             required: false,
             mask: null,
             minLength: textTypeDefaultMinLength,
-            maxLength: textTypeDefaultMaxLength,
+            maxLength: 50,
           },
           {
             id: 'wh-history-phone',
@@ -1090,9 +1096,9 @@ export const EmploymentApplicationForm: Array<any> = [
             isFullColumnField: true,
             disabled: false,
             required: false,
-            mask: '(000) 000-0000',
+            mask: phoneMask,
             minLength: textTypeDefaultMinLength,
-            maxLength: textTypeDefaultMaxLength,
+            maxLength: 17,
           },
           {
             id: 'wh-history-payRate',
@@ -1124,7 +1130,7 @@ export const EmploymentApplicationForm: Array<any> = [
             required: false,
             mask: null,
             minLength: textTypeDefaultMinLength,
-            maxLength: textTypeDefaultMaxLength,
+            maxLength: 50,
           },
           {
             id: 'wh-history-reasonLeaving',
@@ -1162,7 +1168,7 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         required: false,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 1000,
       },
       {
         id: 'ad-done',
@@ -1466,7 +1472,7 @@ export const EmploymentContractForm: Array<any> = [
   },
   {
     name: 'WelcomeToPPSCompanyPoliciesAndProcedures',
-    label: 'Welcome To PPS Company Policies And Procedures',
+    label: 'Welcome To {{shortCode}} Company Policies And Procedures',
     fields: [
       {
         componentRef: WelcomeToPPSCompanyPoliciesAndProceduresComponent,
