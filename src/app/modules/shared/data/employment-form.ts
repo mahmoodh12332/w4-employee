@@ -48,7 +48,7 @@ const commonFieldsForDocumentType = {
     }
   }
 };
-const phoneMask = '(000) 000 - 0000';
+const phoneMask = '(000)000-0000';
 const patternForAlphabetsOnly = /^[a-zA-Z|\s]+$/;
 
 export const EmploymentApplicationForm: Array<any> = [
@@ -825,8 +825,8 @@ export const EmploymentApplicationForm: Array<any> = [
         disabled: true,
         required: false,
         mask: null,
+        maxLength: 9,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
       },
       {
         id: 'citizen-expireDate',
@@ -858,7 +858,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 9,
       },
       {
         id: 'citizen-i94Number',
