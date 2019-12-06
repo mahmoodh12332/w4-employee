@@ -49,6 +49,7 @@ const commonFieldsForDocumentType = {
   }
 };
 const phoneMask = '(000) 000 - 0000';
+const patternForAlphabetsOnly = /^[a-zA-Z|\s]+$/;
 
 export const EmploymentApplicationForm: Array<any> = [
   {
@@ -85,6 +86,10 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         minLength: textTypeDefaultMinLength,
         maxLength: 50,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'bi-middleInitial',
@@ -100,7 +105,11 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         required: false,
         minLength: 0,
-        maxLength: 1
+        maxLength: 1,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'bi-lastName',
@@ -116,6 +125,10 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         minLength: textTypeDefaultMinLength,
         maxLength: 50,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'bi-otherName',
@@ -131,6 +144,10 @@ export const EmploymentApplicationForm: Array<any> = [
         minLength: textTypeDefaultMinLength,
         maxLength: 50,
         isUppercase: true,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'bi-dateOfBirth',
@@ -236,6 +253,10 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'add-state',
@@ -376,9 +397,13 @@ export const EmploymentApplicationForm: Array<any> = [
         required: true,
         mask: null,
         minLength: null,
+        pattern: /^[0-9]/,
+        errorMessage: {
+          pattern: 'Should be positive number',
+        },
         maxLength: null,
-        minValue: 1,
-        maxValue: 10,
+        minValue: 0,
+        maxValue: 30,
       },
       {
         id: 'w4i-taxExempt',
@@ -537,6 +562,10 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'ec-lastName',
@@ -551,6 +580,10 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
       {
         id: 'ec-homePhone',
@@ -596,6 +629,10 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         minLength: textTypeDefaultMinLength,
         maxLength: textTypeDefaultMaxLength,
+        pattern: patternForAlphabetsOnly,
+        errorMessage: {
+          pattern: 'Should have alphabets only'
+        },
       },
     ]
   },
