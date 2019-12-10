@@ -875,7 +875,7 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         mask: null,
         minLength: textTypeDefaultMinLength,
-        maxLength: textTypeDefaultMaxLength,
+        maxLength: 11,
       },
       {
         id: 'citizen-foreignPassportNumber',

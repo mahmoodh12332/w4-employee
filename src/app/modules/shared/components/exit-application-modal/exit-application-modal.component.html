@@ -1,0 +1,17 @@
+<button mat-raised-button color="warn" class="float-right" (click)="openModal()">
+  Exit without saving
+</button>
+<ng-template #modalRef>
+  <h1 mat-dialog-title>Exit Application</h1>
+  <div mat-dialog-content>
+    <div class="mb-2">
+      Are you sure you want to exit the application without saving it?
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button color="warn" [mat-dialog-close]="true">Yes, Exit</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    </div>
+  </div>
+</ng-template>
