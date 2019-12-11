@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 offset-lg-1 offset-sm-0 mb-2 mt-5">
+    <div class="col-md-5 col-sm-12 offset-md-1 offset-lg-1 offset-sm-0 mb-2 mt-5">
       <button mat-raised-button color="default" [disabled]="isSubmitting" routerLink="/dashboard/employment-confirmation">
         <span class="icon-arrow-left2"></span>
         Back to Confirmation
       </button>
-      <app-exit-modal-component class="float-right"></app-exit-modal-component>
+    </div>
+    <div class="col-md-5 col-sm-12">
+      <app-exit-modal-component class="float-sm-none float-md-right mb-md-2 mb-sm-0 mt-md-5 mt-sm-0"></app-exit-modal-component>
     </div>
   </div>
 </div>

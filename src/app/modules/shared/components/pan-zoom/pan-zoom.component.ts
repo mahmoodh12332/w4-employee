@@ -27,7 +27,13 @@ export class PanZoomComponent implements AfterViewInit, OnInit {
         maxZoom: 1.5,
         minZoom: 0.1
       });
-      this.panController.zoomTo(20, 0, 0.45);
+      let scaleMultiplier = 0.35;
+      let clientX = 300;
+      if (window.innerWidth <= 425) {
+        scaleMultiplier = 0.45;
+        clientX = 20;
+      }
+      this.panController.zoomTo(clientX, 0, scaleMultiplier);
     }
   }
 

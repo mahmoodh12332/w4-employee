@@ -1,7 +1,7 @@
 <div class="employment-form">
   <div class="container">
     <div class="row">
-      <div class="col-md-10 offset-md-1 offset-lg-1 offset-sm-0 mt-5 mb-5">
+      <div class="col-md-10 offset-md-1 offset-lg-1 offset-sm-0 mt-3 mb-5">
         <mat-card>
           <mat-vertical-stepper (selectionChange)="onStepperSelectionChange($event)" [linear]="isStepperLinear()" #cdkStepper>
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
