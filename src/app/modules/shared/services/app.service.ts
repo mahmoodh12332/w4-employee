@@ -114,6 +114,9 @@ export class AppService {
         return c;
       }, {});
       assign(formBody, constantFormValues);
+      if (formBody.w4_Exempt === '') {
+        formBody.w4_Exempt = 'NOT EXEMPT';
+      }
       formBody.skills = this.skillsData ? this.mapSkills(formBody.skills) : [];
       formBody.workHistories = (formBody.workHistories || []).map((h) => ({
         employmentHistoryId: 0,
