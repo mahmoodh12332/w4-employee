@@ -10,6 +10,7 @@ import {EmploymentFormFieldComponent} from './components/employment-form-field/e
 import {EmploymentModalComponent} from './components/employment-modal/employment-modal.component';
 import {EmploymentContractComponent} from './components/employment-contract/employment-contract.component';
 import {EmploymentApplicationComponent} from './components/employment-application/employment-application.component';
+import {EmploymentW4FormComponent} from './components/employment-w4-form/employment-w4-form.component';
 import {SkillsComponent} from './components/skills/skills-component';
 import {DashboardServices} from './services';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material';
@@ -25,6 +26,7 @@ import {EmploymentConfirmationComponent} from './components/employment-confirmat
     EmploymentContractComponent,
     EmploymentApplicationComponent,
     EmploymentConfirmationComponent,
+    EmploymentW4FormComponent,
     SkillsComponent,
     ...DocumentComponents,
   ],
@@ -40,6 +42,7 @@ import {EmploymentConfirmationComponent} from './components/employment-confirmat
     EmploymentContractComponent,
     EmploymentApplicationComponent,
     EmploymentConfirmationComponent,
+    EmploymentW4FormComponent,
     SkillsComponent,
     ...DocumentComponents,
   ],

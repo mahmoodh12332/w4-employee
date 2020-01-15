@@ -105,6 +105,7 @@ export class AppService {
       const constantFormValues = {
         siteId: siteInfo.siteId,
         webCode: siteInfo.code,
+        w4Version: 2020, // Year,
         applicationDate: (new Date()).toISOString(),
         ...ApplicationBodyConstants
       };

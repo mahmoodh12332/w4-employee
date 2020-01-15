@@ -34,6 +34,8 @@ import {
   AuthorizationToReleaseWorkHistoryComponent
 } from './authorization-to-release-work-history/authorization-to-release-work-history.component';
 import { WorkWellComponent } from './work-well/work-well.component';
+import {W4FormPage3Component} from './w4-form-page-3/w4-form-page-3.component';
+import {W4FormPage2Component} from './w4-form-page-2/w4-form-page-2.component';
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -60,6 +62,8 @@ export const DocumentComponents = [
   SafetyDisciplinePolicyComponent,
   AuthorizationToReleaseWorkHistoryComponent,
   WorkWellComponent,
+  W4FormPage3Component,
+  W4FormPage2Component,
 ];
 
 export default {
@@ -86,6 +90,8 @@ export default {
   SafetyDisciplinePolicyComponent,
   AuthorizationToReleaseWorkHistoryComponent,
   WorkWellComponent,
+  W4FormPage3Component,
+  W4FormPage2Component,
 };
 
 export * from './arbitration-agreement/arbitration-agreement-policy.component';
@@ -112,3 +118,5 @@ export * from './amerigas-form/amerigas-form.component';
 export * from './safety-discipline-policy/safety-discipline-policy.component';
 export * from './authorization-to-release-work-history/authorization-to-release-work-history.component';
 export * from './work-well/work-well.component';
+export * from './w4-form-page-3/w4-form-page-3.component';
+export * from './w4-form-page-2/w4-form-page-2.component';

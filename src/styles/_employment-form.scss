@@ -11,4 +11,12 @@
     border-radius: 10px;
     padding: 20px;
   }
+  &.employment-w4-form {
+    .page-modal-link {
+      text-decoration: underline;
+      color: $primary;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
 }

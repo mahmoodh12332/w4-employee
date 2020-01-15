@@ -6,6 +6,7 @@ import {DashboardComponent} from './dashboard.component';
 import {EmploymentApplicationComponent} from './components/employment-application/employment-application.component';
 import {EmploymentContractComponent} from './components/employment-contract/employment-contract.component';
 import {EmploymentConfirmationComponent} from './components/employment-confirmation/employment-confirmation.component';
+import {EmploymentW4FormComponent} from './components/employment-w4-form/employment-w4-form.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
       {
         path: 'employment-application',
         component: EmploymentApplicationComponent
+      },
+      {
+        path: 'employment-w4-form',
+        canActivate: [EmployeeContractGuardService],
+        component: EmploymentW4FormComponent
       },
       {
         path: 'employment-contract',

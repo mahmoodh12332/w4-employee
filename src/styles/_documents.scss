@@ -115,7 +115,106 @@ ol li{
 }
 
 
+.w4-pages{
+  .form-width{
+    width:1000px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+  }
+  .w4-employ-page table h2{
+    margin-bottom: 0px;
+  }
+  .w4-employ-page table h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .w4-employ-page table p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .bold{
+    font-weight: bold;
+  }
+  .italic{
+    font-style: italic;
+  }
+  .w4-employ-page ol{
+    padding-left: 15px;
+    margin: 0;
+  }
+  .w4-employ-page ol li{
+    padding:3px 0;
+  }
+  .padding-left-15{
+    text-indent: 25px;
+  }
+  .caution img{
+    float: left;
+    width: 45px;
+    margin-right: 15px;
+  }
+  .caution p{
+    display: inline;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .w4-employ-page3 table h4{
+    margin: 0px;
 
+  }
+  .w4-employ-page3 table h4 span{
+    margin: 0px;
+    font-weight: lighter;
+  }
+  .w4-employ-page3 table img{
+    margin-top: 4px;
+  }
+  .w4-employ-page3 .border-top{
+    border-top: 1px solid #000;
+  }
+  .w4-employ-page3 .border-bottom{
+    border-bottom: 1px solid #000;
+  }
+  .w4-employ-page3  p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .w4-employ-page3 ol{
+    padding-left: 15px;
+    margin: 0;
+  }
+  .w4-employ-page3 ol li{
+    padding:3px 10px;
+  }
+  .w4-employ-page3 ol li p{
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+  }
+  .price-border{
+    border-bottom: 1px solid #000;
+  }
+  .price-border span{
+    border-bottom: 1px solid #fff;
+    padding:0 10px;
+  }
+  .w4-employ-page3 .v-bottom{
+    vertical-align: bottom;}
+  .privacytable p{
+    font-size: 12px;
+    margin: 5px 0;
+  }
+  .pdl{
+    padding-left: 30px;
+  }
+  .pdr{
+    padding-right: 30px;
+  }
+}
 /*I9 and W-4 Form */
 .pannable-form{
   label{
@@ -319,6 +418,262 @@ ol li{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  &.w4-2020{
+    .rotate{
+      font-size: 12px !important;
+    }
+    .form-width{
+      width:1000px;
+      text-align: left;
+      margin: 0 auto;
+      position: relative;
+    }
+    .width-80{
+      width: 80%;
+    }
+    .width-95{
+      width: 95%;
+    }
+    .col-30{
+      float: left;
+      width: 30%;
+      padding: 15px 15px;
+      margin-bottom: 20px;
+    }
+    .form-width h1{
+      border-bottom: 2px solid #000;
+      margin-top: 0;
+    }
+    .form-width h2{
+      margin-top:0px;
+      margin-bottom: 5px;
+      font-size: 24px;
+    }
+    .col-30 p{
+      margin-bottom: 10px;
+      margin-top:0;
+      font-size: 14px;
+    }
+    .form-width h3{
+      margin:0px;
+      font-size: 15px;
+    }
+    .aa p{
+      padding: 0 5px;
+    }
+    .dotline {
+      width: 100%;
+      float: left;
+      text-align: center;
+      border-bottom: 2px dotted #000;
+      line-height: 0.1em;
+      margin: 10px 0 20px;
+    }
+
+    .dotline span {
+      background:#fff;
+      padding:0 10px;
+      font-weight: bold;
+    }
+
+    .w4-employ{
+      float: left;
+      width: 100%;
+    }
+    .col-15{
+      float: left;
+      width: 15%;
+      padding:5px 0;
+    }
+    .col-70{
+      float: left;
+      width: 68%;
+      padding:5px 0;
+    }
+    .font-10{
+      font-size: 11px;
+    }
+    .font-12{
+      font-size: 12px;
+    }
+    .font-14{
+      font-size: 14px;
+    }
+    .font-18{
+      font-size: 18px;
+    }
+    .bold{
+      font-weight: bold;
+    }
+    .padding-0{
+      padding: 0;;
+    }
+    .padding-top{
+      padding-top: 10px;
+    }
+    .padding-left{
+      padding-left: 10px;
+    }
+    .padding-y{
+      padding: 5px 0;;
+    }
+    .v-top{
+      vertical-align: top;
+    }
+    .v-bottom{
+      vertical-align: bottom;
+    }
+    .border-text{
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke-width: 1px;
+    }
+    .float-left{
+      float: left !important;
+    }
+    .font-30{
+      font-size: 36px;
+      font-weight: 900;
+    }
+    .border-bottom{
+      border-bottom: 1px solid #000;
+    }
+    .border-left{
+      border-left: 1px solid #000;
+    }
+    .border-right{
+      border-right: 1px solid #000;
+    }
+    .border-top{
+      border-top: 1px solid #000;
+    }
+    .text-center{
+      text-align: center;
+    }
+    .w4-employ h3{
+      margin:12px 0;
+      padding:0px 15px;
+    }
+    .w4-employ p{
+      margin: 0;
+    }
+    .background-color{
+      background-color: white;
+      height: 25px;
+      float: left;width:100%;
+    }
+    .space-bar{
+      height: 25px;
+      float: left;width:100%;
+    }
+    .black-light{
+      background-color: #c0c0c0;
+    }
+    table{
+      border-color:#000 !important;
+    }
+    .border-tb{
+      border-bottom: 0;
+      border-top:0;
+    }
+    .border-rl{
+      border-right: 0;
+      border-left:0;
+    }
+    .border-r{
+      border-right: 0;
+    }
+    .border-l{
+      border-left:0;
+    }
+    .border-b{
+      border-bottom: 0;
+    }
+    .border-t{
+      border-top:0;
+    }
+    .rotate{
+      -ms-transform: rotate(315deg); /* IE 9 */
+      -webkit-transform: rotate(315deg); /* Safari 3-8 */
+      transform: rotate(315deg);
+      font-size: 30px;
+      margin-right: 5px;
+      margin-left: -10px;
+    }
+    /* Checkbox contain */
+    .mycheckbox {
+      position: relative;
+      padding-left: 25px;
+      /* margin-bottom: 0px; */
+      padding-right:5px;
+      cursor: pointer;
+      font-size: 12px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .space-bar span{
+      width: 16px;
+      float: left;
+      height: 20px;
+      margin: 4px 0;
+      border-bottom: 1px solid #000;
+      border-left: 1px solid #000;
+      border-top: 1px solid #000;
+      text-align: center;
+    }
+    /* Hide the browser's default checkbox */
+    .mycheckbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 15px;
+      width: 15px;
+      background-color: #fff;;
+      border:1px solid #000;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .mycheckbox:hover input ~ .checkmark {
+      background-color: #fff;;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .mycheckbox input:checked ~ .checkmark {
+      background-color: #000;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .mycheckbox input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .mycheckbox .checkmark:after {
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
 
 }
@@ -691,7 +1046,7 @@ ol li{
       width:100%;
     }
     .center-width {
-      float: inherit !important; 
+      float: inherit !important;
       padding: 0 5px!important;
     }
     .w-150px {

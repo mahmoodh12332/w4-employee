@@ -1,0 +1,358 @@
+<div class="employment-form employment-w4-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 offset-md-1 offset-lg-1 offset-sm-0 mb-2 mt-5">
+        <button mat-raised-button color="default" routerLink="/dashboard/employment-application">
+          <span class="icon-arrow-left2"></span>
+          Back To Application Form
+        </button>
+      </div>
+      <div class="col-md-5 col-sm-12">
+        <app-exit-modal-component class="float-sm-none float-md-right mb-md-2 mb-sm-0 mt-md-5 mt-sm-0"></app-exit-modal-component>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 offset-lg-1 offset-sm-0 mt-3 mb-5">
+        <mat-card>
+          <div class="row">
+            <div class="col-12 text-center">
+              <h5><b>W4 Form</b></h5>
+            </div>
+          </div>
+          <mat-vertical-stepper #cdkStepper (selectionChange)="onStepperSelectionChange($event)" [linear]="!w4FormGroup.valid">
+            <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
+              <form [formGroup]="w4FormGroup">
+                <ng-template matStepLabel>Step 1: Personal Information</ng-template>
+                <div class="row">
+                  <div class="col-12">
+                    <label [ngClass]="{'mat-error': w4FormGroup.controls['w4MaritalStatus'].hasError('required')}">
+                     Marital Status *
+                    </label>
+                    <mat-radio-group class="d-flex flex-column"
+                                     [formControl]="w4FormGroup.controls['w4MaritalStatus']"
+                                     [required]="true">
+                      <mat-radio-button class="mt-2 mb-2" value="S">
+                        Single or Married filing separately
+                      </mat-radio-button>
+                      <mat-radio-button class="mt-2 mb-2" value="M">
+                        Married filling jointly (or Qualifying widow(er))
+                      </mat-radio-button>
+                      <mat-radio-button class="mt-2 mb-2" value="H">
+                        Head of household (Check only if you’re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
+                      </mat-radio-button>
+                      <mat-error
+                        class="mat-form-field-subscript-wrapper"
+                        *ngIf="w4FormGroup.controls['w4MaritalStatus'].hasError('required')"
+                      >MaritalStatus is Required</mat-error>
+                    </mat-radio-group>
+                  </div>
+                </div>
+                <div class="row mt-3" *ngIf="w4FormGroup.controls['w4MaritalStatus'].valid">
+                  <div class="col-12 p-3" style="border: 1px solid black;">
+                    <b>Complete Steps 2–4 ONLY if they apply to you; otherwise,
+                      <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button>
+                      to Step 5.</b>
+                    See <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span> for more information on each step, who can
+                    claim exemption from withholding, when to use the online estimator, and privacy
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="float-left w-100 text-center">
+                      <div>
+                        <button class="float-left" mat-raised-button matStepperPrevious>Back</button>
+                      </div>
+                      <div  class="float-right">
+                        <button mat-raised-button  color="primary" matStepperNext>Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
+              <form [formGroup]="w4FormGroup">
+                <ng-template matStepLabel>Step 2: Multiple Jobs or Spouse Works </ng-template>
+                <div class="row">
+                  <div class="col-12">
+                    Complete this step if you (1) hold more than one job at a time, or (2) are married filing jointly and your spouse
+                    also works. The correct amount of withholding depends on income earned from all of these jobs
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 mt-2">
+                    Do <b>only one</b> of the following.
+                  </div>
+                  <div class="col-1 text-center">
+                    <b>(a)</b>
+                  </div>
+                  <div class="col-11">
+                    Use the estimator at www.irs.gov/W4App for most accurate withholding for this step (and Steps 3–4)
+                  </div>
+                  <div class="col-12 text-center">
+                    <b>or</b>
+                  </div>
+                  <div class="col-1 text-center">
+                    <b>(b)</b>
+                  </div>
+                  <div class="col-11">
+                    Use the Multiple Jobs Worksheet on
+                    <span class="page-modal-link" (click)="openPage(w4Page3Modal)">page 3</span>
+                    and enter the result in Step 4(c) below for roughly accurate withholding;
+                  </div>
+                  <div class="col-12 text-center">
+                    <b>or</b>
+                  </div>
+                  <div class="col-1 text-center">
+                    <b>(c)</b>
+                  </div>
+                  <div class="col-11">
+                    If there are only two jobs total, you may check this box
+                    <mat-checkbox color="primary" [formControl]="w4FormGroup.controls['w4TwoJobs']"></mat-checkbox>.
+                    Do the same on Form W-4 for the other job. This option
+                    is accurate for jobs with similar pay; otherwise, more tax than necessary may be withheld
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12 p-3" style="border: 1px solid black;">
+                    <b>
+                      Complete Steps 3–4(b) on Form W-4 for only ONE of these jobs.
+                    </b>
+                    Leave those steps blank for the other jobs. (Your withholding will be most accurate if you complete
+                    Steps 3–4(b) on the Form W-4 for the highest paying job.)
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="float-left w-100 text-center">
+                      <div>
+                        <button class="float-left"  mat-raised-button matStepperPrevious>Back</button>
+                      </div>
+                      <div  class="float-right">
+                        <button mat-raised-button  color="primary" matStepperNext>Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="w4FormGroup"
+                      [editable]="w4FormGroup.valid">
+              <form [formGroup]="w4FormGroup">
+                <ng-template matStepLabel>Step 3: Claim Dependents</ng-template>
+                <div class="row">
+                  <div class="col-12">
+                    If your income will be $200,000 or less ($400,000 or less if married filing jointly):
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <mat-form-field class="mb-2 w-100">
+                          <mat-label>
+                            Qualifying Children under 17
+                          </mat-label>
+                          <mat-select [formControl]="w4FormGroup.controls['w4Children']">
+                            <mat-option [value]="0">0</mat-option>
+                            <mat-option [value]="1">1</mat-option>
+                            <mat-option [value]="2">2</mat-option>
+                            <mat-option [value]="3">3</mat-option>
+                            <mat-option [value]="4">4</mat-option>
+                            <mat-option [value]="5">5</mat-option>
+                            <mat-option [value]="6">6</mat-option>
+                            <mat-option [value]="7">7</mat-option>
+                            <mat-option [value]="8">8</mat-option>
+                            <mat-option [value]="9">9</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        Multiply the number of qualifying children under age 17 by $2,000
+                      </div>
+                      <div class="col-4 text-center" style="border-left: 1px solid black">
+                        <b>
+                          ${{w4FormGroup.controls['w4Children'].value * 2000}}
+                        </b>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <mat-form-field class="mt-2 mb-2 w-100">
+                          <input matInput
+                                 type="number"
+                                 [min]="0"
+                                 [max]="10"
+                                 [formControl]="w4FormGroup.controls['w4Dependents']"
+                                 placeholder="Other Dependents"/>
+                          <mat-error *ngIf="w4FormGroup.controls['w4Dependents'].hasError('min')">
+                            Value should be at least {{w4FormGroup.controls['w4Dependents'].errors['min']['min']}}
+                          </mat-error>
+                          <mat-error *ngIf="w4FormGroup.controls['w4Dependents'].hasError('max')">
+                            Value should be at max {{w4FormGroup.controls['w4Dependents'].errors['max']['max']}}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        Multiply the number of other dependents by $500
+                      </div>
+                      <div class="col-4 text-center" style="border-left: 1px solid black">
+                        <b>
+                          ${{w4FormGroup.controls['w4Dependents'].value * 500}}
+                        </b>
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-8">
+                       Adding the amounts above
+                      </div>
+                      <div class="col-4 text-center" style="border-top: 1px solid black; border-left: 1px solid black;">
+                        <b>
+                          ${{
+                          (w4FormGroup.controls['w4Dependents'].value * 500) +
+                          w4FormGroup.controls['w4Children'].value * 2000
+                          }}
+                        </b>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="float-left w-100 text-center">
+                      <div>
+                        <button class="float-left"  mat-raised-button matStepperPrevious>Back</button>
+                      </div>
+                      <div  class="float-right">
+                        <button mat-raised-button  color="primary" matStepperNext>Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
+              <form [formGroup]="w4FormGroup">
+                <ng-template matStepLabel>Step 4(optional): Other Adjustments</ng-template>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-1 text-center">
+                        <b>(a)</b>
+                      </div>
+                      <div class="col-md-6 col-sm-11">
+                        <mat-form-field class="mt-2 mb-2 w-100">
+                          <input matInput
+                                 type="number"
+                                 [formControl]="w4FormGroup.controls['w4OtherIncome']"
+                                 placeholder="Other Income (not from job)"/>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-1 col-md-1 text-center">
+                        <b>(b)</b>
+                      </div>
+                      <div class="col-md-6 col-sm-11">
+                        <mat-form-field class="mt-2 mb-2 w-100">
+                          <input matInput
+                                 type="number"
+                                 [formControl]="w4FormGroup.controls['w4Deductions']"
+                                 placeholder="Deductions"/>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-1 text-center">
+                        <b>(c)</b>
+                      </div>
+                      <div class="col-md-6 col-sm-11">
+                        <mat-form-field class="mt-2 mb-2 w-100">
+                          <input matInput
+                                 type="number"
+                                 [formControl]="w4FormGroup.controls['w4ExtraWithHolding']"
+                                 placeholder="Extra withholding"/>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8 col-sm-12">
+                        <p>
+                          If you are Tax Exempt then type Exempt Here(Optional)
+                        </p>
+                        <mat-form-field class="mt-1 w-100">
+                          <input matInput
+                                 class="text-uppercase"
+                                 type="text"
+                                 (change)="validateIfItsExemptOrNot()"
+                                 [formControl]="w4FormGroup.controls['w4_Exempt']"
+                                 placeholder="Here"/>
+                          <mat-error *ngIf="w4FormGroup.controls['w4_Exempt'].hasError('invalidValue')">
+                            You can only type EXEMPT
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="float-left w-100 text-center">
+                      <div>
+                        <button class="float-left"  mat-raised-button matStepperPrevious>Back</button>
+                      </div>
+                      <div  class="float-right">
+                        <button mat-raised-button  color="primary" (click)="continueToConfirmation()" [disabled]="w4FormGroup.invalid">
+                          Continue To Confirmation
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+          </mat-vertical-stepper>
+        </mat-card>
+      </div>
+    </div>
+</div>
+</div>
+<ng-template #w4Page2Modal>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <app-w4-form-page-2></app-w4-form-page-2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button mat-dialog-close color="primary">Ok</button>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #w4Page3Modal>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <app-w4-form-page-3></app-w4-form-page-3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button mat-dialog-close color="primary">Ok</button>
+    </div>
+  </div>
+</ng-template>

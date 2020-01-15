@@ -351,87 +351,87 @@ export const EmploymentApplicationForm: Array<any> = [
       },
     ]
   },
-  {
-    name: 'w4Information',
-    label: 'W-4 Information',
-    fields: [
-      {
-        id: 'w4i-maritalStatus',
-        name: 'w4MaritalStatus',
-        label: 'Marital Status',
-        type: 'radioButton',
-        isFullRowField: true,
-        isFullColumnField: true,
-        options: [
-          {
-            value: 'S',
-            label: 'Single'
-          },
-          {
-            value: 'M',
-            label: 'Married'
-          },
-          {
-            value: 'H',
-            label: 'Married, but withhold at higher Single Rate'
-          },
-        ],
-        defaultValue: '',
-        isMasked: false,
-        disabled: false,
-        required: true,
-        mask: null,
-        minLength: null,
-        maxLength: null,
-      },
-      {
-        id: 'w4i-totalDependant',
-        name: 'w4TotalAllowances',
-        label: 'Total Dependant',
-        type: 'number',
-        isFullRowField: false,
-        isFullColumnField: true,
-        defaultValue: '',
-        isMasked: false,
-        disabled: false,
-        required: true,
-        mask: null,
-        minLength: null,
-        pattern: /^[0-9]/,
-        errorMessage: {
-          pattern: 'Should be positive number',
-        },
-        maxLength: null,
-        minValue: 0,
-        maxValue: 30,
-      },
-      {
-        id: 'w4i-taxExempt',
-        name: 'w4_Exempt',
-        label: 'Are you tax exempt',
-        type: 'radioButton',
-        defaultValue: '',
-        options: [
-          {
-            value: true,
-            label: 'Yes'
-          },
-          {
-            value: false,
-            label: 'No'
-          }
-        ],
-        isFullRowField: true,
-        isFullColumnField: true,
-        isMasked: false,
-        disabled: false,
-        required: true,
-        mask: null,
-        minLength: null,
-        maxLength: null,
-      },
-    ]
-  },
+  // {
+  //   name: 'w4Information',
+  //   label: 'W-4 Information',
+  //   fields: [
+  //     {
+  //       id: 'w4i-maritalStatus',
+  //       name: 'w4MaritalStatus',
+  //       label: 'Marital Status',
+  //       type: 'radioButton',
+  //       isFullRowField: true,
+  //       isFullColumnField: true,
+  //       options: [
+  //         {
+  //           value: 'S',
+  //           label: 'Single'
+  //         },
+  //         {
+  //           value: 'M',
+  //           label: 'Married'
+  //         },
+  //         {
+  //           value: 'H',
+  //           label: 'Married, but withhold at higher Single Rate'
+  //         },
+  //       ],
+  //       defaultValue: '',
+  //       isMasked: false,
+  //       disabled: false,
+  //       required: true,
+  //       mask: null,
+  //       minLength: null,
+  //       maxLength: null,
+  //     },
+  //     {
+  //       id: 'w4i-totalDependant',
+  //       name: 'w4TotalAllowances',
+  //       label: 'Total Dependant',
+  //       type: 'number',
+  //       isFullRowField: false,
+  //       isFullColumnField: true,
+  //       defaultValue: '',
+  //       isMasked: false,
+  //       disabled: false,
+  //       required: true,
+  //       mask: null,
+  //       minLength: null,
+  //       pattern: /^[0-9]/,
+  //       errorMessage: {
+  //         pattern: 'Should be positive number',
+  //       },
+  //       maxLength: null,
+  //       minValue: 0,
+  //       maxValue: 30,
+  //     },
+  //     {
+  //       id: 'w4i-taxExempt',
+  //       name: 'w4_Exempt',
+  //       label: 'Are you tax exempt',
+  //       type: 'radioButton',
+  //       defaultValue: '',
+  //       options: [
+  //         {
+  //           value: true,
+  //           label: 'Yes'
+  //         },
+  //         {
+  //           value: false,
+  //           label: 'No'
+  //         }
+  //       ],
+  //       isFullRowField: true,
+  //       isFullColumnField: true,
+  //       isMasked: false,
+  //       disabled: false,
+  //       required: true,
+  //       mask: null,
+  //       minLength: null,
+  //       maxLength: null,
+  //     },
+  //   ]
+  // },
   {
     name: 'paymentOptions',
     label: 'Payment Options',
@@ -1213,7 +1213,7 @@ export const EmploymentApplicationForm: Array<any> = [
         type: 'submit',
         isFullRowField: true,
         isFullColumnField: true,
-        label: 'Continue to verification'
+        label: 'Continue to W4 Form'
       }
     ]
   }
