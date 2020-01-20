@@ -16,13 +16,19 @@
         <mat-card>
           <div class="row">
             <div class="col-12 text-center">
-              <h5><b>W4 Form</b></h5>
+              <h5>
+                <b>
+                  Form W-4 Employee's Withholding Certificate
+                </b>
+              </h5>
             </div>
           </div>
           <mat-vertical-stepper #cdkStepper (selectionChange)="onStepperSelectionChange($event)" [linear]="!w4FormGroup.valid">
             <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
               <form [formGroup]="w4FormGroup">
-                <ng-template matStepLabel>Step 1: Personal Information</ng-template>
+                <ng-template matStepLabel>Step 1:
+                  <p>Personal Information</p>
+                </ng-template>
                 <div class="row">
                   <div class="col-12">
                     <label [ngClass]="{'mat-error': w4FormGroup.controls['w4MaritalStatus'].hasError('required')}">
@@ -53,7 +59,7 @@
                       <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button>
                       to Step 5.</b>
                     See <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span> for more information on each step, who can
-                    claim exemption from withholding, when to use the online estimator, and privacy
+                    claim exemption from withholding, when to use the online estimator, and privacy.
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -72,11 +78,16 @@
             </mat-step>
             <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
               <form [formGroup]="w4FormGroup">
-                <ng-template matStepLabel>Step 2: Multiple Jobs or Spouse Works </ng-template>
+                <ng-template matStepLabel>
+                  Step 2:
+                  <p>
+                    Multiple Jobs or Spouse Works
+                  </p>
+                </ng-template>
                 <div class="row">
                   <div class="col-12">
                     Complete this step if you (1) hold more than one job at a time, or (2) are married filing jointly and your spouse
-                    also works. The correct amount of withholding depends on income earned from all of these jobs
+                    also works. The correct amount of withholding depends on income earned from all of these jobs.
                   </div>
                 </div>
                 <div class="row">
@@ -87,7 +98,7 @@
                     <b>(a)</b>
                   </div>
                   <div class="col-11">
-                    Use the estimator at www.irs.gov/W4App for most accurate withholding for this step (and Steps 3–4)
+                    Use the estimator at www.irs.gov/W4App for most accurate withholding for this step (and Steps 3–4).
                   </div>
                   <div class="col-12 text-center">
                     <b>or</b>
@@ -111,6 +122,11 @@
                     <mat-checkbox color="primary" [formControl]="w4FormGroup.controls['w4TwoJobs']"></mat-checkbox>.
                     Do the same on Form W-4 for the other job. This option
                     is accurate for jobs with similar pay; otherwise, more tax than necessary may be withheld
+                  </div>
+                  <div class="offset-1 col-11 mt-4 mb-4">
+                    <b>TIP: </b>
+                    To be accurate, submit a 2020 Form W-4 for all other jobs. If you (or your spouse) have self-employment
+                    income, including as an independent contractor, use the estimator.
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -139,7 +155,10 @@
             <mat-step [stepControl]="w4FormGroup"
                       [editable]="w4FormGroup.valid">
               <form [formGroup]="w4FormGroup">
-                <ng-template matStepLabel>Step 3: Claim Dependents</ng-template>
+                <ng-template matStepLabel>
+                  Step 3:
+                  <p>Claim Dependents</p>
+                </ng-template>
                 <div class="row">
                   <div class="col-12">
                     If your income will be $200,000 or less ($400,000 or less if married filing jointly):
@@ -165,6 +184,9 @@
                             <mat-option [value]="8">8</mat-option>
                             <mat-option [value]="9">9</mat-option>
                           </mat-select>
+                          <span matSuffix>
+                            x <b>&nbsp;$2000</b>
+                          </span>
                         </mat-form-field>
                       </div>
                     </div>
@@ -190,6 +212,9 @@
                           <mat-error *ngIf="w4FormGroup.controls['w4Dependents'].hasError('min')">
                             Value should be at least {{w4FormGroup.controls['w4Dependents'].errors['min']['min']}}
                           </mat-error>
+                          <span matSuffix>
+                            x<b>&nbsp;$500</b>
+                          </span>
                           <mat-error *ngIf="w4FormGroup.controls['w4Dependents'].hasError('max')">
                             Value should be at max {{w4FormGroup.controls['w4Dependents'].errors['max']['max']}}
                           </mat-error>
@@ -220,7 +245,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <div class="row mt-3">
                   <div class="col-12">
@@ -238,52 +262,79 @@
             </mat-step>
             <mat-step [stepControl]="w4FormGroup" [editable]="w4FormGroup.valid">
               <form [formGroup]="w4FormGroup">
-                <ng-template matStepLabel>Step 4(optional): Other Adjustments</ng-template>
+                <ng-template matStepLabel>
+                  Step 4(optional):
+                  <p>
+                    Other Adjustments
+                  </p>
+                </ng-template>
                 <div class="row">
                   <div class="col-12">
                     <div class="row">
-                      <div class="col-1 text-center">
-                        <b>(a)</b>
+                      <div class="col-12">
+                        <b>
+                          (a) Other income (not from jobs).
+                        </b>
+                        If you want tax withheld for other income you expect
+                        this year that won’t have withholding, enter the amount of other income here. This may
+                        include interest, dividends, and retirement income
                       </div>
-                      <div class="col-md-6 col-sm-11">
+                    </div>
+                    <div class="row">
+                      <div class="offset-1 col-md-6 col-sm-11">
                         <mat-form-field class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
                                  [formControl]="w4FormGroup.controls['w4OtherIncome']"
-                                 placeholder="Other Income (not from job)"/>
+                                 placeholder="4(a)"/>
+                          <span matPrefix><b>$</b>&nbsp;</span>
                         </mat-form-field>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-sm-1 col-md-1 text-center">
-                        <b>(b)</b>
+                      <div class="col-12">
+                        <b>
+                          (b) Deductions.
+                        </b>
+                        If you expect to claim deductions other than the standard deduction
+                        and want to reduce your withholding, use the Deductions Worksheet on <span class="page-modal-link" (click)="openPage(w4Page3Modal)">page 3</span> and
+                        enter the result here
                       </div>
-                      <div class="col-md-6 col-sm-11">
+                    </div>
+                    <div class="row">
+                      <div class="offset-1 col-md-6 col-sm-11">
                         <mat-form-field class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
                                  [formControl]="w4FormGroup.controls['w4Deductions']"
-                                 placeholder="Deductions"/>
+                                 placeholder="4(b)"/>
+                          <span matPrefix><b>$</b>&nbsp;</span>
                         </mat-form-field>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-1 text-center">
-                        <b>(c)</b>
+                      <div class="col-12">
+                        <b>
+                          (c) Extra withholding.
+                        </b>
+                        Enter any additional tax you want withheld each <b> pay period.</b>
                       </div>
-                      <div class="col-md-6 col-sm-11">
+                    </div>
+                    <div class="row">
+                      <div class="offset-1 col-md-6 col-sm-11">
                         <mat-form-field class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
                                  [formControl]="w4FormGroup.controls['w4ExtraWithHolding']"
-                                 placeholder="Extra withholding"/>
+                                 placeholder="4(c)"/>
+                          <span matPrefix><b>$</b>&nbsp;</span>
                         </mat-form-field>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-8 col-sm-12">
                         <p>
-                          If you are Tax Exempt then type Exempt Here(Optional)
+                          If you are Exempt from paying taxes then type Exempt Here(Optional)
                         </p>
                         <mat-form-field class="mt-1 w-100">
                           <input matInput
