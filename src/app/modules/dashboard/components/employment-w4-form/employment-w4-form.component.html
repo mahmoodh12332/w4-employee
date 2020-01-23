@@ -15,7 +15,7 @@
       <div class="col-md-10 offset-md-1 offset-lg-1 offset-sm-0 mt-3 mb-5">
         <mat-card>
           <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center mt-5 mb-3">
               <h5>
                 <b>
                   Form W-4 Employee's Withholding Certificate
@@ -43,7 +43,7 @@
                       <mat-radio-button class="mt-2 mb-2" value="M">
                         Married filling jointly (or Qualifying widow(er))
                       </mat-radio-button>
-                      <mat-radio-button class="mt-2 mb-2" value="H">
+                      <mat-radio-button class="mt-2 mb-2" value="W">
                         Head of household (Check only if you’re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
                       </mat-radio-button>
                       <mat-error
@@ -167,7 +167,12 @@
                 <div class="row mt-3">
                   <div class="col-12">
                     <div class="row">
-                      <div class="col-md-6 col-sm-12">
+                      <div class="col-12">
+                        Multiply the number of qualifying children under age 17 by $2,000
+                      </div>
+                    </div>
+                    <div class="row mt-4 mb-4">
+                      <div class="col-9">
                         <mat-form-field class="mb-2 w-100">
                           <mat-label>
                             Qualifying Children under 17
@@ -189,19 +194,19 @@
                           </span>
                         </mat-form-field>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-8">
-                        Multiply the number of qualifying children under age 17 by $2,000
-                      </div>
-                      <div class="col-4 text-center" style="border-left: 1px solid black">
+                      <div class="col-3 d-flex justify-content-center align-items-center" style="border-left: 1px solid black">
                         <b>
                           ${{w4FormGroup.controls['w4Children'].value * 2000}}
                         </b>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6 col-sm-12">
+                      <div class="col-12">
+                        Multiply the number of other dependents by $500
+                      </div>
+                    </div>
+                    <div class="row mb-4 mt-4">
+                      <div class="col-9">
                         <mat-form-field class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
@@ -220,22 +225,17 @@
                           </mat-error>
                         </mat-form-field>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-8">
-                        Multiply the number of other dependents by $500
-                      </div>
-                      <div class="col-4 text-center" style="border-left: 1px solid black">
+                      <div class="col-3 d-flex justify-content-center align-items-center" style="border-left: 1px solid black">
                         <b>
                           ${{w4FormGroup.controls['w4Dependents'].value * 500}}
                         </b>
                       </div>
                     </div>
                     <div class="row mt-4">
-                      <div class="col-8">
+                      <div class="col-9">
                        Adding the amounts above
                       </div>
-                      <div class="col-4 text-center" style="border-top: 1px solid black; border-left: 1px solid black;">
+                      <div class="col-3 text-center" style="border-top: 1px solid black; border-left: 1px solid black;">
                         <b>
                           ${{
                           (w4FormGroup.controls['w4Dependents'].value * 500) +

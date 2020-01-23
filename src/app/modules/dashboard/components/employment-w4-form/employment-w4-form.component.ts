@@ -86,6 +86,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     const newFormValues = Object.assign({}, this.formValues, {
       w4Information: values,
     });
+    console.log(newFormValues);
     this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(newFormValues));
     this.router.navigate(['/dashboard/employment-confirmation']);
   }

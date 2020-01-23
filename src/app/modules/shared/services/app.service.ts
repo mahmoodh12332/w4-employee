@@ -106,6 +106,9 @@ export class AppService {
         siteId: siteInfo.siteId,
         webCode: siteInfo.code,
         w4Version: 2020, // Year,
+        w4TotalAllowances: 0,
+        w4LastNameDiferr: false,
+        w4AdditionalAmount: 0,
         applicationDate: (new Date()).toISOString(),
         ...ApplicationBodyConstants
       };
@@ -114,9 +117,7 @@ export class AppService {
         return c;
       }, {});
       assign(formBody, constantFormValues);
-      if (formBody.w4_Exempt === '') {
-        formBody.w4_Exempt = 'NOT EXEMPT';
-      }
+      formBody.w4_Exempt = formBody.w4_Exempt === 'EXEMPT';
       formBody.skills = this.skillsData ? this.mapSkills(formBody.skills) : [];
       formBody.workHistories = (formBody.workHistories || []).map((h) => ({
         employmentHistoryId: 0,

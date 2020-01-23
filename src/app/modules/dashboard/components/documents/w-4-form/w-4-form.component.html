@@ -225,7 +225,7 @@
           </td>
           <td width="50" class=" border-top border-left"><span class="bold">4(a)</span></td>
           <td width="150" class=" border-left border-top text-center"><span >
-            <b>${{getValue('w4Information.w4OtherIncome')}}</b>
+            <b>${{getValue('w4Information.w4OtherIncome') || 0}}</b>
           </span></td>
         </tr>
         <tr>
@@ -236,7 +236,7 @@
           </td>
           <td width="50" class=" border-top border-left"><span class="bold">4(b)</span></td>
           <td width="150" class=" border-left border-top text-center"><span >
-            <b>${{getValue('w4Information.w4Deductions')}}</b>
+            <b>${{getValue('w4Information.w4Deductions') || 0}}</b>
           </span></td>
         </tr>
         <tr>
@@ -245,7 +245,7 @@
           </td>
           <td width="50" class=" border-top border-left border-bottom"><span class="bold">4(c)</span></td>
           <td  class=" border-left border-top border-bottom text-center"><span >
-            <b>${{getValue('w4Information.w4ExtraWithHolding')}}</b>
+            <b>${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
           </span></td>
         </tr>
         <tr>
