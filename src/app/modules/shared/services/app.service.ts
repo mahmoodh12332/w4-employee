@@ -118,6 +118,7 @@ export class AppService {
         return c;
       }, {});
       assign(formBody, constantFormValues);
+      delete formBody.formSubmit;
       formBody.w4_Exempt = formBody.w4_Exempt === 'EXEMPT';
       formBody.skills = this.skillsData ? this.mapSkills(formBody.skills) : [];
       formBody.workHistories = (formBody.workHistories || []).map((h) => ({
