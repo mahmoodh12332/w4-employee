@@ -81,8 +81,8 @@ export class EmploymentFormService {
       let currentValue: any = field.defaultValue || '';
       if (field.type === 'date' && values[field.name]) {
         currentValue = new Date(values[field.name]);
-      } else if (field.type === 'group' && values[field.name]) {
-        field.groupValues = values[field.name];
+      } else if (field.type === 'group') {
+        field.groupValues = values[field.name] || [];
       } else if (values[field.name]) {
         currentValue = values[field.name];
       }
