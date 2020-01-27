@@ -114,7 +114,7 @@
           <div class="col-md-6 col-sm-12 col-lg-6 mt-3 mb-3">
             <mat-card>
               <mat-card-content>
-                <div class="row">
+                <div class="row ml-1">
                   <ng-container *ngFor="let key of objectKeys(value); let j = index;">
                     <div class="col-12">
                       <small class="text-muted">
@@ -128,10 +128,15 @@
                 </div>
               </mat-card-content>
               <mat-divider></mat-divider>
-              <mat-card-actions>
-                <button mat-raised-button color="danger" (click)="onGroupItemRemoved(i)">Remove</button>
-                <button mat-raised-button color="primary" (click)="onGroupItemClicked(i)">Edit</button>
-              </mat-card-actions>
+              <div class="row pl-2 pt-2">
+                <div class="col-12 ">
+                  <mat-card-actions class="m-0">
+                    <button mat-raised-button color="danger" (click)="onGroupItemRemoved(i)">Remove</button>
+                    <button mat-raised-button color="primary" (click)="onGroupItemClicked(i)">Edit</button>
+                  </mat-card-actions>
+                </div>
+              </div>
+
             </mat-card>
           </div>
         </ng-container>
