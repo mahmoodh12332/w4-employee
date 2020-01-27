@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {reduce, assign, toUpper} from 'lodash';
+import * as moment from 'moment';
 import {
   API_ROUTES,
   CURRENT_SSN_COOKIE_NAME,
@@ -105,7 +106,7 @@ export class AppService {
       const constantFormValues = {
         siteId: siteInfo.siteId,
         webCode: siteInfo.code,
-        w4Version: 2020, // Year,
+        w4Version: +moment().format('YYYY'), // Year,
         w4TotalAllowances: 0,
         w4LastNameDiferr: false,
         w4AdditionalAmount: 0,
