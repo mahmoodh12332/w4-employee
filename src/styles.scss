@@ -21,11 +21,11 @@ button{
     outline: none !important;
   }
 }
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+  background-color: #218838;
+}
 
 @media (max-width: 768px){
-  .mat-card{
-    padding: 0 !important;
-  }
   .mat-vertical-content-container {
     margin-left: 15px !important;
   }
