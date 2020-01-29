@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild} from '@angular/core';
 import {SignaturePad} from 'angular2-signaturepad/signature-pad';
 import {FormControl} from '@angular/forms';
 
@@ -26,13 +26,15 @@ export class SignaturePadComponent implements AfterViewInit {
     canvasHeight: 300
   };
 
-  constructor() {
+  constructor(private elementRef: ElementRef) {
     // no-op
   }
 
   ngAfterViewInit() {
-    this.signaturePad.set('minWidth', 1);
     this.signaturePad.clear();
+    setTimeout(() => {
+      this.signaturePad.set('canvasWidth', this.elementRef.nativeElement.querySelector('.w-100 .mt-2').offsetWidth);
+    }, 0);
   }
 
   drawComplete() {
@@ -44,4 +46,9 @@ export class SignaturePadComponent implements AfterViewInit {
     this.signaturePad.clear();
   }
   drawStart() {}
+  @HostListener('window:resize')
+  onResize() {
+    this.fc.reset();
+    this.signaturePad.set('canvasWidth', this.elementRef.nativeElement.querySelector('.w-100 .mt-2').offsetWidth);
+  }
 }

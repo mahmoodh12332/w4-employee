@@ -1,10 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
 @import "styles/variable.scss";
 @import "styles/authentication.scss";
 @import "styles/documents.scss";
 @import "styles/employment-form.scss";
 @import "styles/icons.scss";
 @import "styles/shared.scss";
+
+
+/* Theme Start */
+@include mat-core();
+$mat-green: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4caf50,
+  600: $primary,
+  700: $primary-accent,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+$primary-theme: mat-palette($mat-green, 600);
+$accent: mat-palette($mat-green, 700);
+$warn: mat-palette($mat-red, 500);
+$theme: mat-light-theme($primary-theme, $accent, $warn);
+@include angular-material-theme($theme);
+
+/* Theme END */
+
 html, body {
   height: 100vh;
 }
@@ -21,9 +66,9 @@ button{
     outline: none !important;
   }
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
-  background-color: #218838;
-}
+//.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+//  background-color: $primary;
+//}
 
 @media (max-width: 768px){
   .mat-vertical-content-container {

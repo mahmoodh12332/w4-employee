@@ -64,10 +64,19 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4_Exempt: [w4_Exempt === 'EXEMPT' ? w4_Exempt : ''],
     });
   }
+  private writeValues() {
+    const values = this.w4FormGroup.getRawValue();
+    values['w4_Exempt'] = upperCase(values['w4_Exempt']);
+    const newFormValues = Object.assign({}, this.formValues, {
+      w4Information: values,
+    });
+    this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(newFormValues));
+  }
   public onStepperSelectionChange(data) {
     this.w4FormGroup.markAsTouched();
   }
   public skipToConfirmation() {
+    this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
   public validateIfItsExemptOrNot() {
@@ -81,15 +90,10 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     }
   }
   public continueToConfirmation() {
-    const values = this.w4FormGroup.getRawValue();
-    values['w4_Exempt'] = upperCase(values['w4_Exempt']);
-    const newFormValues = Object.assign({}, this.formValues, {
-      w4Information: values,
-    });
-    console.log(newFormValues);
-    this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(newFormValues));
+    this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
+
   public openPage(page) {
     this.dialog.open(page);
   }
