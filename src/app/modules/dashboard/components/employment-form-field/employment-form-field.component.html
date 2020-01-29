@@ -174,7 +174,7 @@
         </button>
       </div>
       <div class="col-6 col-md-4 col-lg-4 text-right">
-        <button mat-raised-button color="primary" (click)="handleStepperNext(true)">
+        <button mat-raised-button class="btn-success" (click)="handleStepperNext(true)">
           {{this.field.controlLabels.buttons.agree}}
         </button>
       </div>
@@ -188,7 +188,7 @@
         <button mat-raised-button (click)="stepper.previous()">Back</button>
       </div>
       <div class="col text-right">
-        <button mat-raised-button color="primary" [disabled]="isSubmitting || field.formControl.parent.invalid" (click)="submitForm.emit()">{{field.label}}</button>
+        <button mat-raised-button class="btn-success" [disabled]="isSubmitting || field.formControl.parent.invalid" (click)="submitForm.emit()">{{field.label}}</button>
       </div>
     </div>
   </ng-container>
@@ -220,7 +220,7 @@
         </button>
       </div>
       <div class="col-6 text-right">
-        <button mat-raised-button color="primary" (click)="field.formControl.setValue(true);stepper.next()">
+        <button mat-raised-button class="btn-success" (click)="field.formControl.setValue(true);stepper.next()">
           {{field.controlLabels.buttons.verify}}
         </button>
       </div>
