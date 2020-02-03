@@ -49,6 +49,7 @@ const commonFieldsForDocumentType = {
   }
 };
 const phoneMask = '(000)000-0000';
+const maxDate = moment().add(50, 'years').endOf('year').toDate();
 const patternForAlphabetsOnly = /^[a-zA-Z|\s]+$/;
 
 export const EmploymentApplicationForm: Array<any> = [
@@ -713,7 +714,7 @@ export const EmploymentApplicationForm: Array<any> = [
         mask: null,
         required: false,
         minValue: new Date(),
-        maxValue: null,
+        maxValue: maxDate,
       },
     ]
   },
@@ -842,6 +843,8 @@ export const EmploymentApplicationForm: Array<any> = [
         required: false,
         minLength: null,
         maxLength: null,
+        minValue: new Date(),
+        maxValue: maxDate,
       },
       {
         id: 'citizen-alienNumber',
@@ -1088,7 +1091,7 @@ export const EmploymentApplicationForm: Array<any> = [
             isStartDate: true,
             mask: 'd0/M0/0000',
             required: false,
-            minValue: null,
+            minValue: moment().subtract(80, 'years').startOf('year').toDate(),
             maxValue: new Date(),
           },
           {

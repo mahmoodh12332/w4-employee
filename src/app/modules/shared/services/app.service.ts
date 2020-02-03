@@ -16,6 +16,7 @@ import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {EmploymentSkillsYearMap} from '../data/constants';
 import {EmploymentFormForAmerigasCode} from '../data/employment-form';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 const SNACK_BAR_OPTIONS: any = {
   verticalPosition: 'top',
@@ -33,6 +34,7 @@ export class AppService {
     private http: HttpClient,
     private router: Router,
     private cookieService: CookieService,
+    private deviceInfoService: DeviceDetectorService,
     private snackBar: MatSnackBar
   ) {
   }
@@ -111,6 +113,12 @@ export class AppService {
         w4LastNameDiferr: false,
         w4AdditionalAmount: 0,
         applicationDate: (new Date()).toISOString(),
+        deviceInfo: JSON.stringify({
+          ...this.deviceInfoService.getDeviceInfo(),
+          isMobile: this.deviceInfoService.isMobile(),
+          isDesktop: this.deviceInfoService.isDesktop(),
+          isTablet: this.deviceInfoService.isTablet(),
+        }),
         ...ApplicationBodyConstants
       };
       const formBody: any = reduce(formValue, (c, v) => {

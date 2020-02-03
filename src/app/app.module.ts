@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DeviceDetectorModule } from 'ngx-device-detector';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
@@ -14,6 +16,7 @@ import {DashboardModule} from './modules/dashboard/dashboard.module';
 import { MaterialModules } from './modules/materials.module';
 import { Services } from './modules/shared/services';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +24,7 @@ import { Services } from './modules/shared/services';
   imports: [
     BrowserModule,
     NgxMaskModule.forRoot({}),
+    DeviceDetectorModule.forRoot(),
     AppRoutingModule,
     AuthenticationModule,
     BrowserAnimationsModule,

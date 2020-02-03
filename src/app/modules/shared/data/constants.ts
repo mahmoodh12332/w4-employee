@@ -29,6 +29,7 @@ export const FLORIDA_AND_GEO_GROUP_WEB_CODES = [
   'ORL21',
   'PAL26',
   'PAN23',
+  'OSD65',
   'PEN54',
   'TAM32',
   'TSD91'
