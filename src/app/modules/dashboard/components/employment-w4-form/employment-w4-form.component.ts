@@ -76,6 +76,16 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     this.w4FormGroup.markAsTouched();
   }
   public skipToConfirmation() {
+    this.w4FormGroup.reset({
+      w4Children: 0,
+      w4Dependents: 0,
+      w4OtherIncome: 0,
+      w4Deductions: 0,
+      w4ExtraWithHolding: 0,
+      w4TwoJobs: false,
+      w4_Exempt: '',
+      w4MaritalStatus: this.w4FormGroup.get('w4MaritalStatus').value,
+    });
     this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
