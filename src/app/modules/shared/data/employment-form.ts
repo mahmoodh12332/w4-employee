@@ -1396,7 +1396,8 @@ export const EmploymentContractForm: Array<any> = [
         componentRef: MedicalReleasePolicyComponent,
         ...commonFieldsForDocumentType,
         required: false,
-        name: 'medicalAuthorization'
+        name: 'medicalAuthorization',
+        defaultValue: true,
       }
     ]
   },

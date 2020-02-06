@@ -40,7 +40,7 @@
           <td width="15%">
             <h2 class="font-30 text-center">USCIS <br>Form I-9 </h2>
             <p class="font-10 text-center">OMB No. 1615-0047 <br>
-              Expires 08/31/2019</p>
+              Expires 10/31/2022</p>
           </td>
         </tr>
       </table>
@@ -51,15 +51,15 @@
       <p style="margin-top: 10px;"><b>► START HERE: Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically,
         during completion of this form. Employers are liable for errors in the completion of this form.</b></p>
       <p style="margin-top: 10px;">
-        <b>ANTI-DISCRIMINATION NOTICE: </b>It is illegal to discriminate against work-authorized individuals. Employers CANNOT specify which
+        <b>ANTI-DISCRIMINATION NOTICE: </b>It is illegal to discriminate against work-authorized individuals. Employers <b>CANNOT</b> specify which
         document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ
         an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.
       </p>
       <table width="100%" border="1" cellpadding="1" cellspacing="0">
-        <tr >
+        <tr style="background-color: #c1c1c1">
           <td colspan="4">
             <p ><b>Section 1. Employee Information and Attestation </b>(Employees must complete and sign Section 1 of Form I-9 no later
-              than the first day of employment, but not before accepting a job offer.)</p>
+              than the <b>first day of employment</b>, but not before accepting a job offer.)</p>
           </td>
         </tr>
         <tr class="border-b" width="100%">
@@ -160,6 +160,9 @@
               <span class="border-right">
                 <b>{{getValue('basicInformation.socialSecurityNo')[9]}}</b>
               </span>
+              <span class="border-right">
+                <b>{{getValue('basicInformation.socialSecurityNo')[10]}}</b>
+              </span>
             </p>
           </td>
           <td>
@@ -248,7 +251,7 @@
           </td>
         </tr>
       </table>
-      <table width="100%" border="1" cellpadding="2" cellspacing="0">
+      <table width="100%" border="1" cellpadding="2" cellspacing="0" style="background-color: #c1c1c1">
         <tr class="border-tb">
           <td class="border-b" colspan="2">
             <h4  style="margin:5px 0;">Preparer and/or Translator Certification (check one): </h4>
