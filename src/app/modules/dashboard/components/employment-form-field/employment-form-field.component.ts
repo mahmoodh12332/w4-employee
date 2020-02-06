@@ -184,7 +184,7 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
   }
 
   handlerDocumentDisagree() {
-    if (this.field.required) {
+    if (!this.field.canDisagree) {
       const modalRef = this.dialog.open(this.disagreeModalTemplate);
       modalRef.afterClosed().subscribe(disagreed => {
         if (disagreed) {

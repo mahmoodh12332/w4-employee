@@ -169,7 +169,7 @@
         </button>
       </div>
       <div class="col-6 col-md-4 col-lg-4 text-sm-left text-md-center text-lg-center">
-        <button mat-raised-button color="warn" (click)="handlerDocumentDisagree()">
+        <button mat-raised-button [color]="field.canDisagree ? 'primary' : 'warn'" (click)="handlerDocumentDisagree()">
           {{this.field.controlLabels.buttons.disagree}}
         </button>
       </div>

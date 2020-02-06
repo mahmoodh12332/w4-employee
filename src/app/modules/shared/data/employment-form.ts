@@ -38,6 +38,7 @@ const commonFieldsForDocumentType = {
   label: '',
   type: 'document',
   required: true,
+  canDisagree: false,
   isFullRowField: true,
   isFullColumnField: true,
   isPanEnabled: false,
@@ -1314,9 +1315,14 @@ export const EmploymentContractForm: Array<any> = [
       {
         componentRef: MedicalReleasePolicyComponent,
         ...commonFieldsForDocumentType,
-        required: false,
         name: 'medicalAuthorization',
-        defaultValue: false,
+        canDisagree: true,
+        controlLabels: {
+          buttons: {
+            agree: 'I agree, Next',
+            disagree: 'I disagree, Next',
+          }
+        }
       }
     ]
   },
