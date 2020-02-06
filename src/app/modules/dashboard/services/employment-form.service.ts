@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidator} from '../../shared/validators';
-import {reduce, upperCase} from 'lodash';
+import {reduce, upperCase, isUndefined} from 'lodash';
 import {MaskPipe} from 'ngx-mask';
 import * as moment from 'moment';
 
@@ -78,7 +78,7 @@ export class EmploymentFormService {
       if (field.isEndDate) {
         validators.push(DateValidator.validateEndDate('startDate'));
       }
-      let currentValue: any = field.defaultValue || '';
+      let currentValue: any = isUndefined(field.defaultValue) ? '' : field.defaultValue;
       if (field.type === 'date' && values[field.name]) {
         currentValue = new Date(values[field.name]);
       } else if (field.type === 'group') {
