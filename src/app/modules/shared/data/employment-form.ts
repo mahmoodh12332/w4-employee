@@ -1386,16 +1386,16 @@ export const EmploymentContractForm: Array<any> = [
       }
     ]
   },
-  // {
-  //   name: 'arbitraryAgreement',
-  //   label: 'Arbitration Agreement',
-  //   fields: [
-  //     {
-  //       componentRef: ArbitrationAgreementPolicyComponent,
-  //       ...commonFieldsForDocumentType,
-  //     }
-  //   ]
-  // },
+  {
+    name: 'arbitraryAgreement',
+    label: 'Arbitration Agreement',
+    fields: [
+      {
+        componentRef: ArbitrationAgreementPolicyComponent,
+        ...commonFieldsForDocumentType,
+      }
+    ]
+  },
   {
     name: 'confidentialityAgreement',
     label: 'Confidentiality Agreement',
