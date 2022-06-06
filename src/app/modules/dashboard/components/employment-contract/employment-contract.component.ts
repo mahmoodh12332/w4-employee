@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {forEach} from 'lodash';
 import {EmploymentBaseComponent} from '../employment-base.component';
 import {AppService, CookieService} from '../../../shared/services';
@@ -12,6 +12,7 @@ import {
   PAYROLL_WEB_CODES,
   FLORIDA_AND_GEO_GROUP_WEB_CODES,
 } from '../../../shared/data/constants';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employment-contract',
@@ -20,9 +21,12 @@ import {
 export class EmploymentContractComponent extends EmploymentBaseComponent implements OnInit {
   public steps = [...EmploymentContractForm];
   public isSubmitting = false;
+  @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
+
   constructor(
     cookieService: CookieService,
     private appService: AppService,
+    public dialog: MatDialog
   ) {
     super(cookieService);
   }
@@ -81,7 +85,19 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
     this.isSubmitting = true;
     this.appService.submitApplication(this.formValues).then((res) => {
       this.isSubmitting = false;
-      this.appService.logoutUser();
+      this.openDialog()
     });
   }
+  openDialog():  void {
+    const SubmitdialogRef = this.dialog.open(this.DialogOverviewExampleDialog,
+      { disableClose: true }
+      );
+
+    SubmitdialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed bvgvgvgvvgvhggwq');
+    });
+  }
+  onNoClick(){
+    this.appService.logoutUser();
+   }
 }
