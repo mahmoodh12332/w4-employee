@@ -91,3 +91,8 @@ export default {
   FLORIDA_AND_GEO_GROUP_WEB_CODES,
   SITE_NAMING_CONVENTION,
 };
+export class Custom
+{
+  name: string
+  empoloyeeID: number
+}

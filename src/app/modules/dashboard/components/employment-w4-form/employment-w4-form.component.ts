@@ -35,7 +35,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4Deductions,
       w4ExtraWithHolding,
       w4TwoJobs,
-      w4MaritalStatus,
+      maritalStatus,
       w4_Exempt,
     } = (this.formValues.w4Information || {
       w4Children: 0,
@@ -44,7 +44,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4Deductions: 0,
       w4ExtraWithHolding: 0,
       w4TwoJobs: false,
-      w4MaritalStatus: null,
+      maritalStatus: null,
       w4_Exempt: ''
     });
     this.w4FormGroup = this.formBuilder.group({
@@ -60,7 +60,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4Deductions: [w4Deductions || 0],
       w4ExtraWithHolding: [w4ExtraWithHolding || 0],
       w4TwoJobs: [w4TwoJobs || false],
-      w4MaritalStatus: [w4MaritalStatus, Validators.required],
+      maritalStatus: [maritalStatus, Validators.required],
       w4_Exempt: [w4_Exempt === 'EXEMPT' ? w4_Exempt : ''],
     });
   }
@@ -84,7 +84,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4ExtraWithHolding: 0,
       w4TwoJobs: false,
       w4_Exempt: '',
-      w4MaritalStatus: this.w4FormGroup.get('w4MaritalStatus').value,
+      maritalStatus: this.w4FormGroup.get('maritalStatus').value,
     });
     this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);

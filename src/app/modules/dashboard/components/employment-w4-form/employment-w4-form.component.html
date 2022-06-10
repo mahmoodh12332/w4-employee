@@ -31,11 +31,11 @@
                 </ng-template>
                 <div class="row">
                   <div class="col-12">
-                    <label [ngClass]="{'mat-error': w4FormGroup.controls['w4MaritalStatus'].hasError('required')}">
+                    <label [ngClass]="{'mat-error': w4FormGroup.controls['maritalStatus'].hasError('required')}">
                      Marital Status *
                     </label>
                     <mat-radio-group class="d-flex flex-column"
-                                     [formControl]="w4FormGroup.controls['w4MaritalStatus']"
+                                     [formControl]="w4FormGroup.controls['maritalStatus']"
                                      [required]="true">
                       <mat-radio-button class="mt-2 mb-2" value="S">
                         Single or Married filing separately
@@ -48,12 +48,12 @@
                       </mat-radio-button>
                       <mat-error
                         class="mat-form-field-subscript-wrapper"
-                        *ngIf="w4FormGroup.controls['w4MaritalStatus'].hasError('required')"
+                        *ngIf="w4FormGroup.controls['maritalStatus'].hasError('required')"
                       >MaritalStatus is Required</mat-error>
                     </mat-radio-group>
                   </div>
                 </div>
-                <div class="row mt-3" *ngIf="w4FormGroup.controls['w4MaritalStatus'].valid">
+                <div class="row mt-3" *ngIf="w4FormGroup.controls['maritalStatus'].valid">
                   <div class="col-12 p-3" style="border: 1px solid black;">
                     <b>Complete Steps 2–4 ONLY if they apply to you; otherwise,
                       <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button>

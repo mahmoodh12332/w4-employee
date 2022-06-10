@@ -140,6 +140,7 @@ export class AppService {
           );
     });
   }
+
   submitApplication(formValue: any) {
     return new Promise ((resolve, reject) => {
       const siteInfo: any = JSON.parse(this.cookieService.getCookie(SITE_INFO_COOKIE_NAME));

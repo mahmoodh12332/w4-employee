@@ -31,6 +31,7 @@ export class EmploymentFormComponent implements OnInit {
   }
 
   initStepFormGroups(): void {
+    console.log(this.dataValues)
     this.stepFormGroups = this.steps
       .map( (step): any => this.employmentFormService.buildFormGroup(step, this.dataValues[step.name] || {
         socialSecurityNo: this.cookieService.getCookie(CURRENT_SSN_COOKIE_NAME)

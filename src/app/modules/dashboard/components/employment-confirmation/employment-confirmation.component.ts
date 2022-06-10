@@ -2,9 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {EmploymentBaseComponent} from '../employment-base.component';
 import {AppService, CookieService} from '../../../shared/services';
 import {EmploymentConfirmationForm} from '../../../shared/data/employment-form';
-import {FORM_COOKIE_NAME} from '../../../shared/data/constants';
+import {Custom, FORM_COOKIE_NAME} from '../../../shared/data/constants';
 import {Router} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-employment-confirmation',
@@ -14,10 +15,11 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   public steps = EmploymentConfirmationForm;
   @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
 
-  formData: string;
+  formData: any;
   isSubmitting: boolean;
   submitdata: any;
   objectApi: any;
+  convertdata: any;
   constructor(cookieService: CookieService, private router: Router,
     private appService: AppService,
     ) {
@@ -26,6 +28,8 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   ngOnInit(): void {
     super.ngOnInit();
     this.formData = this.cookieService.getCookie(FORM_COOKIE_NAME);
+
+
     console.log(this.formData)
   }
   flat(res, key, val, pre = '') {
@@ -40,10 +44,27 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   }
 
   onFormSubmit(data) {
+    debugger
+   const signature =  data.yourSignature.signature;
+   const Newsignature = signature.substring(22)
+   data.yourSignature.signature = Newsignature
+
+   let versionName = {
+    w4Version: +moment().format('YYYY'),
+    w4LastDate: moment().format('DD/MM/YYYY'), // Year,
+    }
+
+    const formDataObj = JSON.parse(this.formData)
+    let mergedObj = { ...data, ...formDataObj };
+    let FinalObj = { ...mergedObj, ...versionName };
+    debugger
+    // data.push(this.formData)
+
     if (data && data.fieldToVerify) {
       delete data.fieldToVerify.undefined;
     }
-    this.objectApi = this.flatObject(JSON.parse(this.formData))
+    this.convertdata = FinalObj
+     this.objectApi = this.flatObject(this.convertdata)
     console.log( this.objectApi )
     // this.cookieService.setCookie(FORM_COOKIE_NAME, JSON.stringify(data), 1);
     this.isSubmitting = true;
@@ -55,3 +76,7 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   }
 
 }
+function w4Version(w4Version: any, arg1: number) {
+  throw new Error('Function not implemented.');
+}
+

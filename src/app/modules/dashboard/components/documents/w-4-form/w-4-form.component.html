@@ -83,19 +83,19 @@
             <div class="float-left">
               <p  class="bold">
                 <label class="mycheckbox"> Single or Married filing separately
-                  <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'S'">
+                  <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'S'">
                   <span class="checkmark"></span>
                 </label>
               </p>
               <p>
                 <label class="mycheckbox"><span class="bold"> Married filing jointly</span> (or Qualifying widow(er))
-                  <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'M'">
+                  <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'M'">
                   <span class="checkmark"></span>
                 </label>
               </p>
               <p style="padding-bottom: 4px;">
                 <label class="mycheckbox "> <span class="bold">Head of household</span> (Check only if you’re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
-                  <input type="checkbox" [checked]="getValue('w4Information.w4MaritalStatus') === 'W'">
+                  <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'W'">
                   <span class="checkmark"></span>
                 </label>
               </p>
@@ -328,7 +328,7 @@
             <p class="font-12">Cat. No. 10220Q</p>
           </td>
           <td width="120" class="border-top">
-            <p class="font-12">Form <span class="font-18 bold"> W-4</span> (2020) </p>
+            <p class="font-12">Form <span class="font-18 bold"> W-4</span> (2022) </p>
           </td>
         </tr>
       </table>

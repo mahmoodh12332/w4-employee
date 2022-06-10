@@ -74,6 +74,21 @@ export const EmploymentApplicationForm: Array<any> = [
         maxLength: textTypeDefaultMaxLength,
       },
       {
+        id: 'bi-masterId',
+        name: 'masterId',
+        label: 'Master Id',
+        type: 'text',
+        defaultValue: '',
+        isFullRowField: false,
+        isFullColumnField: true,
+        // isMasked: true,
+        mask: '',
+        disabled: false,
+        required: false,
+        minLength: textTypeDefaultMinLength,
+        maxLength: textTypeDefaultMaxLength,
+      },
+      {
         id: 'bi-firstName',
         name: 'firstName',
         label: 'First Name',
@@ -1451,7 +1466,7 @@ export const EmploymentConfirmationForm: Array<any> = [
     fields: [
       {
         id: 'yourSig-signature',
-        name: 'signature64',
+        name: 'signature',
         type: 'signature',
         label: 'Signature',
         isFullRowField: true,
