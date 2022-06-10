@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {EmploymentFormService} from '../../services';
 import {CookieService} from '../../../shared/services';
-import {CURRENT_SSN_COOKIE_NAME} from '../../../shared/data/constants';
+import {CURRENT_SSN_COOKIE_NAME, SITE_INFO_COOKIE_NAME} from '../../../shared/data/constants';
 import {every} from 'lodash';
 
 @Component({
@@ -22,6 +22,10 @@ export class EmploymentFormComponent implements OnInit {
     private cookieService: CookieService) {}
 
   ngOnInit(): void {
+    const userData = this.cookieService.getCookie(SITE_INFO_COOKIE_NAME)
+    if (userData) {
+      this.dataValues = JSON.parse(userData);
+    }
     this.initStepFormGroups();
     this.formData = this.dataValues;
   }

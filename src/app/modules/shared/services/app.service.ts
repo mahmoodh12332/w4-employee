@@ -78,22 +78,35 @@ export class AppService {
         );
     });
   }
-  loginUser({socialNumber, accessCode}): Promise<boolean> {
+  loginUser(formValue:any): Promise<boolean> {
+    console.log(formValue)
     return new Promise((resolve, reject) => {
-      this.http.get(`${API_ROUTES.getAccessCode}/${accessCode}`)
+      this.http.post(API_ROUTES.check, formValue)
         .pipe(
           catchError(this.handleError.bind(this))
-        )
-        .subscribe((res: any) => {
-        if (res.status === 'success') {
-          this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, socialNumber, 1);
-          this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify(res.data), 1);
-          resolve(res.data);
-          return;
-        }
-        res.errors.forEach((e: any) => this.snackBar.open(e.message, 'OK', SNACK_BAR_OPTIONS));
-        reject(res.errors);
-      }, (err) => reject(err));
+        ).subscribe(
+          (response) => {
+            if (response.status === 'success') {
+                  this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, JSON.stringify(response), 1);
+                  this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify({basicInformation: response.data}), 1);
+                  resolve(response.data);
+                  return;
+                }
+          },
+          (err) => {
+            reject(err);
+          }
+          );
+      //   .subscribe((res: any) => {
+      //   if (res.status === 'success') {
+      //     this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, res, 1);
+      //     this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify(res.data), 1);
+      //     resolve(res.data);
+      //     return;
+      //   }
+      //   res.errors.forEach((e: any) => this.snackBar.open(e.message, 'OK', SNACK_BAR_OPTIONS));
+      //   reject(res.errors);
+      // }, (err) => reject(err));
     });
   }
   logoutUser() {
@@ -101,6 +114,31 @@ export class AppService {
     this.cookieService.removeCookie(FORM_COOKIE_NAME);
     this.cookieService.removeCookie(SITE_INFO_COOKIE_NAME);
     this.router.navigate(['authentication']);
+  }
+  newSubmitApplication(formValue: any) {
+    console.log("hello")
+    return new Promise((resolve, reject) => {
+      this.http.post(API_ROUTES.newSaveApplication, formValue)
+        .pipe(
+          catchError(this.handleError.bind(this))
+        ).subscribe(
+          (response) => {
+            console.log({response});
+            if (response.status === 'success') {
+              console.log({response});
+              this.snackBar.open(
+                'Application submitted successfully. Thank You',
+                'Ok',
+                SNACK_BAR_OPTIONS
+              );
+                  return;
+                }
+          },
+          (err) => {
+            reject(err);
+          }
+          );
+    });
   }
   submitApplication(formValue: any) {
     return new Promise ((resolve, reject) => {
@@ -138,7 +176,7 @@ export class AppService {
         .subscribe(
         (response) => {
           console.log({response});
-          resolve();
+          // resolve();
           this.snackBar.open(
             'Application submitted successfully. Thank You',
             'Ok',

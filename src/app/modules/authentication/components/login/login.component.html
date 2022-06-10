@@ -15,17 +15,7 @@
         </mat-card-header>
         <div class="p-3">
           <mat-card-content>
-            <mat-form-field class="w-100 mb-2">
-              <input
-                type="text"
-                matInput
-                placeholder="Access Code"
-                formControlName="accessCode"
-                required>
-              <mat-error *ngIf="loginForm.controls.accessCode.hasError('required')">
-                Access code is required.
-              </mat-error>
-            </mat-form-field>
+
             <mat-form-field class="w-100 mb-2">
               <input
                 matInput
@@ -34,13 +24,24 @@
                 [showMaskTyped]="true"
                 [clearIfNotMatch]="true"
                 placeholder="Social Number"
-                formControlName="socialNumber"
+                formControlName="ssn"
                 required>
-              <mat-error *ngIf="loginForm.controls.socialNumber.hasError('required')">
+              <mat-error *ngIf="loginForm.controls.ssn.hasError('required')">
                 Social Number is required.
               </mat-error>
-              <mat-error *ngIf="!loginForm.controls.socialNumber.valid && !loginForm.controls.socialNumber.hasError('required')">
+              <mat-error *ngIf="!loginForm.controls.ssn.valid && !loginForm.controls.ssn.hasError('required')">
                 Invalid value.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-2">
+              <input
+                type="text"
+                matInput
+                placeholder="Date of Birth"
+                formControlName="dob"
+                required>
+              <mat-error *ngIf="loginForm.controls.dob.hasError('required')">
+                Date of Birth is required.
               </mat-error>
             </mat-form-field>
           </mat-card-content>

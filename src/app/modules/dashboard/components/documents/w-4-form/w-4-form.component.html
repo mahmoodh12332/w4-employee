@@ -45,7 +45,7 @@
           <td  class="border-bottom" >
             <p class="font-12"><span class="bold"> (b) Social security number</span></p>
             <p class="background-color">
-              {{getValue('basicInformation.socialSecurityNo')}}
+              {{getValue('basicInformation.socialSecurity')}}
             </p>
           </td>
         </tr>
@@ -185,7 +185,7 @@
             <p class="padding-left">Multiply the number of qualifying children under age 17 by $2,000 &#9658; $______________</p>
           </td>
           <td width="150" colspan="2" class="border-right  text-center">
-            <b>${{getValue('w4Information.w4Children') * 2000}}</b>
+            <b>${{getValue('basicInformation.w4Information.w4Children') * 2000}}</b>
           </td>
         </tr>
         <tr>
@@ -193,7 +193,7 @@
             <p class="padding-left">Multiply the number of other dependents by $500 . . . . &#9658; $______________</p>
           </td>
           <td width="150" colspan="2" class="border-right text-center">
-            <b>${{getValue('w4Information.w4Dependents') * 500}}</b>
+            <b>${{getValue('basicInformation.w4Information.w4Dependents') * 500}}</b>
           </td>
         </tr>
         <tr>

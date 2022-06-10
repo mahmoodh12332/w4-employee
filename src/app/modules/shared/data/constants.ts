@@ -73,7 +73,9 @@ export const EmploymentSkillsYearMap = {
 export const API_ROUTES = {
   getAccessCode: `${API_BASE}/webcode`,
   saveApplication: `${API_BASE}/application`,
+  newSaveApplication: `${API_BASE}/employee/w4`,
   skills: `${API_BASE}/skills`,
+  check: `${API_BASE}/application/2021/check`,
 };
 export default {
   API_BASE,

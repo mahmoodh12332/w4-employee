@@ -23,13 +23,15 @@ export class LoginComponent implements OnInit {
 
   createForm(): void {
     this.loginForm = new FormGroup({
-      accessCode: new FormControl('', [
+
+      ssn: new FormControl('000-00-0003', [
         Validators.required,
+        // Validators.minLength(9)
       ]),
-      socialNumber: new FormControl('', [
+      dob: new FormControl('10/27/1980', [
         Validators.required,
-        Validators.minLength(9)
       ])
+
     });
   }
 
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.submitting = true;
     this.appService.loginUser(this.loginForm.value)
       .then(() => {
+        console.log(this.loginForm.value)
         this.router.navigate(['dashboard']);
       }).finally(() => {
         this.submitting = false;

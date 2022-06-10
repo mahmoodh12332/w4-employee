@@ -215,9 +215,10 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
       streetNo,
       address,
       zipCode,
-      city
-    } = get(this.formData, 'address');
-    const state = this.getValueStateORCountryDetail('address.state', 'state');
+      city,
+      state
+    } = this.formData.basicInformation;
+    // const state = this.getValueStateORCountryDetail('address.state', 'state');
     return `${streetNo} ${address}, ${city}, ${state}, ${zipCode}`;
   }
 
@@ -226,7 +227,7 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
       country: Countries,
       state: States
     };
-    const value = get(this.formData, path);
+    const value = get(this.formData.basicInformation, path);
     return (find(targetArray[type], (k) => k.value === value) || {label: ''}).label;
   }
 

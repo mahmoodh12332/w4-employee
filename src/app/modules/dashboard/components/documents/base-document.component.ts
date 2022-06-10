@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {get, find} from 'lodash';
-import {DATE_FORMAT} from '../../../shared/data/constants';
+import {DATE_FORMAT, FORM_COOKIE_NAME} from '../../../shared/data/constants';
 import {Countries} from '../../../shared/data/countries';
 import {States} from '../../../shared/data/states';
+import { CookieService } from 'src/app/modules/shared/services';
 const DEFAULT_VALUE = '';
 @Component({
   selector: 'app-base-document',
@@ -13,7 +14,13 @@ export class BaseDocumentComponent {
   @Input() formData: any;
   @Input() siteNamingConvention: any;
 
+  constructor(private cookieService: CookieService) {
+  }
+
   getValue(path, isDate = false) {
+    if (path && path.includes('w4Information')) {
+      this.formData = JSON.parse(this.cookieService.getCookie(FORM_COOKIE_NAME));
+    }
     const val = get(this.formData, path);
     if (val && isDate) {
       return moment(val).format(DATE_FORMAT);
@@ -39,6 +46,7 @@ export class BaseDocumentComponent {
     const value = this.getValue(path);
     return (find(targetArray[type], (k) => k.value === value) || {label: DEFAULT_VALUE}).label;
   }
+
   getPrintName() {
     const firstName = this.getValue('basicInformation.firstName');
     const lastName = this.getValue('basicInformation.lastName');

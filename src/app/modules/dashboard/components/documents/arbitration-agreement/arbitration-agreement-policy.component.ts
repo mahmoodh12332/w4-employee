@@ -6,7 +6,7 @@ import {BaseDocumentComponent} from '../base-document.component';
   templateUrl: './arbitration-agreement-policy.component.html',
 })
 export class ArbitrationAgreementPolicyComponent extends BaseDocumentComponent {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 }
