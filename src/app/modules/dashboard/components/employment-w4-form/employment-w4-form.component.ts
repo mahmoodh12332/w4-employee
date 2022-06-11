@@ -27,7 +27,6 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     this.buildFormGroup();
   }
   private buildFormGroup() {
-    console.log(this.formValues);
     const {
       w4Children,
       w4Dependents,

@@ -10,7 +10,6 @@
                   <ng-template matStepLabel>{{step.label}}</ng-template>
                   <div class="row">
                     <ng-container *ngFor="let field of step.fields">
-                      <p>{{field[1]}}</p>
                       <app-employment-form-field
                         [ngClass]="{
                         'col-md-6 col-sm-12': !field.isFullRowField,

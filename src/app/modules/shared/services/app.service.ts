@@ -41,7 +41,6 @@ export class AppService {
 
 
   private handleError(e: HttpErrorResponse) {
-    console.log("skdjkdjkj")
     this.snackBar.open(e.message || 'Something went wrong. Please try again later', '', SNACK_BAR_OPTIONS);
     return throwError(e);
   }
@@ -81,10 +80,6 @@ export class AppService {
   }
 
   loginUser(formValue:any): Promise<boolean> {
-
-
-
-    console.log(formValue);
     return new Promise((resolve, reject) => {
       this.http.post(API_ROUTES.check, formValue)
         .pipe(
@@ -93,7 +88,6 @@ export class AppService {
           )
         ).subscribe(
           (response) => {
-            console.log(response)
             if (response.status === 'success') {
                   this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, JSON.stringify(response), 1);
                   this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify({basicInformation: response.data}), 1);
@@ -102,6 +96,7 @@ export class AppService {
                 }else {
                   this.snackBar.open(response.errors[0].message || 'Something went wrong. Please try again', '', SNACK_BAR_OPTIONS);
                 }
+
           },
           (err) => {
 
@@ -127,16 +122,14 @@ export class AppService {
     this.router.navigate(['authentication']);
   }
   newSubmitApplication(formValue: any) {
-    console.log("hello")
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.http.post(API_ROUTES.newSaveApplication, formValue)
         .pipe(
           catchError(this.handleError.bind(this))
         ).subscribe(
           (response) => {
-            console.log({response});
+            resolve();
             if (response.status === 'success') {
-              console.log({response});
               this.snackBar.open(
                 'Application submitted successfully. Thank You',
                 'Ok',
@@ -192,8 +185,7 @@ export class AppService {
       this.http.post(API_ROUTES.saveApplication, formBody)
         .subscribe(
         (response) => {
-          console.log({response});
-          // resolve();
+          resolve(response);
           this.snackBar.open(
             'Application submitted successfully. Thank You',
             'Ok',

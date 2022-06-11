@@ -16,7 +16,7 @@
           </td>
           <td width="15%" class="border-bottom padding-0">
             <p class="font-10 text-center border-bottom padding-y ">OMB No. 1545-0074</p>
-            <h2 class="font-30 text-center padding-top"><span class="border-text">20</span>20</h2>
+            <h2 class="font-30 text-center padding-top"><span class="border-text">20</span>22</h2>
           </td>
         </tr>
       </table>
@@ -53,7 +53,7 @@
           <td class="border-left border-right border-bottom" colspan="2">
             <p class="font-12" > Address</p>
             <p class="background-color">
-              {{getAddress()}}
+              {{getValue('basicInformation.address')}}
             </p>
           </td>
           <td class="border-bottom" rowspan="2">
@@ -71,7 +71,7 @@
           <td class="border-left border-right border-bottom" colspan="2">
             <p class="font-12"> City or town, state, and ZIP code</p>
             <p class="background-color">
-              {{getValue('address.city')}}, {{getValueStateORCountryDetail('address.state', 'state')}} {{getValue('address.zipCode')}}
+              {{getValue('basicInformation.city')}}, {{getValue('basicInformation.state')}} {{getValue('basicInformation.zipCode')}}
             </p>
           </td>
         </tr>

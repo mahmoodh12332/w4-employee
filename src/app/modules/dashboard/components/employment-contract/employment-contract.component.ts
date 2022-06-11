@@ -94,7 +94,7 @@ export class EmploymentContractComponent extends EmploymentBaseComponent impleme
       );
 
     SubmitdialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed bvgvgvgvvgvhggwq');
+      console.log('Please Login Next Time');
     });
   }
   onNoClick(){

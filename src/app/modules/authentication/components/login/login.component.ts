@@ -4,6 +4,8 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
 import {AppService} from '../../../shared/services';
 import {Router} from '@angular/router';
 
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+
   }
 
   createForm(): void {
@@ -30,6 +33,11 @@ export class LoginComponent implements OnInit {
       ]),
       dob: new FormControl('', [
         Validators.required,
+        Validators.minLength(10)
+
+        // Validators.pattern("MM/DD/yyyy"),
+
+
       ])
 
     });
@@ -49,6 +57,8 @@ export class LoginComponent implements OnInit {
     const result1 = text.slice(3, 5);
     const result2 = text.slice(5, 9);
     this.loginForm.value.ssn = result+"-"+result1+"-"+result2
+    const dateSendingToServer = new DatePipe('en-US').transform(this.loginForm.value.dob, 'MM/d/yyyy')
+    this.loginForm.value.dob = dateSendingToServer
     this.appService.loginUser(this.loginForm.value)
       .then(() => {
         this.router.navigate(['dashboard']);
