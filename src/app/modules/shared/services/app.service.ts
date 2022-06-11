@@ -41,6 +41,7 @@ export class AppService {
 
 
   private handleError(e: HttpErrorResponse) {
+    console.log("skdjkdjkj")
     this.snackBar.open(e.message || 'Something went wrong. Please try again later', '', SNACK_BAR_OPTIONS);
     return throwError(e);
   }
@@ -78,22 +79,32 @@ export class AppService {
         );
     });
   }
+
   loginUser(formValue:any): Promise<boolean> {
-    console.log(formValue)
+
+
+
+    console.log(formValue);
     return new Promise((resolve, reject) => {
       this.http.post(API_ROUTES.check, formValue)
         .pipe(
-          catchError(this.handleError.bind(this))
+          catchError(
+            this.handleError.bind(this)
+          )
         ).subscribe(
           (response) => {
+            console.log(response)
             if (response.status === 'success') {
                   this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, JSON.stringify(response), 1);
                   this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify({basicInformation: response.data}), 1);
                   resolve(response.data);
                   return;
+                }else {
+                  this.snackBar.open(response.errors[0].message || 'Something went wrong. Please try again', '', SNACK_BAR_OPTIONS);
                 }
           },
           (err) => {
+
             reject(err);
           }
           );
@@ -136,6 +147,11 @@ export class AppService {
           },
           (err) => {
             reject(err);
+            this.snackBar.open(
+              'Application Not submitted Your Data. Thank You',
+              'Ok',
+              SNACK_BAR_OPTIONS
+            );
           }
           );
     });

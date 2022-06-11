@@ -20,6 +20,7 @@
                [minLength]="field.minLength"
                [maxLength]="field.maxLength"
                [required]="field.required"
+               [disabled]="field.required"
                [email]="!!field.isEmail"
         >
         <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
@@ -42,6 +43,8 @@
              [max]="field.maxValue"
              [formControl]="field.formControl"
              [required]="field.required"
+             [disabled]="field.disabled"
+
       >
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>

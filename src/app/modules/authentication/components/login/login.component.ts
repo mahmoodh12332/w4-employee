@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   createForm(): void {
     this.loginForm = new FormGroup({
 
-      ssn: new FormControl('000-00-0003', [
+      ssn: new FormControl('', [
         Validators.required,
-        // Validators.minLength(9)
+        Validators.minLength(9)
       ]),
-      dob: new FormControl('10/27/1980', [
+      dob: new FormControl('', [
         Validators.required,
       ])
 
@@ -36,17 +36,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
     if (!this.loginForm.valid) {
       this.loginForm.markAsDirty();
       return;
     }
     this.submitting = true;
+    const text = this.loginForm.value.ssn;
+    const text1 = this.loginForm.value.ssn;
+    const text2 = this.loginForm.value.ssn;
+    const result = text.slice(0, 3);
+    const result1 = text.slice(3, 5);
+    const result2 = text.slice(5, 9);
+    this.loginForm.value.ssn = result+"-"+result1+"-"+result2
     this.appService.loginUser(this.loginForm.value)
       .then(() => {
-        console.log(this.loginForm.value)
         this.router.navigate(['dashboard']);
       }).finally(() => {
         this.submitting = false;
+
       });
   }
 }
