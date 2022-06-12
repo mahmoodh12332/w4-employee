@@ -34,10 +34,6 @@ export class LoginComponent implements OnInit {
       dob: new FormControl('', [
         Validators.required,
         Validators.minLength(10)
-
-        // Validators.pattern("MM/DD/yyyy"),
-
-
       ])
 
     });
@@ -63,7 +59,7 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this.router.navigate(['dashboard']);
       }).finally(() => {
-        console.log("dhjashjsahjh ahsd saj")
+        console.log("Please Try Again")
         this.submitting = false;
 
       });
