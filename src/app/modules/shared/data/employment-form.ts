@@ -283,7 +283,7 @@ export const EmploymentApplicationForm: Array<any> = [
             },
             {
               id: 'pe-homePhone',
-              name: 'phone',
+              name: 'homePhone',
               label: 'Home Phone',
               isFullRowField: false,
               isFullColumnField: true,
@@ -298,7 +298,7 @@ export const EmploymentApplicationForm: Array<any> = [
             },
             {
               id: 'pe-mobilePhone',
-              name: 'altPhone',
+              name: 'cellPhone',
               label: 'Mobile Phone',
               isFullRowField: false,
               isFullColumnField: true,
@@ -1386,7 +1386,7 @@ export const EmploymentConfirmationForm: Array<any> = [
         required: false,
         isFullRowField: false,
         isFullColumnField: true,
-        valueAccessor: 'basicInformation.phone',
+        valueAccessor: 'basicInformation.cellPhone',
       },
       // {
       //   id: 'ftv-email',

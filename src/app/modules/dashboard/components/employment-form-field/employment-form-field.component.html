@@ -63,7 +63,7 @@
              [placeholder]="field.label">
       <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker startView="multi-year" touchUi #picker [disabled]="false"></mat-datepicker>
+      <mat-datepicker startView="multi-year" touchUi #picker [disabled]="true"></mat-datepicker>
     </mat-form-field>
   </ng-container>
 

@@ -79,3 +79,6 @@ button{
   }
 
 }
+.mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+  color: rgb(136 136 136) !important;
+}

@@ -91,6 +91,7 @@ export class AppService {
             if (response.status === 'success') {
                   this.cookieService.setCookie(CURRENT_SSN_COOKIE_NAME, JSON.stringify(response), 1);
                   this.cookieService.setCookie(SITE_INFO_COOKIE_NAME, JSON.stringify({basicInformation: response.data}), 1);
+                  console.log(response.data)
                   resolve(response.data);
                   return;
                 }else {
