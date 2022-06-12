@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 
 import {AppService} from '../../../shared/services';
 import {Router} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  minValue:any = moment().subtract(100, 'years').toDate()
+  maxValue:any = moment().subtract(0, 'years').toDate()
   public submitting = false;
 
   constructor(private appService: AppService, private router: Router) {}

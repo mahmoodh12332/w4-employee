@@ -38,6 +38,8 @@
                 matInput
                 placeholder="Date of Birth"
                 formControlName="dob"
+                [max]="maxValue"
+                [min]="minValue"
                 required [matDatepicker]="picker">
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-error *ngIf="loginForm.controls.dob.hasError('required')">
