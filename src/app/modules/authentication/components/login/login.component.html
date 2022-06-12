@@ -68,3 +68,13 @@
   </div>
 </div>
 
+<ng-template #DialogOverviewExampleDialog>
+  <h1 class="text-center mt-4 text-danger" mat-dialog-title style="font-size: 36px;">Something went wrong. </h1>
+  <div mat-dialog-content>
+    <p class="text-center" style="font-size: 18px;">DOB does not match.</p>
+    <p class="text-center" style="font-size: 14px;">Note: Please check your "Social Security Number" and "Date of Birthday".</p>
+  </div>
+  <div class="text-center d-block" mat-dialog-actions>
+    <button mat-raised-button color="primary"  [mat-dialog-close] (click)="refreshData()">Try Again</button>
+  </div>
+</ng-template>

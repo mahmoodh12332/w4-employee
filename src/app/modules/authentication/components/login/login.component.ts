@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import {AppService} from '../../../shared/services';
 import {Router} from '@angular/router';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,10 @@ export class LoginComponent implements OnInit {
   minValue:any = moment().subtract(100, 'years').toDate()
   maxValue:any = moment().subtract(0, 'years').toDate()
   public submitting = false;
+  @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
 
-  constructor(private appService: AppService, private router: Router) {}
+
+    constructor(private appService: AppService, private router: Router,public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -41,7 +44,18 @@ export class LoginComponent implements OnInit {
 
     });
   }
+  refreshData(){
+    location.reload();
+  }
+  openDialog():  void {
+    const SubmitdialogRef = this.dialog.open(this.DialogOverviewExampleDialog,
+      { disableClose: true }
+      );
 
+    SubmitdialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   onSubmit() {
 
     if (!this.loginForm.valid) {
@@ -62,6 +76,7 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this.router.navigate(['dashboard']);
       }).finally(() => {
+        this.openDialog()
         console.log("Please Try Again")
         this.submitting = false;
 
