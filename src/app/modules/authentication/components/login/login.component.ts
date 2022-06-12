@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this.router.navigate(['dashboard']);
       }).finally(() => {
+        console.log("dhjashjsahjh ahsd saj")
         this.submitting = false;
 
       });

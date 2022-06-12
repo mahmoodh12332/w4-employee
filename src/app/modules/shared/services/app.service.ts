@@ -94,6 +94,7 @@ export class AppService {
                   resolve(response.data);
                   return;
                 }else {
+                  resolve(response.data);
                   this.snackBar.open(response.errors[0].message || 'Something went wrong. Please try again', '', SNACK_BAR_OPTIONS);
                 }
 
