@@ -1,7 +1,7 @@
 <div class="row h-100 align-items-center justify-content-center">
-  <div class="col-lg-4 col-md-5 col-sm-7">
+  <div class="col-lg-4 col-md-5 col-sm-7 ">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-card class="py-5">
+      <mat-card class="py-3">
         <div class="text-center mb-4">
           <img width="200" alt="LOGO" src="../../../../../assets/img/logo.png">
         </div>
@@ -34,7 +34,6 @@
             </mat-form-field>
             <mat-form-field class="w-100 mb-2">
               <input
-                max="10"
                 matInput
                 placeholder="Date of Birth"
                 formControlName="dob"
