@@ -1,7 +1,7 @@
-<div class="row h-100 align-items-center justify-content-center">
+<div class="row h-100 align-items-center justify-content-center" style="background-color:#fff !important;">
   <div class="col-lg-4 col-md-5 col-sm-7 ">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-card class="py-3">
+      <mat-card class="py-3 mb-5">
         <div class="text-center mb-4">
           <img width="200" alt="LOGO" src="../../../../../assets/img/logo.png">
         </div>
@@ -70,10 +70,10 @@
 <ng-template #DialogOverviewExampleDialog>
   <h1 class="text-center mt-4 text-danger" mat-dialog-title style="font-size: 36px;">Something went wrong. </h1>
   <div mat-dialog-content>
-    <p class="text-center" style="font-size: 18px;">DOB does not match.</p>
-    <p class="text-center" style="font-size: 14px;">Note: Please check your "Social Security Number" and "Date of Birthday".</p>
+    <p class="text-center" style="font-size: 18px;">Invalid social number and date of birth.</p>
+    <!-- <p class="text-center" style="font-size: 14px;">Note: Please check your "Social Security Number" and "Date of Birthday".</p> -->
   </div>
   <div class="text-center d-block" mat-dialog-actions>
-    <button mat-raised-button color="primary"  [mat-dialog-close] (click)="refreshData()">Try Again</button>
+    <button mat-raised-button color="primary"  [mat-dialog-close] (click)="refreshData()">OK</button>
   </div>
 </ng-template>

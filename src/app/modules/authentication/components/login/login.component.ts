@@ -73,13 +73,18 @@ export class LoginComponent implements OnInit {
     const dateSendingToServer = new DatePipe('en-US').transform(this.loginForm.value.dob, 'MM/d/yyyy')
     this.loginForm.value.dob = dateSendingToServer
     this.appService.loginUser(this.loginForm.value)
-      .then(() => {
-        this.router.navigate(['dashboard']);
-      }).finally(() => {
-        this.openDialog()
-        console.log("Please Try Again")
-        this.submitting = false;
+      .then((res:any) => {
+        // const response = JSON.parse(res)
+        console.log(res)
+        if (res === 'error') {
+          console.log(res)
+          this.openDialog();
+        }else {
+          this.router.navigate(['dashboard']);
+        }
 
-      });
+      }).finally(() => {
+        this.submitting = false;
+      })
   }
 }

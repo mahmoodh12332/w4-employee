@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, ViewChild} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {reduce, assign, toUpper} from 'lodash';
 import * as moment from 'moment';
@@ -10,7 +10,7 @@ import {
   SITE_NAMING_CONVENTION,
 } from '../data/constants';
 import {CookieService} from './cookie.service';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
@@ -30,13 +30,13 @@ const ApplicationBodyConstants = {
 @Injectable()
 export class AppService {
   private $skillsData: any = null;
+  @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
   constructor(
     private http: HttpClient,
     private router: Router,
     private cookieService: CookieService,
     private deviceInfoService: DeviceDetectorService,
-    private snackBar: MatSnackBar
-  ) {
+    private snackBar: MatSnackBar  ) {
   }
 
 
@@ -95,13 +95,14 @@ export class AppService {
                   resolve(response.data);
                   return;
                 }else {
-                  resolve(response.data);
-                  this.snackBar.open(response.errors[0].message || 'Something went wrong. Please try again', '', SNACK_BAR_OPTIONS);
-                }
+                  resolve(response.status);
 
+                  this.snackBar.open(response.errors[0].message || 'Something went wrong. Please try again', '', SNACK_BAR_OPTIONS);
+                  return
+                }
           },
           (err) => {
-
+            console.log(err)
             reject(err);
           }
           );
@@ -128,9 +129,10 @@ export class AppService {
       this.http.post(API_ROUTES.newSaveApplication, formValue)
         .pipe(
           catchError(this.handleError.bind(this))
+
         ).subscribe(
           (response) => {
-            resolve();
+            resolve(response);
             if (response.status === 'success') {
               this.snackBar.open(
                 'Application submitted successfully. Thank You',
@@ -139,14 +141,17 @@ export class AppService {
               );
                   return;
                 }
+
           },
           (err) => {
-            reject(err);
+            console.log("reject")
             this.snackBar.open(
               'Application Not submitted Your Data. Thank You',
               'Ok',
               SNACK_BAR_OPTIONS
             );
+            reject(err);
+            return
           }
           );
     });
