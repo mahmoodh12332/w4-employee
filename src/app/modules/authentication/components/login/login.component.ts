@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   minValue:any = moment().subtract(100, 'years').toDate()
   maxValue:any = moment().subtract(0, 'years').toDate()
+  startValue:any = moment().subtract(24, 'years').toDate()
   public submitting = false;
   @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
 

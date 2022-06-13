@@ -1,16 +1,16 @@
-<div class="row h-100 align-items-center justify-content-center" style="background-color:#fff !important;">
-  <div class="col-lg-4 col-md-5 col-sm-7 mb-5">
+<div class="row h-100 align-items-lg-center align-items-sm-center align-items-start justify-content-center">
+  <div class="col-lg-4 col-md-5 col-sm-7 mt-lg-0 mt-sm-0 mt-4" >
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-card class="py-3 mb-5">
-        <div class="text-center mb-4">
+      <mat-card class="py-5 ">
+        <div class="text-center">
           <img width="200" alt="LOGO" src="../../../../../assets/img/logo.png">
         </div>
         <mat-card-header class="m-0">
-          <mat-card-title class="m-0">
+          <mat-card-title class="m-0 mt-2">
             New W4 form
           </mat-card-title>
           <mat-card-subtitle class="m-0">
-            Pacesetter Personnel's web W4 form may only be completed
+            Only Pacesetter Personnel’s existing employees can fill this.
           </mat-card-subtitle>
         </mat-card-header>
         <div class="p-3">
@@ -39,13 +39,14 @@
                 formControlName="dob"
                 [max]="maxValue"
                 [min]="minValue"
+
                 required [matDatepicker]="picker">
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-error *ngIf="loginForm.controls.dob.hasError('required')">
                 Date of Birth is required.
               </mat-error>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker startView="multi-year" touchUi #picker [disabled]="false"></mat-datepicker>
+              <mat-datepicker DatepickerDropdownPositionY='below' touchUi [startAt]="startValue" startView="multi-year" #picker [disabled]="false"></mat-datepicker>
             </mat-form-field>
             <!-- <mat-form-field class="w-100 mb-2">
               <input
@@ -58,7 +59,7 @@
 
             </mat-form-field> -->
           </mat-card-content>
-          <mat-card-actions>
+          <mat-card-actions >
             <button mat-raised-button color="primary" class="float-right" [disabled]="submitting">Submit</button>
           </mat-card-actions>
         </div>
@@ -68,9 +69,9 @@
 </div>
 
 <ng-template #DialogOverviewExampleDialog>
-  <h1 class="text-center mt-4 text-danger" mat-dialog-title style="font-size: 36px;">Something went wrong. </h1>
+  <h1 class="text-center mt-4 text-danger" mat-dialog-title style="font-size: 36px;">Error </h1>
   <div mat-dialog-content>
-    <p class="text-center" style="font-size: 18px;">Invalid social number and date of birth.</p>
+    <p class="text-center" style="font-size: 18px;">Invalid social number or date of birth.</p>
     <!-- <p class="text-center" style="font-size: 14px;">Note: Please check your "Social Security Number" and "Date of Birthday".</p> -->
   </div>
   <div class="text-center d-block" mat-dialog-actions>
