@@ -321,12 +321,14 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="offset-1 col-md-6 col-sm-11">
-                        <mat-form-field class="mt-2 mb-2 w-100">
+                      <div *ngIf="w4FormGroup.controls['w4_Exempt'].value !== 'EXEMPT'" class="offset-1 col-md-6 col-sm-11">
+                        <mat-form-field  class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
                                  [formControl]="w4FormGroup.controls['w4ExtraWithHolding']"
-                                 placeholder="4(c)"/>
+                                 placeholder="4(c)"
+                                 [value]="zero"
+                                 />
                           <span matPrefix><b>$</b>&nbsp;</span>
                         </mat-form-field>
                       </div>
@@ -340,7 +342,7 @@
                           <input matInput
                                  class="text-uppercase"
                                  type="text"
-                                 (change)="validateIfItsExemptOrNot()"
+                                 (keyup)="validateIfItsExemptOrNot()"
                                  [formControl]="w4FormGroup.controls['w4_Exempt']"
                                  placeholder="Here"/>
                           <mat-error *ngIf="w4FormGroup.controls['w4_Exempt'].hasError('invalidValue')">

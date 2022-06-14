@@ -7,12 +7,13 @@
             <ng-container *ngFor="let step of stepFormGroups;let currentStep = index">
               <mat-step [stepControl]="step.formGroup" [editable]="!isSubmitting" [completed]="step.formGroup.valid">
                 <form [formGroup]="step.formGroup">
-                  <ng-template matStepLabel>{{step.label}}</ng-template>
+                  <ng-template matStepLabel>{{step.label}} </ng-template>
                   <div class="row">
                     <ng-container *ngFor="let field of step.fields">
                       <app-employment-form-field
                         [ngClass]="{
-                        'col-md-6 col-sm-12': !field.isFullRowField,
+                          'd-none':field.masterId,
+                        'col-md-6 col-sm-12 ': !field.isFullRowField,
                         'w-100': field.type === 'date',
                         'col-12': field.isFullRowField
                         }"

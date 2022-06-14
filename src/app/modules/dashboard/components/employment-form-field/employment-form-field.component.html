@@ -6,8 +6,8 @@
       <div class="col-1 d-flex align-items-center justify-content-center" *ngIf="field.showFieldNumber">
         <span>{{field.showFieldNumber}}</span>
       </div>
-      <mat-form-field class="mb-3" [ngClass]="{'col-md-6 col-lg-6 col-12': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
-        <input matInput
+      <mat-form-field class="mb-3" [hidden]="field.label === 'Master Id'" [ngClass]="{'col-md-12 col-lg-12 col-12': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+        <input  matInput
                [type]="field.type"
                [mask]="field.isMasked ? field.mask : ''"
                [validation]="field.isMasked"
@@ -22,6 +22,7 @@
                [required]="field.required"
                [disabled]="field.required"
                [email]="!!field.isEmail"
+
         >
         <mat-error *ngIf="field.formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
@@ -34,8 +35,8 @@
   </ng-container>
 
   <!--Number Field-->
-  <ng-container *ngSwitchCase="field.type === 'number'">
-    <mat-form-field class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
+  <ng-container  *ngSwitchCase="field.type === 'number'">
+    <mat-form-field  class="mb-3" [ngClass]="{'w-50': !field.isFullColumnField, 'w-100': field.isFullColumnField}">
       <input matInput
              [type]="field.type"
              [placeholder]="field.label"

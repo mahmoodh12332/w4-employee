@@ -185,7 +185,7 @@
             <p class="padding-left">Multiply the number of qualifying children under age 17 by $2,000 &#9658; $______________</p>
           </td>
           <td width="150" colspan="2" class="border-right  text-center">
-            <b>${{getValue('basicInformation.w4Information.w4Children') * 2000}}</b>
+            <b>${{getValue('w4Information.w4Children') * 2000}}</b>
           </td>
         </tr>
         <tr>
@@ -193,7 +193,7 @@
             <p class="padding-left">Multiply the number of other dependents by $500 . . . . &#9658; $______________</p>
           </td>
           <td width="150" colspan="2" class="border-right text-center">
-            <b>${{getValue('basicInformation.w4Information.w4Dependents') * 500}}</b>
+            <b>${{getValue('w4Information.w4Dependents') * 500}}</b>
           </td>
         </tr>
         <tr>
@@ -245,7 +245,7 @@
           </td>
           <td width="50" class=" border-top border-left border-bottom"><span class="bold">4(c)</span></td>
           <td  class=" border-left border-top border-bottom text-center"><span >
-            <b>${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
+            <b *ngIf="!getValue('w4Information.w4_Exempt')">${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
           </span></td>
         </tr>
         <tr>

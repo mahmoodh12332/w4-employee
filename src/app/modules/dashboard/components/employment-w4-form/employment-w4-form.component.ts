@@ -15,6 +15,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
   public w4FormGroup: FormGroup;
   @ViewChild('w4Page2Modal', {static: true}) public w4Page2Modal;
   @ViewChild('w4Page3Modal', {static: true}) public w4Page3Modal;
+  zero: any;
   constructor(cookieService: CookieService,
               private formBuilder: FormBuilder,
               private router: Router,
@@ -25,6 +26,9 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
   ngOnInit(): void {
     super.ngOnInit();
     this.buildFormGroup();
+  }
+  taxw4ExtraWithHolding(){
+    this.w4FormGroup.controls['w4ExtraWithHolding']
   }
   private buildFormGroup() {
     const {
@@ -64,6 +68,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     });
   }
   private writeValues() {
+
     const values = this.w4FormGroup.getRawValue();
     values['w4_Exempt'] = upperCase(values['w4_Exempt']);
     const newFormValues = Object.assign({}, this.formValues, {
@@ -89,6 +94,11 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
   public validateIfItsExemptOrNot() {
+    console.log(this.w4FormGroup.controls['w4_Exempt'].value)
+    if(this.w4FormGroup.controls['w4_Exempt'].value === "EXEMPT") {
+      console.log(this.w4FormGroup.controls['w4ExtraWithHolding'].value )
+      this.zero = 0;
+    }
     if (
       this.w4FormGroup.controls['w4_Exempt'].value !== '' &&
       upperCase(this.w4FormGroup.controls['w4_Exempt'].value) !== 'EXEMPT'
