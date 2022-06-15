@@ -63,6 +63,12 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
     }
 
     const formDataObj = JSON.parse(this.formData)
+    const taxExempt =  formDataObj.w4Information.w4_Exempt;
+   if(taxExempt === "EXEMPT"){
+    formDataObj.w4Information.w4_Exempt = false
+   }else {
+    formDataObj.w4Information.w4_Exempt = true
+   }
     let mergedObj = { ...data, ...formDataObj };
     let FinalObj = { ...mergedObj, ...versionName };
 
