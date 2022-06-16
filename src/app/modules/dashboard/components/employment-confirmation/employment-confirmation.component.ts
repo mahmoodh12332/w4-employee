@@ -59,7 +59,7 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
 
    let versionName = {
     w4Version: +moment().format('YYYY'),
-    w4LastDate: moment().format('DD/MM/YYYY'), // Year,
+    w4LastDate: moment().format('MM/DD/YYYY'), // Year,
     }
 
     const formDataObj = JSON.parse(this.formData)

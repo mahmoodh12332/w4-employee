@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   maxValue:any = moment().subtract(0, 'years').toDate()
   startValue:any = moment().subtract(24, 'years').toDate()
   public submitting = false;
+  selected:any
   @ViewChild('DialogOverviewExampleDialog', {static: true}) public DialogOverviewExampleDialog;
 
 
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    console.log(this.selected)
 
   }
 
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(9)
       ]),
-      dob: new FormControl('', [
+      dob: new FormControl(this.selected, [
         Validators.required,
         Validators.minLength(10)
       ])
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
   onSubmit() {
 
     if (!this.loginForm.valid) {
