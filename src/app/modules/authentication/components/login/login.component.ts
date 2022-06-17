@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(9)
       ]),
-      dob: new FormControl(this.selected, [
+      dob: new FormControl('', [
         Validators.required,
         Validators.minLength(10)
       ])
