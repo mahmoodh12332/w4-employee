@@ -46,7 +46,7 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
     const elementSS = document.getElementById('yourSig-done')
     elementSS.innerHTML = 'Submitting...'
     // myContainer.value  = "Submitting";
-    console.log( elementSS )
+    // console.log( elementSS )
    const signature =  data.yourSignature.signature;
    const Newsignature = signature.substring(22)
    data.yourSignature.signature = Newsignature
