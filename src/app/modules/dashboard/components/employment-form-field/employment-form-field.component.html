@@ -192,7 +192,7 @@
         <button mat-raised-button (click)="stepper.previous()">Back</button>
       </div>
       <div class="col text-right">
-        <button mat-raised-button color="primary" [disabled]="isSubmitting || field.formControl.parent.invalid" (click)="submitForm.emit()">{{field.label}}</button>
+        <button mat-raised-button color="primary" [disabled]="isSubmitting || field.formControl.parent.invalid" id="{{field.id}}" (click)="submitForm.emit()">{{field.label}}</button>
       </div>
     </div>
   </ng-container>

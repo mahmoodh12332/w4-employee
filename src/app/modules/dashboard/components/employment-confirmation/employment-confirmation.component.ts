@@ -29,6 +29,7 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   ngOnInit(): void {
     super.ngOnInit();
     this.formData = this.cookieService.getCookie(FORM_COOKIE_NAME);
+
   }
   flat(res, key, val, pre = '') {
     // const prefix = [pre, key].filter(v => v).join();
@@ -40,19 +41,12 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
   flatObject(input) {
     return Object.keys(input).reduce((prev, curr) => this.flat(prev, curr, input[curr]), {});
   }
-  openDialog():  void {
-    const SubmitdialogRef = this.dialog.open(this.DialogOverviewExampleDialog,
-      { disableClose: true }
-      );
 
-    SubmitdialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed bvgvgvgvvgvhggwq');
-    });
-  }
-  onNoClick(){
-    this.appService.logoutUser();
-   }
   onFormSubmit(data) {
+    const elementSS = document.getElementById('yourSig-done')
+    elementSS.innerHTML = 'Submitting...'
+    // myContainer.value  = "Submitting";
+    console.log( elementSS )
    const signature =  data.yourSignature.signature;
    const Newsignature = signature.substring(22)
    data.yourSignature.signature = Newsignature
@@ -81,10 +75,23 @@ export class EmploymentConfirmationComponent extends EmploymentBaseComponent imp
     this.isSubmitting = true;
     this.appService.newSubmitApplication(this.objectApi).then((res) => {
       this.isSubmitting = false;
+      elementSS.innerHTML = 'Submit'
       this.openDialog()
     });
   }
+  openDialog():  void {
+    const SubmitdialogRef = this.dialog.open(this.DialogOverviewExampleDialog,
+      { disableClose: true }
+      );
 
+    SubmitdialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ');
+      this.onNoClick()
+    });
+  }
+  onNoClick(){
+    this.appService.logoutUser();
+   }
 }
 function w4Version(w4Version: any, arg1: number) {
   throw new Error('Function not implemented.');
