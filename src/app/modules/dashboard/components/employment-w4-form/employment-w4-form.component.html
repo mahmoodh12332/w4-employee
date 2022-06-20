@@ -321,7 +321,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div *ngIf="w4FormGroup.controls['w4_Exempt'].value !== 'EXEMPT'" class="offset-1 col-md-6 col-sm-11">
+                      <div *ngIf="w4FormGroup.controls['withholdTax'].value !== 'EXEMPT'" class="offset-1 col-md-6 col-sm-11">
                         <mat-form-field  class="mt-2 mb-2 w-100">
                           <input matInput
                                  type="number"
@@ -343,9 +343,9 @@
                                  class="text-uppercase"
                                  type="text"
                                  (keyup)="validateIfItsExemptOrNot()"
-                                 [formControl]="w4FormGroup.controls['w4_Exempt']"
+                                 [formControl]="w4FormGroup.controls['withholdTax']"
                                  placeholder="Here"/>
-                          <mat-error *ngIf="w4FormGroup.controls['w4_Exempt'].hasError('invalidValue')">
+                          <mat-error *ngIf="w4FormGroup.controls['withholdTax'].hasError('invalidValue')">
                             You can only type EXEMPT
                           </mat-error>
                         </mat-form-field>

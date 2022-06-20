@@ -245,13 +245,13 @@
           </td>
           <td width="50" class=" border-top border-left border-bottom"><span class="bold">4(c)</span></td>
           <td  class=" border-left border-top border-bottom text-center"><span >
-            <b *ngIf="!getValue('w4Information.w4_Exempt')">${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
+            <b *ngIf="!getValue('w4Information.withholdTax')">${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
           </span></td>
         </tr>
         <tr>
           <td class="text-right" colspan="4">
             <p class="background-color text-uppercase">
-            <b>{{getValue('w4Information.w4_Exempt') || ''}}</b>
+            <b>{{getValue('w4Information.withholdTax') || ''}}</b>
             </p>
           </td>
         </tr>

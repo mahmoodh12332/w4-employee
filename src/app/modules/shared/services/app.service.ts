@@ -182,7 +182,7 @@ export class AppService {
       }, {});
       assign(formBody, constantFormValues);
       delete formBody.formSubmit;
-      formBody.w4_Exempt = formBody.w4_Exempt === 'EXEMPT';
+      formBody.withholdTax = formBody.withholdTax === 'EXEMPT';
       formBody.skills = this.skillsData ? this.mapSkills(formBody.skills) : [];
       formBody.workHistories = (formBody.workHistories || []).map((h) => ({
         employmentHistoryId: 0,

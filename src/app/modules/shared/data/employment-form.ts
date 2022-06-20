@@ -49,7 +49,7 @@ const commonFieldsForDocumentType = {
     }
   }
 };
-const phoneMask = '(000)000-0000';
+const phoneMask = '(000) 000-0000';
 const maxDate = moment().add(50, 'years').endOf('year').toDate();
 const patternForAlphabetsOnly = /^[a-zA-Z|\s]+$/;
 
@@ -198,6 +198,26 @@ export const EmploymentApplicationForm: Array<any> = [
       //   minLength: textTypeDefaultMinLength,
       //   maxLength: 10,
       // },
+      {
+        id: 'pe-email',
+        name: 'email',
+        label: 'Email',
+        type: 'text',
+        isFullRowField: false,
+        isFullColumnField: true,
+        defaultValue: '',
+        isMasked: false,
+        pattern: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,63}$/,
+        errorMessage: {
+          pattern: 'Invalid Email'
+        },
+        isEmail: true,
+        disabled: false,
+        required: false,
+        mask: null,
+        minLength: textTypeDefaultMinLength,
+        maxLength: 50,
+      },
       {
         id: 'add-streetName',
         name: 'address',

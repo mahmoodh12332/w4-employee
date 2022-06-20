@@ -39,7 +39,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4ExtraWithHolding,
       w4TwoJobs,
       maritalStatus,
-      w4_Exempt,
+      withholdTax,
     } = (this.formValues.w4Information || {
       w4Children: 0,
       w4Dependents: 0,
@@ -48,7 +48,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4ExtraWithHolding: 0,
       w4TwoJobs: false,
       maritalStatus: null,
-      w4_Exempt: ''
+      withholdTax: ''
     });
     this.w4FormGroup = this.formBuilder.group({
       w4Children: [w4Children || 0],
@@ -64,13 +64,13 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4ExtraWithHolding: [w4ExtraWithHolding || 0],
       w4TwoJobs: [w4TwoJobs || false],
       maritalStatus: [maritalStatus, Validators.required],
-      w4_Exempt: [w4_Exempt === 'EXEMPT' ? w4_Exempt : ''],
+      withholdTax: [withholdTax === 'EXEMPT' ? withholdTax : ''],
     });
   }
   private writeValues() {
 
     const values = this.w4FormGroup.getRawValue();
-    values['w4_Exempt'] = upperCase(values['w4_Exempt']);
+    values['withholdTax'] = upperCase(values['withholdTax']);
     const newFormValues = Object.assign({}, this.formValues, {
       w4Information: values,
     });
@@ -87,23 +87,23 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
       w4Deductions: 0,
       w4ExtraWithHolding: 0,
       w4TwoJobs: false,
-      w4_Exempt: '',
+      withholdTax: '',
       maritalStatus: this.w4FormGroup.get('maritalStatus').value,
     });
     this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
   public validateIfItsExemptOrNot() {
-    console.log(this.w4FormGroup.controls['w4_Exempt'].value)
-    if(this.w4FormGroup.controls['w4_Exempt'].value === "EXEMPT") {
+    console.log(this.w4FormGroup.controls['withholdTax'].value)
+    if(this.w4FormGroup.controls['withholdTax'].value === "EXEMPT") {
       console.log(this.w4FormGroup.controls['w4ExtraWithHolding'].value )
       this.zero = 0;
     }
     if (
-      this.w4FormGroup.controls['w4_Exempt'].value !== '' &&
-      upperCase(this.w4FormGroup.controls['w4_Exempt'].value) !== 'EXEMPT'
+      this.w4FormGroup.controls['withholdTax'].value !== '' &&
+      upperCase(this.w4FormGroup.controls['withholdTax'].value) !== 'EXEMPT'
     ) {
-      this.w4FormGroup.controls['w4_Exempt'].setErrors({
+      this.w4FormGroup.controls['withholdTax'].setErrors({
         invalidValue: true,
       });
     }
