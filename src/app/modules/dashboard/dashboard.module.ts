@@ -16,6 +16,7 @@ import {DashboardServices} from './services';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material';
 import {DocumentComponents} from './components/documents';
 import {EmploymentConfirmationComponent} from './components/employment-confirmation/employment-confirmation.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {EmploymentConfirmationComponent} from './components/employment-confirmat
     MaterialModules,
     SharedModule,
     DashboardRouting,
+    MatProgressSpinnerModule
   ],
   exports: [
     EmploymentFormComponent,
