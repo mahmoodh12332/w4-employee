@@ -105,6 +105,10 @@ button{
   animation: spinner .8s linear infinite;
 }
 :root {
-  touch-action: pan-x pan-y;
+  touch-action: manipulation;
+  height: 100% 
+}
+body {
+  touch-action: manipulation;
   height: 100% 
 }
