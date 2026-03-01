@@ -30,6 +30,10 @@
                   <p>Personal Information</p>
                 </ng-template>
                 <div class="row">
+
+                  <div class="col-12 mb-3 bg-light box-shadow border-rounded p-3 rounded-lg">
+                    <strong class="text-warning">Caution:</strong> To claim certain credits or deductions on your tax return, you (and/or your spouse if married filing jointly) are required to have a social security number valid for employment. See <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span>  for more information.
+                  </div>
                   <div class="col-12">
                     <label [ngClass]="{'mat-error': w4FormGroup.controls['maritalStatus'].hasError('required')}">
                      Marital Status *
@@ -41,7 +45,7 @@
                         Single or Married filing separately
                       </mat-radio-button>
                       <mat-radio-button class="mt-2 mb-2" value="M">
-                        Married filling jointly (or Qualifying widow(er))
+                        Married filing jointly or Qualifying surviving spouse
                       </mat-radio-button>
                       <mat-radio-button class="mt-2 mb-2" value="W">
                         Head of household (Check only if you’re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
