@@ -15,6 +15,7 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
   public w4FormGroup: FormGroup;
   @ViewChild('w4Page2Modal', {static: true}) public w4Page2Modal;
   @ViewChild('w4Page3Modal', {static: true}) public w4Page3Modal;
+  @ViewChild('w4Page4Modal', {static: true}) public w4Page4Modal;
   zero: any;
   constructor(cookieService: CookieService,
               private formBuilder: FormBuilder,
@@ -93,10 +94,15 @@ export class EmploymentW4FormComponent extends EmploymentBaseComponent implement
     this.writeValues();
     this.router.navigate(['/dashboard/employment-confirmation']);
   }
+  public setWithholdExempt(checked: boolean) {
+    this.w4FormGroup.controls['withholdTax'].setValue(checked ? 'EXEMPT' : '');
+    if (checked) {
+      this.zero = 0;
+    }
+  }
+
   public validateIfItsExemptOrNot() {
-    console.log(this.w4FormGroup.controls['withholdTax'].value)
-    if(this.w4FormGroup.controls['withholdTax'].value === "EXEMPT") {
-      console.log(this.w4FormGroup.controls['w4ExtraWithHolding'].value )
+    if (this.w4FormGroup.controls['withholdTax'].value === 'EXEMPT') {
       this.zero = 0;
     }
     if (

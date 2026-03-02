@@ -61,7 +61,7 @@
                   <div class="col-12 p-3" style="border: 1px solid black;">
                     <b>Complete Steps 2–4 ONLY if they apply to you; otherwise,  <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button> to Step 5.</b>
                     See <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span> for more information on each step, who can
-                    claim exemption from withholding, and when to use the estimator at <a href="https://www.irs.gov/W4App" target="_blank">www.irs.gov/W4App</a>.
+                    claim exemption from withholding, and when to use the estimator at <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">www.irs.gov/W4App</a>.
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -100,7 +100,7 @@
                     <b>(a)</b>
                   </div>
                   <div class="col-11">
-                    Use the estimator at <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">www.irs.gov/W4App</a> for most accurate withholding for this step (and Steps 3–4);
+                    Use the estimator at <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">www.irs.gov/W4App</a> for the most accurate withholding for this step (and Steps 3–4). If you or your spouse have self-employment income, use this option;
                   </div>
                   <div class="col-12 text-center">
                     <b>or</b>
@@ -111,7 +111,7 @@
                   <div class="col-11">
                     Use the Multiple Jobs Worksheet on
                     <span class="page-modal-link" (click)="openPage(w4Page3Modal)">page 3</span>
-                    and enter the result in Step 4(c) below for roughly accurate withholding;
+                    and enter the result in Step 4(c) below;
                   </div>
                   <div class="col-12 text-center">
                     <b>or</b>
@@ -122,12 +122,7 @@
                   <div class="col-11">
                     If there are only two jobs total, you may check this box
                     <mat-checkbox color="primary" [formControl]="w4FormGroup.controls['w4TwoJobs']"></mat-checkbox>.
-                    Do the same on Form W-4 for the other job. This option is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at the higher paying job. Otherwise, Step 2(b) is more accurate.
-                  </div>
-                  <div class="offset-1 col-11 mt-4 mb-4">
-                    <b>TIP: </b>
-                    To be accurate, submit a 2020 Form W-4 for all other jobs. If you (or your spouse) have self-employment
-                    income, including as an independent contractor, use the estimator.
+                    Do the same on Form W-4 for the other job. This option is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at the higher paying job. Otherwise, Step 2(b) is more accurate .
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -158,7 +153,7 @@
               <form [formGroup]="w4FormGroup">
                 <ng-template matStepLabel>
                   Step 3:
-                  <p>Claim Dependents</p>
+                  <p> Claim Dependents and Other Credits                  </p>
                 </ng-template>
                 <div class="row">
                   <div class="col-12">
@@ -169,7 +164,7 @@
                   <div class="col-12">
                     <div class="row">
                       <div class="col-12">
-                        Multiply the number of qualifying children under age 17 by $2,000
+                        Multiply the number of qualifying children under age 17 by $2,200
                       </div>
                     </div>
                     <div class="row mt-4 mb-4">
@@ -191,13 +186,13 @@
                             <mat-option [value]="9">9</mat-option>
                           </mat-select>
                           <span matSuffix>
-                            x <b>&nbsp;$2000</b>
+                            x <b>&nbsp;$2200</b>
                           </span>
                         </mat-form-field>
                       </div>
                       <div class="col-3 d-flex justify-content-center align-items-center" style="border-left: 1px solid black">
                         <b>
-                          ${{w4FormGroup.controls['w4Children'].value * 2000}}
+                          ${{w4FormGroup.controls['w4Children'].value * 2200}}
                         </b>
                       </div>
                     </div>
@@ -246,7 +241,7 @@
                     </div>
                     <div class="row mt-4">
                       <div class="col-9">
-                       Adding the amounts above
+                        Add the amounts from Steps 3(a) and 3(b), plus the amount for other credits. Enter the total here .
                       </div>
                       <div class="col-3 text-center" style="border-top: 1px solid black; border-left: 1px solid black;">
                         <b>
@@ -309,9 +304,7 @@
                         <b>
                           (b) Deductions.
                         </b>
-                        If you expect to claim deductions other than the standard deduction
-                        and want to reduce your withholding, use the Deductions Worksheet on <span class="page-modal-link" (click)="openPage(w4Page3Modal)">page 3</span> and
-                        enter the result here
+                        Use the Deductions Worksheet on <span class="page-modal-link" (click)="openPage(w4Page4Modal)">page 4</span> to determine the amount of deductions you may claim, which will reduce your withholding. (If you skip this line, your withholding will be based on the standard deduction.) Enter the result here
                       </div>
                     </div>
                     <div class="row">
@@ -346,22 +339,16 @@
                         </mat-form-field>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                       <div class="col-md-8 col-sm-12">
-                        <p>
-                          If you are Exempt from paying taxes then type Exempt Here(Optional)
+                        <p >
+                          <b>Exempt from withholding</b> I claim exemption from withholding for 2026, and I certify that I meet both of the conditions for exemption for 2026. See Exemption from withholding on <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span>. I understand I will need to submit a new Form W-4 for 2027.
+                          <mat-checkbox color="primary"
+                          [checked]="w4FormGroup.get('withholdTax').value === 'EXEMPT'"
+                          (change)="setWithholdExempt($event.checked)">
+            </mat-checkbox>
                         </p>
-                        <mat-form-field class="mt-1 w-100">
-                          <input matInput
-                                 class="text-uppercase"
-                                 type="text"
-                                 (keyup)="validateIfItsExemptOrNot()"
-                                 [formControl]="w4FormGroup.controls['withholdTax']"
-                                 placeholder="Here"/>
-                          <mat-error *ngIf="w4FormGroup.controls['withholdTax'].hasError('invalidValue')">
-                            You can only type EXEMPT
-                          </mat-error>
-                        </mat-form-field>
+
                       </div>
                     </div>
                   </div>
@@ -412,6 +399,23 @@
       <div class="row">
         <div class="col-12">
           <app-w4-form-page-3></app-w4-form-page-3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="text-right">
+    <div class="w-100 text-right">
+      <button mat-raised-button mat-dialog-close color="primary">Ok</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #w4Page4Modal>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <app-w4-form-page-4></app-w4-form-page-4>
         </div>
       </div>
     </div>
