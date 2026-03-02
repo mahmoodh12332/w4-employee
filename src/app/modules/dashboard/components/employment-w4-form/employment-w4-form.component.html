@@ -59,11 +59,9 @@
                 </div>
                 <div class="row mt-3" *ngIf="w4FormGroup.controls['maritalStatus'].valid">
                   <div class="col-12 p-3" style="border: 1px solid black;">
-                    <b>Complete Steps 2–4 ONLY if they apply to you; otherwise,
-                      <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button>
-                      to Step 5.</b>
+                    <b>Complete Steps 2–4 ONLY if they apply to you; otherwise,  <button color="primary" mat-raised-button (click)="skipToConfirmation()">Skip</button> to Step 5.</b>
                     See <span class="page-modal-link" (click)="openPage(w4Page2Modal)">page 2</span> for more information on each step, who can
-                    claim exemption from withholding, when to use the online estimator, and privacy.
+                    claim exemption from withholding, and when to use the estimator at <a href="https://www.irs.gov/W4App" target="_blank">www.irs.gov/W4App</a>.
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -102,7 +100,7 @@
                     <b>(a)</b>
                   </div>
                   <div class="col-11">
-                    Use the estimator at www.irs.gov/W4App for most accurate withholding for this step (and Steps 3–4);
+                    Use the estimator at <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">www.irs.gov/W4App</a> for most accurate withholding for this step (and Steps 3–4);
                   </div>
                   <div class="col-12 text-center">
                     <b>or</b>
@@ -124,8 +122,7 @@
                   <div class="col-11">
                     If there are only two jobs total, you may check this box
                     <mat-checkbox color="primary" [formControl]="w4FormGroup.controls['w4TwoJobs']"></mat-checkbox>.
-                    Do the same on Form W-4 for the other job. This option
-                    is accurate for jobs with similar pay; otherwise, more tax than necessary may be withheld
+                    Do the same on Form W-4 for the other job. This option is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at the higher paying job. Otherwise, Step 2(b) is more accurate.
                   </div>
                   <div class="offset-1 col-11 mt-4 mb-4">
                     <b>TIP: </b>
