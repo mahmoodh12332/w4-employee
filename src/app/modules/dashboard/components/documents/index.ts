@@ -36,6 +36,7 @@ import {
 import { WorkWellComponent } from './work-well/work-well.component';
 import {W4FormPage3Component} from './w4-form-page-3/w4-form-page-3.component';
 import {W4FormPage2Component} from './w4-form-page-2/w4-form-page-2.component';
+import {W4FormPage4Component} from './w4-form-page-4/w4-form-page-4.component';
 
 export const DocumentComponents = [
   ArbitrationAgreementPolicyComponent,
@@ -64,6 +65,7 @@ export const DocumentComponents = [
   WorkWellComponent,
   W4FormPage3Component,
   W4FormPage2Component,
+  W4FormPage4Component,
 ];
 
 export default {
@@ -92,6 +94,7 @@ export default {
   WorkWellComponent,
   W4FormPage3Component,
   W4FormPage2Component,
+  W4FormPage4Component,
 };
 
 export * from './arbitration-agreement/arbitration-agreement-policy.component';
@@ -120,3 +123,4 @@ export * from './authorization-to-release-work-history/authorization-to-release-
 export * from './work-well/work-well.component';
 export * from './w4-form-page-3/w4-form-page-3.component';
 export * from './w4-form-page-2/w4-form-page-2.component';
+export * from './w4-form-page-4/w4-form-page-4.component';
