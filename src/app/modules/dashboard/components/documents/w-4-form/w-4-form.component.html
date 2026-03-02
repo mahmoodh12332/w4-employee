@@ -2,99 +2,89 @@
   <div class="form-width">
     <div class="w4-employ">
       <table width="100%" cellpadding="2" cellspacing="0">
-        <tr >
-          <td width="15%"  class="border-bottom">
-            <span class="font-10">Form</span><span class="font-30">W-4 </span>
-            <span class="font-10">Department of the Treasury</span>
-            <span class="font-10">Internal Revenue Service  </span>
+        <tr>
+          <td width="15%" class="border-bottom">
+            <p class="font-8">Form &nbsp;<span style="font-size: 30px;">W-4</span></p>
+            <p class="font-8 mb-0">Department of the Treasury</p>
+            <p class="font-8 mb-0">Internal Revenue Service</p>
           </td>
           <td class="border-left border-right border-bottom text-center">
-            <h2>Employee’s Withholding Certificate</h2>
-            <p class="font-10" ><b>&#9658; Complete Form W-4 so that your employer can withhold the correct federal income tax from your pay.</b> </p>
-            <p class="font-10" ><b>&#9658; Give Form W-4 to your employer.</b> </p>
-            <p class="font-10" ><b>&#9658; Your withholding is subject to review by the IRS.</b> </p>
+            <h2>Employee's Withholding Certificate</h2>
+            <p class="font-10"><b>Complete Form W-4 so that your employer can withhold the correct federal income tax from your pay.</b></p>
+            <p class="font-10"><b>Give Form W-4 to your employer.</b></p>
+            <p class="font-10"><b>Your withholding is subject to review by the IRS.</b></p>
           </td>
           <td width="15%" class="border-bottom padding-0">
-            <p class="font-10 text-center border-bottom padding-y ">OMB No. 1545-0074</p>
-            <h2 class="font-30 text-center padding-top"><span class="border-text">20</span>22</h2>
+            <p class="font-10 text-center border-bottom padding-y">OMB No. 1545-0074</p>
+            <h2 class="font-30 text-center padding-top"><span class="border-text">20</span>26</h2>
           </td>
         </tr>
       </table>
-      <!-- **************** Step ! *************** -->
+      <!-- **************** Step 1 *************** -->
       <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
-          <td rowspan="4" width="10%" class="border-bottom v-top" >
-            <p class="font-18 bold">Step 1:
-              Enter
-              Personal
-              Information</p>
+          <td rowspan="5" width="10%" class="border-bottom v-top">
+            <p class="font-18 bold">Step 1:<br>Enter<br>Personal<br>Information</p>
             <p class="background-color"> </p>
           </td>
-          <td  width="35%" class="border-left  border-bottom ">
-            <p class="font-12"> <span class="bold">(a)</span>  First name and middle initial</p>
+          <td width="35%" class="border-left border-bottom">
+            <p class="font-12"><span class="bold">(a)</span> First name and middle initial</p>
             <p class="background-color">
               {{getValue('basicInformation.firstName')}} {{getValue('basicInformation.middleInitials')}}
             </p>
           </td>
-          <td  width="35%" class="border-left border-right border-bottom ">
-            <p class="font-12"> Last name</p>
+          <td width="35%" class="border-left border-right border-bottom">
+            <p class="font-12">Last name</p>
             <p class="background-color">
               {{getValue('basicInformation.lastName')}}
             </p>
           </td>
-          <td  class="border-bottom" >
-            <p class="font-12"><span class="bold"> (b) Social security number</span></p>
+          <td class="border-bottom">
+            <p class="font-12"><span class="bold">(b) Social security number</span></p>
             <p class="background-color">
               {{getValue('basicInformation.socialSecurity')}}
             </p>
           </td>
         </tr>
-        <tr >
+        <tr>
           <td class="border-left border-right border-bottom" colspan="2">
-            <p class="font-12" > Address</p>
+            <p class="font-12">Address</p>
             <p class="background-color">
               {{getValue('basicInformation.address')}}
             </p>
           </td>
           <td class="border-bottom" rowspan="2">
-            <p class="font-12">
-              &#9658; <span class="bold"> your name match the name on your social security
-                                    card?</span> If not, to ensure you get
-              credit for your earnings, contact
-              SSA at 800-772-1213 or go to
-
-            </p>
-            <p  class="font-12">www.ssa.gov.</p>
+            <p class="font-12">Does your name match the name on your social security card? If not, to ensure you get credit for your earnings, contact SSA at 800-772-1213 or go to www.ssa.gov.</p>
           </td>
-        </tr >
+        </tr>
         <tr>
           <td class="border-left border-right border-bottom" colspan="2">
-            <p class="font-12"> City or town, state, and ZIP code</p>
+            <p class="font-12">City or town, state, and ZIP code</p>
             <p class="background-color">
               {{getValue('basicInformation.city')}}, {{getValue('basicInformation.state')}} {{getValue('basicInformation.zipCode')}}
             </p>
           </td>
         </tr>
         <tr>
-          <td class="border-left  border-bottom" colspan="3">
+          <td class="border-left border-bottom" colspan="3">
             <div style="width:40px" class="float-left">
               <span class="bold font-12">(c)</span>
             </div>
             <div class="float-left">
-              <p  class="bold">
-                <label class="mycheckbox"> Single or Married filing separately
+              <p class="bold">
+                <label class="mycheckbox">Single or Married filing separately
                   <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'S'">
                   <span class="checkmark"></span>
                 </label>
               </p>
               <p>
-                <label class="mycheckbox"><span class="bold"> Married filing jointly</span> (or Qualifying widow(er))
+                <label class="mycheckbox"><span class="bold">Married filing jointly or Qualifying surviving spouse</span>
                   <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'M'">
                   <span class="checkmark"></span>
                 </label>
               </p>
               <p style="padding-bottom: 4px;">
-                <label class="mycheckbox "> <span class="bold">Head of household</span> (Check only if you’re unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
+                <label class="mycheckbox"><span class="bold">Head of household</span> (Check only if you're unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)
                   <input type="checkbox" [checked]="getValue('w4Information.maritalStatus') === 'W'">
                   <span class="checkmark"></span>
                 </label>
@@ -103,161 +93,169 @@
           </td>
         </tr>
         <tr>
+          <td colspan="3" class="border-bottom">
+            <p style="background:#f5f5f5;border:1px dashed #999;padding:6px 8px;"><span class="bold">Caution:</span> To claim certain credits or deductions on your tax return, you (and/or your spouse if married filing jointly) are required to have a social security number valid for employment. See page 2 for more information.</p>
+          </td>
+        </tr>
+        <tr>
           <td colspan="4" class="border-bottom">
-            <p ><span class="bold "> Steps 2–4 ONLY if they apply to you; otherwise, skip to Step 5.</span> See page 2 for more information on each step, who can
-              claim exemption from withholding, when to use the online estimator, and privacy</p>
+            <p><span class="bold">TIP:</span>
+              Consider using the estimator at www.irs.gov/W4App to determine the most accurate withholding for the rest of the year if you: 
+              are completing this form after the beginning of the year; expect to work only part of the year; or have changes during the year in your 
+              marital status, number of jobs for you (and/or your spouse if married filing jointly), dependents, other income (not from jobs), 
+              deductions, or credits. Have your most recent pay stub(s) from this year available when using the estimator. At the beginning of next 
+              year, use the estimator again to recheck your withholding. 
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="border-bottom">
+            <p>
+              <span class="bold">Complete Steps 2–4 ONLY if they apply to you; otherwise, skip to Step 5.</span> See page 2 for more information on each step, who can 
+claim exemption from withholding, and when to use the estimator at www.irs.gov/W4App.
+            </p>
           </td>
         </tr>
       </table>
       <!-- **************** Step 2 *************** -->
-
       <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
-          <td width="13%" rowspan="6" class="v-top">
-            <p class="font-18 bold">
-              Step 2:
-              Multiple Jobs
-              or Spouse
-              Works
-            </p>
+          <td width="13%" rowspan="7" class="v-top">
+            <p class="font-18 bold">Step 2:<br>Multiple Jobs<br>or Spouse<br>Works</p>
           </td>
           <td>
-            <p class="font-14">Complete this step if you (1) hold more than one job at a time, or (2) are married filing jointly and your spouse
-              also works. The correct amount of withholding depends on income earned from all of these jobs</p>
+            <p class="font-14">Complete this step if you (1) hold more than one job at a time, or (2) are married filing jointly and your spouse also works. The correct amount of withholding depends on income earned from all of these jobs.</p>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <P class="font-14">Do <span class="bold"> only one</span> of the following.</P>
+          <td>
+            <p class="font-14">Do <span class="bold">only one</span> of the following.</p>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <P class="font-14"><span class="bold">(a)</span> Use the estimator at <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank">www.irs.gov/W4App</a> for most accurate withholding for this step (and Steps 3–4); <span class="bold">or</span></P>
+          <td>
+            <p class="font-14"><span class="bold">(a)</span> Use the estimator at <a href="https://www.irs.gov/W4App" target="_blank">www.irs.gov/W4App</a> for most accurate withholding for this step (and Steps 3-4); <span class="bold">or</span></p>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <P class="font-14"><span class="bold">(b)</span> Use the Multiple Jobs Worksheet on page 3 and enter the result in Step 4(c) below for roughly accurate withholding; <span class="bold">or</span></P>
+          <td>
+            <p class="font-14"><span class="bold">(b)</span> Use the Multiple Jobs Worksheet on page 3 and enter the result in Step 4(c) below; <span class="bold">or</span></p>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <P class="font-14"><span class="bold">(c)</span>  If there are only two jobs total, you may check this box. Do the same on Form W-4 for the other job. This option
-              is accurate for jobs with similar pay; otherwise, more tax than necessary may be withheld . . . . . &#9658; &nbsp;
-              <label class="mycheckbox ">
+          <td>
+            <p class="font-14"><span class="bold">(c)</span>  If there are only two jobs total, you may check this box. Do the same on Form W-4 for the other job. This 
+              option is generally more accurate than Step 2(b) if pay at the lower paying job is more than half of the pay at 
+              the higher paying job. Otherwise, Step 2(b) is more accurate &nbsp;
+              <label class="mycheckbox">
                 <input type="checkbox" [checked]="getValue('w4Information.w4TwoJobs') === true">
                 <span class="checkmark"></span>
-              </label></P>
+              </label>
+            </p>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <P class="font-14 padding-top"><span class="bold">TIP:</span> To be accurate, submit a 2022 Form W-4 for all other jobs. If you (or your spouse) have self-employment
-              income, including as an independent contractor, use the estimator.</P>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <P class=" padding-top"><span class="bold">Complete Steps 3–4(b) on Form W-4 for only ONE of these jobs. Leave those steps blank for the other jobs. </span> (Your withholding will
-              be most accurate if you complete Steps 3–4(b) on the Form W-4 for the highest paying job.)
-            </P>
+          <td>
+            <p class="font-14 padding-top"><span class="bold">Complete Steps 3-4(b) on Form W-4 for only ONE of these jobs.</span> Leave those steps blank for the other jobs. (Your withholding will be most accurate if you complete Steps 3-4(b) on the Form W-4 for the highest paying job.)</p>
           </td>
         </tr>
       </table>
       <!-- **************** Step 3 *************** -->
-
       <table width="100%" cellpadding="5" cellspacing="0">
-        <tr class="">
+        <tr>
           <td width="13%" rowspan="4" class="v-top border-top">
             <p class="font-18 bold">Step 3:</p>
             <p class="font-18 bold">Claim</p>
-            <p class="font-18 bold">Dependents</p>
+            <p class="font-18 bold">Dependent and</p>
+            <p class="font-18 bold">Other Credits</p>
           </td>
-          <td  class=" border-top">
-            <p>If your income will be $200,000 or less ($400,000 or less if married filing jointly): </p>
+          <td class="border-top">
+            <p>If your total income will be $200,000 or less ($400,000 or less if married filing jointly):</p>
           </td>
           <td width="50" rowspan="4" class="v-bottom border-top border-left border-right"><span class="bold">3</span></td>
           <td width="150" class="v-bottom border-top border-right"></td>
         </tr>
         <tr>
           <td>
-            <p class="padding-left">Multiply the number of qualifying children under age 17 by $2,000 &#9658; $______________</p>
+            <p class="padding-left">(a) Multiply the number of qualifying children under age 17 by $2,200.</p>
           </td>
-          <td width="150" colspan="2" class="border-right  text-center">
-            <b>${{getValue('w4Information.w4Children') * 2000}}</b>
+          <td width="80" class="border-right text-center"><span class="bold">3(a) $</span></td>
+          <td width="120" class="border-right text-center">
+            <b>${{getValue('w4Information.w4Children') * 2200}}</b>
           </td>
         </tr>
         <tr>
           <td>
-            <p class="padding-left">Multiply the number of other dependents by $500 . . . . &#9658; $______________</p>
+            <p class="padding-left">(b) Multiply the number of other dependents by $500.</p>
           </td>
-          <td width="150" colspan="2" class="border-right text-center">
+          <td width="80" class="border-right text-center"><span class="bold">3(b) $</span></td>
+          <td width="120" class="border-right text-center">
             <b>${{getValue('w4Information.w4Dependents') * 500}}</b>
           </td>
         </tr>
         <tr>
           <td>
-            <p class="padding-top">Add the amounts above and enter the total here . . . . . . . . . . . . .</p>
+            <p class="padding-top">Add the amounts from Steps 3(a) and 3(b), plus the amount for other credits. Enter the total here.</p>
           </td>
-          <td width="150" colspan="2" class="border-right text-center">
-            <b>${{
-              getValue('w4Information.w4Dependents') * 500 +
-              getValue('w4Information.w4Children') * 2000
-              }}</b>
+          <td width="80" class="border-right text-center"></td>
+          <td width="120" class="border-right text-center">
+            <b>${{getValue('w4Information.w4Dependents') * 500 + getValue('w4Information.w4Children') * 2200}}</b>
           </td>
         </tr>
       </table>
       <!-- **************** Step 4 *************** -->
-
       <table width="100%" cellpadding="5" cellspacing="0">
-        <tr class="">
-          <td width="13%" rowspan="3" class="v-top border-top">
-            <p class="font-18 bold">Step 4</p>
-            <p class="font-18 bold">(optional):</p>
+        <tr>
+          <td width="13%" rowspan="4" class="v-top border-top">
+            <p class="font-18 bold">Step 4:</p>
             <p class="font-18 bold">Other</p>
             <p class="font-18 bold">Adjustments</p>
           </td>
-          <td  class=" border-top">
-            <p><span class="bold">(a) Other income (not from jobs).</span> If you want tax withheld for other income you expect
-              this year that won’t have withholding, enter the amount of other income here. This may
-              include interest, dividends, and retirement income . . . . . . . . . . . .</p>
+          <td class="border-top">
+            <p><span class="bold">(a) Other income (not from jobs).</span> If you want tax withheld for other income you expect this year that won't have withholding, enter the amount of other income here. This may include interest, dividends, and retirement income.</p>
           </td>
-          <td width="50" class=" border-top border-left"><span class="bold">4(a)</span></td>
-          <td width="150" class=" border-left border-top text-center"><span >
+          <td width="50" class="border-top border-left"><span class="bold">4(a)</span></td>
+          <td width="150" class="border-left border-top text-center">
             <b>${{getValue('w4Information.w4OtherIncome') || 0}}</b>
-          </span></td>
+          </td>
         </tr>
         <tr>
           <td>
-            <p class="padding-left"><span class="bold">(b) Deductions. </span>If you expect to claim deductions other than the standard deduction
-              and want to reduce your withholding, use the Deductions Worksheet on page 3 and
-              enter the result here . . . . . . . . . . . . . . . . . . . . .</p>
+            <p class="padding-left"><span class="bold">(b) Deductions.</span> Use the Deductions Worksheet on page 4 to determine the amount of deductions you may claim, which will reduce your withholding. (If you skip this line, your withholding will be based on the standard deduction.) Enter the result here.</p>
           </td>
-          <td width="50" class=" border-top border-left"><span class="bold">4(b)</span></td>
-          <td width="150" class=" border-left border-top text-center"><span >
+          <td width="50" class="border-top border-left"><span class="bold">4(b)</span></td>
+          <td width="150" class="border-left border-top text-center">
             <b>${{getValue('w4Information.w4Deductions') || 0}}</b>
-          </span></td>
+          </td>
         </tr>
         <tr>
           <td>
-            <p class="padding-left"><span class="bold">(c) Extra withholding.</span> Enter any additional tax you want withheld each <span class="bold"> pay period</span> .</p>
+            <p class="padding-left"><span class="bold">(c) Extra withholding.</span> Enter any additional tax you want withheld each pay period.</p>
           </td>
-          <td width="50" class=" border-top border-left border-bottom"><span class="bold">4(c)</span></td>
-          <td  class=" border-left border-top border-bottom text-center"><span >
+          <td width="50" class="border-top border-left"><span class="bold">4(c)</span></td>
+          <td width="150" class="border-left border-top text-center">
             <b *ngIf="!getValue('w4Information.withholdTax')">${{getValue('w4Information.w4ExtraWithHolding') || 0}}</b>
-          </span></td>
-        </tr>
-        <tr>
-          <td class="text-right" colspan="4">
-            <p class="background-color text-uppercase">
-            <b>{{getValue('w4Information.withholdTax') || ''}}</b>
-            </p>
           </td>
         </tr>
+
+      </table>
+      <table width="100%" cellpadding="5" cellspacing="0" class="border-top">
+       <tr>
+        <td class="border-right" rowspan="2" width="13%"> Exempt from 
+withholding</td>
+        <td>
+          <p class="font-14">
+            I claim exemption from withholding for 2026, and I certify that I meet both of the conditions for exemption for 2026. See Exemption from withholding on page 2. I understand I will need to submit a new Form W-4 for 2027. &nbsp;
+            <label class="mycheckbox">
+              <input type="checkbox" [checked]="!!getValue('w4Information.withholdTax')">
+              <span class="checkmark"></span>
+            </label>
+          </p>
+        </td>
+      </tr>
+      
       </table>
       <!-- **************** Step 5 *************** -->
-
       <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
           <td rowspan="2" width="13%" class="border-right border-top">
@@ -265,55 +263,51 @@
             <p class="font-18 bold">Sign</p>
             <p class="font-18 bold">Here</p>
           </td>
-          <td class="border-top " colspan="2">
+          <td class="border-top" colspan="2">
             <p class="font-12">Under penalties of perjury, I declare that this certificate, to the best of my knowledge and belief, is true, correct, and complete.</p>
           </td>
         </tr>
         <tr>
           <td>
             <div class="float-left rotate">
-              <span >&#9698;</span>
+              <span>&#9698;</span>
             </div>
             <div class="float-left width-95">
               <p class="">{{getSignaturePlaceholder()}}</p>
-              <p  class="border-top">
-                <span class="bold">Employee’s signature</span> (This form is not valid unless you sign it.)
+              <p class="border-top">
+                <span class="bold">Employee's signature</span> (This form is not valid unless you sign it.)
               </p>
             </div>
           </td>
-          <td  width="20%">
+          <td width="20%">
             <div class="float-left rotate">
-              <span >&#9698;</span>
+              <span>&#9698;</span>
             </div>
             <div class="float-left width-80">
               <p class="">{{getTodayDate()}}</p>
-              <p  class="border-top">
+              <p class="border-top">
                 <span class="bold">Date</span>
               </p>
             </div>
           </td>
         </tr>
       </table>
-      <!-- Employ Only -->
+      <!-- Employers Only -->
       <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
           <td width="13%" class="border-top border-bottom">
-            <p class="font-18 bold"> Employers
-              Only</p>
+            <p class="font-18 bold">Employers<br>Only</p>
           </td>
           <td class="border-top border-left border-bottom">
-            <p class="font-12">Employer’s name and address </p>
+            <p class="font-12">Employer's name and address</p>
             <p>&nbsp;</p>
           </td>
-          <td width="100"  class="border-top border-left border-bottom">
-            <p class="font-12">First date of
-              employment </p>
+          <td width="100" class="border-top border-left border-bottom">
+            <p class="font-12">First date of<br>employment</p>
             <p>&nbsp;</p>
           </td>
           <td width="150" class="border-top border-left border-bottom">
-            <p class="font-12">Employer identification
-              number (EIN)
-            </p>
+            <p class="font-12">Employer identification<br>number (EIN)</p>
             <p>&nbsp;</p>
           </td>
         </tr>
@@ -321,14 +315,13 @@
       <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
           <td width="60%" class="border-top">
-            <p class="font-12 bold">For Privacy Act and Paperwork Reduction Act Notice, see page 3.</p>
-
+            <p class="font-12 bold">For Privacy Act and Paperwork Reduction Act Notice, see page 4.</p>
           </td>
           <td class="border-top">
             <p class="font-12">Cat. No. 10220Q</p>
           </td>
           <td width="120" class="border-top">
-            <p class="font-12">Form <span class="font-18 bold"> W-4</span> (2022) </p>
+            <p class="font-12">Form <span class="font-18 bold">W-4</span> (2026) Created 12/8/25</p>
           </td>
         </tr>
       </table>
