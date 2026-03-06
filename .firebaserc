@@ -1,7 +1,7 @@
 {
   "projects": {
     "default": "w4-employee",
-    "production": "w4-employee",
+    "live": "w4-employee",
     "testing": "w4-employee-app"
   },
   "targets": {},

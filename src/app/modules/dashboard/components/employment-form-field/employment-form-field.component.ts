@@ -212,14 +212,13 @@ export class EmploymentFormFieldComponent implements AfterViewInit {
 
   processAddressAccessor() {
     const {
-      streetNo,
       address,
       zipCode,
       city,
       state
     } = this.formData.basicInformation;
     // const state = this.getValueStateORCountryDetail('address.state', 'state');
-    return `${streetNo} ${address}, ${city}, ${state}, ${zipCode}`;
+    return ` ${address}, ${city}, ${state}, ${zipCode}`;
   }
 
   getValueStateORCountryDetail(path, type) {
